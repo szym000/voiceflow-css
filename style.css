@@ -1,0 +1,22 @@
+@media screen and (min-width: 768px) {
+    .vfrc-widget--chat {
+        width: 500px !important;
+    }
+
+    .vfrc-system-response--list .vfrc-message--chat {
+        max-width: 375px !important;
+    }
+
+}
+	.c-kIbiaN-eyfkxi-size-large {
+	background-image: url(https://uploads-ssl.webflow.com/65ad5ed15a2fa617298f294e/6604170e9f07a2161c21890a_dentalVisions_logo-nobg.png) !important;
+    background-color: transparent;
+    width: 80%;
+height: 4rem;
+box-shadow: none;
+border-radius: 0px;
+}
+
+.vfrc-avatar {
+	background-image: url(https://uploads-ssl.webflow.com/65ad73efba34f230a2b83aed/66055d8d22eb7814bbcd4fb4_logo%20square%20icon.png); }
+
