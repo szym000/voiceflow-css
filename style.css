@@ -57,10 +57,10 @@
   	position: absolute;
 	animation: pulse 1.5s ease infinite;
   	background: #71C9CE;
-	top: 6px;
+	top: 3px;
         left: 33px;
         width: 159px;
-        height: 42px;
+        height: 47px;
         border-radius: 10px;
 
 }
@@ -78,7 +78,7 @@
     opacity: 0.3;
   }
   100% {
-    transform: scale(1.5);
+    transform: scale(1.6);
     opacity: 0;
   }
 }
