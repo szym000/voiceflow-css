@@ -34,7 +34,12 @@
 	height: auto;
     	width: 100%;
 	border: 0px solid var(--colors-shadow4);
+	position: relative;
 }
+
+.vfrc-widget--launcher {
+  position: relative; 
+	}
 
 .vfrc-launcher img {
     border-radius: 10px;
@@ -42,7 +47,9 @@
     height: auto;
 }
 
-.vfrc-widget--launcher {
+.vfrc-widget--launcher::before {
+	content: ""; /* Required for pseudo-elements */
+  position: absolute;
 	animation: pulse 1.2s ease infinite;
   	background: #71C9CE;
 }
