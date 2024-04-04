@@ -27,6 +27,7 @@
 }
 .vfrc-button--secondary {
 	justify-content: left;
+	width: fit-content;
 }
 
 .vfrc-launcher {
