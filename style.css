@@ -29,3 +29,15 @@
 	justify-content: left;
 }
 
+.vfrc-launcher {
+	border-radius: 10px;
+	height: auto;
+    	width: 100%;
+	border: 0px solid var(--colors-shadow4);
+}
+
+.vfrc-launcher img {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+}
