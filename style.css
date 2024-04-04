@@ -41,3 +41,13 @@
     width: 100%;
     height: auto;
 }
+
+.vfrc-button--secondary {
+	color: #fff;
+	background-color: #71C9CE;
+}
+
+.vfrc-button--secondary:hover {
+	color: #71C9CE;
+	background-color: #fff;
+}
