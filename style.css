@@ -33,7 +33,7 @@
 	border-radius: 10px;
 	height: auto;
     	width: 100%;
-	border: 0px solid var(--colors-shadow4);
+	border: 2px solid var(--colors-shadow4);
 	position: relative;
 }
 
@@ -48,10 +48,16 @@
 }
 
 .vfrc-widget--launcher::before {
-	content: ""; /* Required for pseudo-elements */
-  position: absolute;
-	animation: pulse 1.2s ease infinite;
+	content: "";
+  	position: absolute;
+	animation: pulse 1.5s ease infinite;
   	background: #71C9CE;
+	top: 5px;
+        left: 32px;
+        width: 156px;
+        height: 40px;
+        border-radius: 10px;
+
 }
 
 .vfrc-button--secondary {
