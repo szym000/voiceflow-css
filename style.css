@@ -1,7 +1,7 @@
 
 @media screen and (min-width: 768px) {
     .vfrc-widget--chat {
-        width: 500px !important;
+        width: 510px !important;
     }
 
     .vfrc-system-response--list .vfrc-message--chat {
@@ -24,11 +24,12 @@
 
 .vfrc-system-response--actions {
 	display: grid;
-	max-width: fit-content;
+	grid-template-columns: 1fr 1fr;
+	max-width: unset;
 }
 .vfrc-button--secondary {
 	justify-content: left;
-	width: fit-content;
+	width: unset;
 	color: #fff;
 	background-color: #64AFB4;
 	transition: background-color .4s;
