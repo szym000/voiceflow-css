@@ -28,7 +28,8 @@
 	max-width: unset;
 }
 .vfrc-button--secondary {
-	justify-content: left;
+	justify-content: center;
+	text-align: center;
 	width: unset;
 	color: #fff;
 	background-color: #64AFB4;
