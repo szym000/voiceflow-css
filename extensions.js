@@ -40,7 +40,7 @@ export const patientDataForm = {
       <input type="text" class="name" name="name" required>
 
       <label for="birthday">Birthday</label>
-      <input type="date" class="birthday" name="birthday" required>
+      <input type="date" class="birthday" name="birthday" value="TT.MM.JJJJ" required>
 
       <label for="email">Email</label>
       <input type="email" class="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Invalid email address">
