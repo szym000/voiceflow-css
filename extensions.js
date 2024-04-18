@@ -22,7 +22,7 @@ export const patientDataForm = {
           outline: none;
           height: 20px;
           padding: 8px;
-          border-radius: 8px;
+          border-radius: 6px;
           display: block;
         }
         input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="date"]:focus {
