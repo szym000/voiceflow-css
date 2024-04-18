@@ -18,7 +18,7 @@ export const patientDataForm = {
           width: 100%;
           border: none;
           border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
-          background: transparent;
+          background: #fff;
           margin: 5px 0;
           outline: none;
           height: 20px;
