@@ -17,14 +17,16 @@ export const patientDataForm = {
         input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
           width: 220px;
           border: none;
-          border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
           background: #fff;
-          margin: 5px 0;
+          margin: 5px 0 10px 0;
           outline: none;
           height: 20px;
           padding: 8px;
           border-radius: 8px;
           display: block;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="date"]:focus {
+          border: 1px solid #71c9ce; 
         }
         .invalid {
           border-color: red;
@@ -44,7 +46,7 @@ export const patientDataForm = {
       <input type="email" class="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Invalid email address">
 
       <label for="phone">Phone Number</label>
-      <input type="tel" class="phone" name="phone" required pattern="\\d{10}" title="Invalid phone number, please enter exactly 10 digits"><br><br>
+      <input type="tel" class="phone" name="phone" required pattern="\\d{10}" title="Invalid phone number, please enter exactly 10 digits"><br>
 
       <input type="submit" class="c-dzcdPv vfrc-button c-jjMiVY vfrc-button--secondary c-kCDKCe submit" value="Submit">
     `;
