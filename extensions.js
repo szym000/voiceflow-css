@@ -15,7 +15,7 @@ export const patientDataForm = {
           color: #888;
         }
         input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
-          width: 100%;
+          width: 220px;
           border: none;
           border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
           background: #fff;
@@ -24,6 +24,7 @@ export const patientDataForm = {
           height: 20px;
           padding: 8px;
           border-radius: 8px;
+          display: block;
         }
         .invalid {
           border-color: red;
@@ -34,13 +35,13 @@ export const patientDataForm = {
       </style>
 
       <label for="name">Name</label>
-      <input type="text" class="name" name="name" required><br>
+      <input type="text" class="name" name="name" required>
 
       <label for="birthday">Birthday</label>
-      <input type="date" class="birthday" name="birthday" required><br>
+      <input type="date" class="birthday" name="birthday" required>
 
       <label for="email">Email</label>
-      <input type="email" class="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Invalid email address"><br>
+      <input type="email" class="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Invalid email address">
 
       <label for="phone">Phone Number</label>
       <input type="tel" class="phone" name="phone" required pattern="\\d{10}" title="Invalid phone number, please enter exactly 10 digits"><br><br>
