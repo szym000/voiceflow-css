@@ -48,7 +48,7 @@ export const patientDataForm = {
       <label for="phone">Phone Number</label>
       <input type="tel" class="phone" name="phone" required pattern="\\d{10}" title="Invalid phone number, please enter exactly 10 digits"><br><br>
 
-      <input type="submit" class="submit" value="Submit">
+      <input type="submit" class="c-dzcdPv vfrc-button c-jjMiVY vfrc-button--secondary c-kCDKCe" value="Submit">
     `;
 
     formContainer.addEventListener('submit', function (event) {
