@@ -21,34 +21,31 @@ export const patientDataForm = {
           background: transparent;
           margin: 5px 0;
           outline: none;
+          height: 20px;
+          padding: 8px;
+          border-radius: 8px;
         }
         .invalid {
           border-color: red;
         }
         .submit {
-          background: linear-gradient(to right, #2e6ee1, #2e7ff1);
-          border: none;
-          color: white;
-          padding: 10px;
-          border-radius: 5px;
-          width: 100%;
-          cursor: pointer;
+          width: 100% !important;
         }
       </style>
 
       <label for="name">Name</label>
-      <input type="text" class="name" name="name" required><br><br>
+      <input type="text" class="name" name="name" required><br>
 
       <label for="birthday">Birthday</label>
-      <input type="date" class="birthday" name="birthday" required><br><br>
+      <input type="date" class="birthday" name="birthday" required><br>
 
       <label for="email">Email</label>
-      <input type="email" class="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Invalid email address"><br><br>
+      <input type="email" class="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Invalid email address"><br>
 
       <label for="phone">Phone Number</label>
       <input type="tel" class="phone" name="phone" required pattern="\\d{10}" title="Invalid phone number, please enter exactly 10 digits"><br><br>
 
-      <input type="submit" class="c-dzcdPv vfrc-button c-jjMiVY vfrc-button--secondary c-kCDKCe" value="Submit">
+      <input type="submit" class="c-dzcdPv vfrc-button c-jjMiVY vfrc-button--secondary c-kCDKCe submit" value="Submit">
     `;
 
     formContainer.addEventListener('submit', function (event) {
