@@ -29,7 +29,7 @@ export const patientDataForm = {
           border: 1px solid #71c9ce;
         }
         input::placeholder {
-          font-family: Open Sans; color: #ccc;
+          font-family: inherit; color: #ccc;
         }
         input:focus::placeholder {
           color: transparent;
@@ -39,6 +39,7 @@ export const patientDataForm = {
         }
         .submit {
           width: 100%;
+          border: 2px solid #64AFB4;
           background-color: grey;
           color: white;
           border: none;
@@ -53,7 +54,7 @@ export const patientDataForm = {
           width: 100%;
           background-color: #64AFB4;
           color: #fff;
-          border: 1px solid #64AFB4;
+          border: 2px solid #64AFB4;
           padding: 4px;
           border-radius: 8px;
           font-weight: 600;
@@ -208,7 +209,7 @@ export const documentDetails = {
           outline: 1px solid #71c9ce;
         }
         textarea::placeholder {
-        font-family: Open Sans; color: #ccc;
+        font-family: inherit; color: #ccc;
         }
         textarea:focus::placeholder {
           color: transparent;
@@ -229,7 +230,7 @@ export const documentDetails = {
           width: 100%;
           background-color: #64AFB4;
           color: #fff;
-          border: 1px solid #64AFB4;
+          border: 2px solid #64AFB4;
           font-weight: 600;
           padding: 4px;
           border-radius: 8px;
@@ -240,6 +241,7 @@ export const documentDetails = {
 
         .active-doc {
           background-color: #64AFB4;
+          border: 2px solid #64AFB4;
           cursor: pointer;
           opacity: 1;
           transition: background-color .4s;
