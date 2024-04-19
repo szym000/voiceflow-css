@@ -574,7 +574,7 @@ export const DateExtension = {
         }
         input[type="datetime-local"] {
           font-family: inherit;
-          width: 220px;
+          width: 230px;
           display: block;
           border: none;
           background: #fff;
@@ -646,12 +646,10 @@ export const DateExtension = {
     // Enable the submit button only when a valid date is selected
     datetimeInput.addEventListener('input', function () {
       submitButton.disabled = !this.value;
-      if (newAppointmentDetails.trim() !== '') {
-        submitButton.disabled = false;
+     if (this.value) {
         submitButton.classList.add('active-date');
         submitButton.style.cursor = 'pointer';
       } else {
-        submitButton.disabled = true;
         submitButton.classList.remove('active-date');
         submitButton.style.cursor = 'not-allowed';
       }
