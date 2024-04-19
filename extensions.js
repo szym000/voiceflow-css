@@ -39,7 +39,7 @@ export const patientDataForm = {
         }
         .submit {
           width: 100%;
-          border: 2px solid #64AFB4;
+          border: 2px solid grey;
           background-color: grey;
           color: white;
           border: none;
@@ -217,6 +217,7 @@ export const documentDetails = {
         .submit-doc {
           width: 100%;
           background-color: grey;
+          border: 2px solid grey;
           color: white;
           border: none;
           padding: 10px;
