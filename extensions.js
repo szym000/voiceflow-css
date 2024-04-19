@@ -39,7 +39,7 @@ export const patientDataForm = {
           background-color: grey;
           color: white;
           border: none;
-          padding: 7px;
+          padding: 10px;
           border-radius: 8px;
           font-size: 15px;
           font-weight: 600;
@@ -48,28 +48,25 @@ export const patientDataForm = {
         }
         .cancel, .back {
           width: 100%;
-          background-color: #fff;
-          color: #64AFB4;
+          background-color: #64AFB4;
+          color: #fff;
           border: 1px solid #64AFB4;
-          padding: 7px;
+          padding: 4px;
           border-radius: 8px;
           font-weight: 600;
           cursor: pointer;
           font-size: 15px;
-          transition: opacity .4s;
+          transition: background-color .4s;
         }
-        .cancel:hover, .back:hover {
-        opacity: 0.7;
-        }
+        
         .active {
           background-color: #64AFB4;
           cursor: pointer;
           opacity: 1;
           transition: background-color .4s;
         }
-        .active:hover {
-          color: #71C9CE;
-          background-color: #fff;
+        .active:hover, .cancel:hover, .back:hover {
+          background-color: #71C9CE;
         }
         .button-wrapper {
             margin-top: 10px;
@@ -205,7 +202,7 @@ export const documentDetails = {
           margin-bottom: 10px;
         }
         textarea:focus, textarea:focus-visible {
-          border: 1px solid #71c9ce;
+          outline: 1px solid #71c9ce;
         }
         textarea:focus::placeholder {
           color: transparent;
@@ -215,7 +212,7 @@ export const documentDetails = {
           background-color: grey;
           color: white;
           border: none;
-          padding: 7px;
+          padding: 10px;
           font-weight: 600;
           border-radius: 8px;
           font-size: 15px;
@@ -224,28 +221,25 @@ export const documentDetails = {
         }
         .cancel-doc, .back-doc {
           width: 100%;
-          background-color: #fff;
-          color: #64AFB4;
+          background-color: #64AFB4;
+          color: #fff;
           border: 1px solid #64AFB4;
           font-weight: 600;
-          padding: 7px;
+          padding: 4px;
           border-radius: 8px;
           cursor: pointer;
           font-size: 15px;
-          transition: opacity .4s;
+          transition: background-color .4s;
         }
-        .cancel-doc:hover, .back-doc:hover {
-        opacity: 0.7;
-        }
+
         .active-doc {
           background-color: #64AFB4;
           cursor: pointer;
           opacity: 1;
           transition: background-color .4s;
         }
-        .active-doc:hover {
-          color: #71C9CE;
-          background-color: #fff;
+        .active:hover, .cancel:hover, .back:hover {
+          background-color: #71C9CE;
         }
         .button-wrapper {
           margin-top: 10px;
