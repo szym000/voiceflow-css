@@ -646,16 +646,14 @@ export const DateExtension = {
     // Enable the submit button only when a valid date is selected
     datetimeInput.addEventListener('input', function () {
       submitButton.disabled = !this.value;
-      if (this.value) {
+      if (newAppointmentDetails.trim() !== '') {
+        submitButton.disabled = false;
         submitButton.classList.add('active-date');
         submitButton.style.cursor = 'pointer';
-        submitButton.style.opacity = '1';
-        submitButton.style.backgroundColor = '#64AFB4';
       } else {
+        submitButton.disabled = true;
         submitButton.classList.remove('active-date');
         submitButton.style.cursor = 'not-allowed';
-        submitButton.style.opacity = '0.5';
-        submitButton.style.backgroundColor = 'grey';
       }
     });
 
