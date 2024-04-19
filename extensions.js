@@ -26,16 +26,16 @@ export const patientDataForm = {
           display: block;
         }
         input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="date"]:focus {
-          border: 1px solid #71c9ce; 
+          border: 1px solid #71c9ce;
         }
         input:focus::placeholder {
-        color: transparent;
+          color: transparent;
         }
         .invalid {
           border-color: red;
         }
-        .submit {
-          width: 100% !important;
+        .submit, .cancel {
+          width: 100%;
           background-color: grey;
           color: white;
           border: none;
@@ -45,15 +45,15 @@ export const patientDataForm = {
           cursor: not-allowed;
           opacity: 0.5;
         }
-        .submit.active {
+        .active {
           background-color: #64AFB4;
           cursor: pointer;
           opacity: 1;
           transition: background-color .4s;
         }
-        .submit.active:hover {
+        .active:hover {
           color: #71C9CE;
-	        background-color: #fff;
+          background-color: #fff;
         }
       </style>
 
@@ -69,10 +69,10 @@ export const patientDataForm = {
       <label for="phone">Telefon</label>
       <input type="tel" class="phone" name="phone" placeholder="z.B. +491234567890" pattern="\+?\d{7,}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 10 Ziffern ein"><br>
 
-      <input type="submit" class="submit" value="Submit" disabled>
+      <input type="submit" class="submit active" value="Submit">
+      <input type="button" class="cancel active" value="Cancel">
     `;
 
-    // Function to check input validity
     const checkInputs = () => {
       const name = formContainer.querySelector('.name').value;
       const birthday = formContainer.querySelector('.birthday').value;
@@ -83,25 +83,30 @@ export const patientDataForm = {
       const isFormValid = name && birthday && isEmailOrPhoneValid;
 
       const submitButton = formContainer.querySelector('.submit');
+      const cancelButton = formContainer.querySelector('.cancel');
       if (isFormValid) {
         submitButton.disabled = false;
         submitButton.classList.add('active');
         submitButton.style.cursor = 'pointer';
+        cancelButton.disabled = false;
+        cancelButton.classList.add('active');
+        cancelButton.style.cursor = 'pointer';
       } else {
         submitButton.disabled = true;
         submitButton.classList.remove('active');
         submitButton.style.cursor = 'not-allowed';
+        cancelButton.disabled = true;
+        cancelButton.classList.remove('active');
+        cancelButton.style.cursor = 'not-allowed';
       }
     };
 
-    // Attach event listeners to inputs to validate in real-time
-    formContainer.querySelectorAll('input').forEach(input => {
+    formContainer.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="date"]').forEach(input => {
       input.addEventListener('input', checkInputs);
     });
 
     formContainer.addEventListener('submit', function (event) {
       event.preventDefault();
-
       const name = formContainer.querySelector('.name');
       const birthday = formContainer.querySelector('.birthday');
       const email = formContainer.querySelector('.email');
@@ -131,9 +136,18 @@ export const patientDataForm = {
       });
     });
 
+    // Handle cancel button click
+    formContainer.querySelector('.cancel').addEventListener('click', function () {
+      window.voiceflow.chat.interact({
+        type: 'cancel',
+        payload: {}
+      });
+    });
+
     element.appendChild(formContainer);
   },
 };
+
 
 
 export const FileUploadExtension = {
