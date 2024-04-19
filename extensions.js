@@ -39,9 +39,10 @@ export const patientDataForm = {
           background-color: grey;
           color: white;
           border: none;
-          padding: 10px;
+          padding: 7px;
           border-radius: 8px;
           font-size: 15px;
+          font-weight: 600;
           cursor: not-allowed;
           opacity: 0.5;
         }
@@ -50,8 +51,9 @@ export const patientDataForm = {
           background-color: #fff;
           color: #64AFB4;
           border: 1px solid #64AFB4;
-          padding: 10px;
+          padding: 7px;
           border-radius: 8px;
+          font-weight: 600;
           cursor: pointer;
           font-size: 15px;
           transition: opacity .4s;
@@ -208,38 +210,40 @@ export const documentDetails = {
         textarea:focus::placeholder {
           color: transparent;
         }
-        .submit {
+        .submit-doc {
           width: 100%;
           background-color: grey;
           color: white;
           border: none;
-          padding: 10px;
+          padding: 7px;
+          font-weight: 600;
           border-radius: 8px;
           font-size: 15px;
           cursor: not-allowed;
           opacity: 0.5;
         }
-        .cancel, .back {
+        .cancel-doc, .back-doc {
           width: 100%;
           background-color: #fff;
           color: #64AFB4;
           border: 1px solid #64AFB4;
-          padding: 10px;
+          font-weight: 600;
+          padding: 7px;
           border-radius: 8px;
           cursor: pointer;
           font-size: 15px;
           transition: opacity .4s;
         }
-        .cancel:hover, .back:hover {
+        .cancel-doc:hover, .back-doc:hover {
         opacity: 0.7;
         }
-        .active {
+        .active-doc {
           background-color: #64AFB4;
           cursor: pointer;
           opacity: 1;
           transition: background-color .4s;
         }
-        .active:hover {
+        .active-doc:hover {
           color: #71C9CE;
           background-color: #fff;
         }
@@ -256,11 +260,11 @@ export const documentDetails = {
       <label for="document">Weitere Informationen</label>
       <textarea id="document" name="document" required placeholder="z.B. eine Kopie der Rechnung mit der Nummer 12345"></textarea>
       
-      <input type="submit" class="submit" value="Weiter">
+      <input type="submit" class="submit-doc" value="Weiter">
       
       <div class="button-wrapper">
-      <input type="button" class="back" value="⇦ Zurück">
-      <input type="button" class="cancel" value="✕ Abbrechen">
+      <input type="button" class="back-doc" value="⇦ Zurück">
+      <input type="button" class="cancel-doc" value="✕ Abbrechen">
       </div>
     `;
 
@@ -268,14 +272,14 @@ export const documentDetails = {
     const checkInput = () => {
       const documentDetails = formContainer.querySelector('#document').value;
 
-      const submitButton = formContainer.querySelector('.submit');
+      const submitButton = formContainer.querySelector('.submit-doc');
       if (documentDetails.trim() !== '') {
         submitButton.disabled = false;
-        submitButton.classList.add('active');
+        submitButton.classList.add('active-doc');
         submitButton.style.cursor = 'pointer';
       } else {
         submitButton.disabled = true;
-        submitButton.classList.remove('active');
+        submitButton.classList.remove('active-doc');
         submitButton.style.cursor = 'not-allowed';
       }
     };
@@ -301,9 +305,17 @@ export const documentDetails = {
     });
 
     // Handle cancel button click
-    formContainer.querySelector('.cancel').addEventListener('click', function () {
+    formContainer.querySelector('.cancel-doc').addEventListener('click', function () {
       window.voiceflow.chat.interact({
         type: 'cancel',
+        payload: {}
+      });
+    });
+
+    // Handle cancel button click
+    formContainer.querySelector('.back-doc').addEventListener('click', function () {
+      window.voiceflow.chat.interact({
+        type: 'back',
         payload: {}
       });
     });
