@@ -40,14 +40,20 @@ export const patientDataForm = {
           color: white;
           border: none;
           padding: 10px;
-          border-radius: 5px;
+          border-radius: 8px;
+          font-size: 15px
           cursor: not-allowed;
           opacity: 0.5;
         }
         .submit.active {
-          background-color: #2e6ee1;
+          background-color: #64AFB4;
           cursor: pointer;
           opacity: 1;
+          transition: background-color .4s;
+        }
+        .submit.active:hover {
+          color: #71C9CE;
+	        background-color: #fff;
         }
       </style>
 
