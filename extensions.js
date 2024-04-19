@@ -341,7 +341,7 @@ export const newAppointmentDetails = {
           font-size: 0.9em;
           color: #888;
         }
-        textarea-app {
+        textarea {
           font-family: inherit;
           display: block;
           width: 255px;
@@ -353,13 +353,13 @@ export const newAppointmentDetails = {
           border: 1px solid #ccc;
           margin-bottom: 10px;
         }
-        textarea-app:focus, textarea:focus-visible {
+        textarea:focus, textarea:focus-visible {
           outline: 1px solid #71c9ce;
         }
-        textarea-app::placeholder {
+        textarea::placeholder {
         font-family: inherit; color: #ccc;
         }
-        textarea-app:focus::placeholder {
+        textarea:focus::placeholder {
           color: transparent;
         }
         .submit-app {
@@ -573,7 +573,8 @@ export const DateExtension = {
           color: #888;
         }
         input[type="datetime-local"] {
-          width: 100%;
+          width: 200px;
+          display: block;
           border: none;
           background: #fff;
           margin: 5px 0;
@@ -584,22 +585,36 @@ export const DateExtension = {
         input[type="datetime-local"]:focus {
           border: 1px solid #71c9ce;
         }
-        .submit-date, .cancel-date, .back-date {
-          width: 49%;
+        .submit-date {
+          width: 100%;
           background-color: grey;
           color: white;
           border: none;
           padding: 10px;
+          font-weight: 600;
           border-radius: 8px;
           font-size: 15px;
           cursor: not-allowed;
           opacity: 0.5;
-          margin-top: 10px;
         }
+        .cancel-date, .back-date {
+          width: 100%;
+          background-color: #64AFB4;
+          color: #fff;
+          font-weight: 600;
+          padding: 4px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 15px;
+          transition: background-color .4s;
+          border: none;
+        }
+
         .active-date {
           background-color: #64AFB4;
           cursor: pointer;
           opacity: 1;
+          transition: background-color .4s;
         }
         .active-date:hover, .cancel-date:hover, .back-date:hover {
           background-color: #71C9CE;
@@ -617,8 +632,8 @@ export const DateExtension = {
       <input type="submit" class="submit-date active-date" value="Weiter" disabled>
       
       <div class="button-wrapper">
-        <input type="button" class="back-date active-date" value="⇦ Zurück">
-        <input type="button" class="cancel-date active-date" value="✕ Abbrechen">
+        <input type="button" class="back-date" value="⇦ Zurück">
+        <input type="button" class="cancel-date" value="✕ Abbrechen">
       </div>
     `;
 
