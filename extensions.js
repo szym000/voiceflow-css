@@ -28,6 +28,9 @@ export const patientDataForm = {
         input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="date"]:focus {
           border: 1px solid #71c9ce;
         }
+        input::placeholder {
+          font-family: Open Sans; color: #ccc;
+        }
         input:focus::placeholder {
           color: transparent;
         }
@@ -203,6 +206,9 @@ export const documentDetails = {
         }
         textarea:focus, textarea:focus-visible {
           outline: 1px solid #71c9ce;
+        }
+        textarea::placeholder {
+        font-family: Open Sans; color: #ccc;
         }
         textarea:focus::placeholder {
           color: transparent;
