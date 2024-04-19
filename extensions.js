@@ -15,6 +15,7 @@ export const patientDataForm = {
           color: #888;
         }
         input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
+          font-family: inherit;
           width: 255px;
           border: 1px solid #ccc;
           background: #fff;
@@ -195,6 +196,7 @@ export const documentDetails = {
           color: #888;
         }
         textarea {
+          font-family: inherit;
           display: block;
           width: 255px;
           height: 100px;
