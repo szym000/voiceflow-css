@@ -574,7 +574,7 @@ export const DateExtension = {
         }
         input[type="datetime-local"] {
           font-family: inherit;
-          width: 100%;
+          width: 220px;
           display: block;
           border: none;
           background: #fff;
