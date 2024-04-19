@@ -15,7 +15,7 @@ export const patientDataForm = {
           color: #888;
         }
         input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
-          width: 220px;
+          width: 255px;
           border: 1px solid #ccc;
           background: #fff;
           margin: 5px 0 10px 0;
