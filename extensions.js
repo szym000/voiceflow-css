@@ -16,7 +16,7 @@ export const patientDataForm = {
         }
         input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
           width: 220px;
-          border: none;
+          border: 1px solid #ccc;
           background: #fff;
           margin: 5px 0 10px 0;
           outline: none;
@@ -199,6 +199,7 @@ export const documentDetails = {
           padding: 8px;
           font-size: 0.9em;
           resize: vertical;
+          border: 1px solid #ccc;
         }
         textarea:focus {
           border: 1px solid #71c9ce;
