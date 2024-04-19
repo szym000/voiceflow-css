@@ -60,6 +60,7 @@ export const patientDataForm = {
           cursor: pointer;
           font-size: 15px;
           transition: background-color .4s;
+          border: none;
         }
         
         .active {
@@ -236,6 +237,7 @@ export const documentDetails = {
           cursor: pointer;
           font-size: 15px;
           transition: background-color .4s;
+          border: none;
         }
 
         .active-doc {
