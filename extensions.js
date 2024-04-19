@@ -34,10 +34,21 @@ export const patientDataForm = {
         .invalid {
           border-color: red;
         }
-        .submit, .cancel {
+        .submit {
           width: 100%;
           background-color: grey;
           color: white;
+          border: none;
+          padding: 10px;
+          border-radius: 8px;
+          font-size: 15px;
+          cursor: not-allowed;
+          opacity: 0.5;
+        }
+        .cancel, .back {
+          width: 100%;
+          background-color: #fff;
+          color: #64AFB4;
           border: none;
           padding: 10px;
           border-radius: 8px;
@@ -69,8 +80,11 @@ export const patientDataForm = {
       <label for="phone">Telefon</label>
       <input type="tel" class="phone" name="phone" placeholder="z.B. +491234567890" pattern="\+?\d{7,}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 10 Ziffern ein"><br>
 
-      <input type="submit" class="submit active" value="Submit">
-      <input type="button" class="cancel active" value="Cancel">
+      <input type="submit" class="submit" value="Weiter">
+      <div style="display: flex; justify-content: space-around; align-items: center; width: 100%;">
+      <input type="button" class="cancel" value="Abbrechen">
+      <input type="button" class="back" value="Zurück">
+      </div>
     `;
 
     const checkInputs = () => {
@@ -83,21 +97,14 @@ export const patientDataForm = {
       const isFormValid = name && birthday && isEmailOrPhoneValid;
 
       const submitButton = formContainer.querySelector('.submit');
-      const cancelButton = formContainer.querySelector('.cancel');
       if (isFormValid) {
         submitButton.disabled = false;
         submitButton.classList.add('active');
         submitButton.style.cursor = 'pointer';
-        cancelButton.disabled = false;
-        cancelButton.classList.add('active');
-        cancelButton.style.cursor = 'pointer';
       } else {
         submitButton.disabled = true;
         submitButton.classList.remove('active');
         submitButton.style.cursor = 'not-allowed';
-        cancelButton.disabled = true;
-        cancelButton.classList.remove('active');
-        cancelButton.style.cursor = 'not-allowed';
       }
     };
 
