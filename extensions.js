@@ -200,6 +200,7 @@ export const documentDetails = {
           font-size: 0.9em;
           resize: vertical;
           border: 1px solid #ccc;
+          margin-bottom: 10px;
         }
         textarea:focus {
           border: 1px solid #71c9ce;
