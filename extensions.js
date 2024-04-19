@@ -573,7 +573,8 @@ export const DateExtension = {
           color: #888;
         }
         input[type="datetime-local"] {
-          width: 200px;
+          font-family: inherit;
+          width: 220px;
           display: block;
           border: none;
           background: #fff;
@@ -626,7 +627,7 @@ export const DateExtension = {
         }
       </style>
 
-      <label for="meeting-time">Select a Date and Time:</label>
+      <label for="meeting-time">Datum und Zeit:</label>
       <input type="datetime-local" id="meeting-time" name="meeting-time" min="${minDateString}" max="${maxDateString}" required>
       
       <input type="submit" class="submit-date active-date" value="Weiter" disabled>
