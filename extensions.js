@@ -26,13 +26,12 @@ export const patientDataForm = {
           display: block;
         }
         input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="date"]:focus {
-          border: 1px solid #71c9ce; 
+          border: 1px solid #71c9ce;
         }
         .invalid {
           border-color: red;
         }
         .submit {
-          width: 100% !important;
           background-color: grey;
           color: white;
           border: none;
@@ -40,19 +39,12 @@ export const patientDataForm = {
           border-radius: 5px;
           cursor: not-allowed;
           opacity: 0.5;
-          transition: background-color .4s;
-}
         }
         .submit.active {
-          color: #fff;
-	        background-color: #64AFB4;
+          background-color: #2e6ee1;
           cursor: pointer;
           opacity: 1;
         }
-        .submit.active:hover {
-	color: #71C9CE;
-	background-color: #fff;
-}
       </style>
 
       <label for="name">Name</label>
@@ -67,7 +59,7 @@ export const patientDataForm = {
       <label for="phone">Telefon</label>
       <input type="tel" class="phone" name="phone" pattern="\+?\d{7,}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 10 Ziffern ein"><br>
 
-      <input type="submit" class="submit" value="Submit" disabled>
+      <input type="submit" class="c-dzcdPv vfrc-button c-jjMiVY vfrc-button--secondary c-kCDKCe submit" value="Submit" disabled>
     `;
 
     // Function to check input validity
@@ -85,10 +77,14 @@ export const patientDataForm = {
         submitButton.disabled = false;
         submitButton.classList.add('active');
         submitButton.style.cursor = 'pointer';
+        submitButton.style.opacity = '1';
+        submitButton.style.backgroundColor = '#2e6ee1';
       } else {
         submitButton.disabled = true;
         submitButton.classList.remove('active');
         submitButton.style.cursor = 'not-allowed';
+        submitButton.style.opacity = '0.5';
+        submitButton.style.backgroundColor = 'grey';
       }
     };
 
