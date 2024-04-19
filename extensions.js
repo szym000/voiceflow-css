@@ -41,7 +41,7 @@ export const patientDataForm = {
           border: none;
           padding: 10px;
           border-radius: 8px;
-          font-size: 15px
+          font-size: 15px;
           cursor: not-allowed;
           opacity: 0.5;
         }
