@@ -193,7 +193,7 @@ export const documentDetails = {
         }
         textarea {
           display: block;
-          width: 100%;
+          width: 255px;
           height: 100px;
           border-radius: 8px;
           padding: 8px;
