@@ -553,101 +553,124 @@ export const DateExtension = {
   match: ({ trace }) =>
     trace.type === 'ext_date' || trace.payload.name === 'ext_date',
   render: ({ trace, element }) => {
-    const formContainer = document.createElement('form')
+    const formContainer = document.createElement('form');
 
     // Get current date and time
-    let currentDate = new Date()
-    let minDate = new Date()
-    minDate.setMonth(currentDate.getMonth() - 1)
-    let maxDate = new Date()
-    maxDate.setMonth(currentDate.getMonth() + 2)
+    let currentDate = new Date();
+    let minDate = new Date();
+    minDate.setMonth(currentDate.getMonth() - 1);
+    let maxDate = new Date();
+    maxDate.setMonth(currentDate.getMonth() + 2);
 
     // Convert to ISO string and remove seconds and milliseconds
-    let minDateString = minDate.toISOString().slice(0, 16)
-    let maxDateString = maxDate.toISOString().slice(0, 16)
+    let minDateString = minDate.toISOString().slice(0, 16);
+    let maxDateString = maxDate.toISOString().slice(0, 16);
 
     formContainer.innerHTML = `
-          <style>
-            label {
-              font-size: 0.8em;
-              color: #888;
-            }
-            input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-                border: none;
-                background: transparent;
-                border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
-                bottom: 0;
-                outline: none;
-                color: transparent;
-                cursor: pointer;
-                height: auto;
-                left: 0;
-                position: absolute;
-                right: 0;
-                top: 0;
-                width: auto;
-                padding:6px;
-                font: normal 8px sans-serif;
-            }
-            .meeting input{
-              background: transparent;
-              border: none;
-              padding: 2px;
-              border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
-              font: normal 14px sans-serif;
-              outline:none;
-              margin: 5px 0;
-              &:focus{outline:none;}
-            }
-            .invalid {
-              border-color: red;
-            }
-            .submit {
-              background: linear-gradient(to right, #2e6ee1, #2e7ff1 );
-              border: none;
-              color: white;
-              padding: 10px;
-              border-radius: 5px;
-              width: 100%;
-              cursor: pointer;
-              opacity: 0.3;
-            }
-            .submit:enabled {
-              opacity: 1; /* Make the button fully opaque when it's enabled */
-            }
-          </style>
-          <label for="date">Select your date/time</label><br>
-          <div class="meeting"><input type="datetime-local" id="meeting" name="meeting" value="" min="${minDateString}" max="${maxDateString}" /></div><br>
-          <input type="submit" id="submit" class="submit" value="Submit" disabled="disabled">
-          `
+      <style>
+        label {
+          font-size: 0.9em;
+          color: #888;
+        }
+        input[type="datetime-local"] {
+          width: 100%;
+          border: none;
+          background: #fff;
+          margin: 5px 0;
+          outline: none;
+          padding: 8px;
+          border-radius: 6px;
+        }
+        input[type="datetime-local"]:focus {
+          border: 1px solid #71c9ce;
+        }
+        .submit-date, .cancel-date, .back-date {
+          width: 49%;
+          background-color: grey;
+          color: white;
+          border: none;
+          padding: 10px;
+          border-radius: 8px;
+          font-size: 15px;
+          cursor: not-allowed;
+          opacity: 0.5;
+          margin-top: 10px;
+        }
+        .active-date {
+          background-color: #64AFB4;
+          cursor: pointer;
+          opacity: 1;
+        }
+        .active-date:hover, .cancel-date:hover, .back-date:hover {
+          background-color: #71C9CE;
+        }
+        .button-wrapper {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 10px;
+        }
+      </style>
 
-    const submitButton = formContainer.querySelector('#submit')
-    const datetimeInput = formContainer.querySelector('#meeting')
+      <label for="meeting-time">Select a Date and Time:</label>
+      <input type="datetime-local" id="meeting-time" name="meeting-time" min="${minDateString}" max="${maxDateString}" required>
+      
+      <input type="submit" class="submit-date active-date" value="Weiter" disabled>
+      
+      <div class="button-wrapper">
+        <input type="button" class="back-date active-date" value="⇦ Zurück">
+        <input type="button" class="cancel-date active-date" value="✕ Abbrechen">
+      </div>
+    `;
+
+    const datetimeInput = formContainer.querySelector('#meeting-time');
+    const submitButton = formContainer.querySelector('.submit-date');
 
     datetimeInput.addEventListener('input', function () {
       if (this.value) {
-        submitButton.disabled = false
+        submitButton.disabled = false;
+        submitButton.classList.add('active-date');
+        submitButton.style.cursor = 'pointer';
+        submitButton.style.opacity = '1';
+        submitButton.style.backgroundColor = '#64AFB4';
       } else {
-        submitButton.disabled = true
+        submitButton.disabled = true;
+        submitButton.classList.remove('active-date');
+        submitButton.style.cursor = 'not-allowed';
+        submitButton.style.opacity = '0.5';
+        submitButton.style.backgroundColor = 'grey';
       }
-    })
+    });
+
     formContainer.addEventListener('submit', function (event) {
-      event.preventDefault()
+      event.preventDefault();
 
-      const datetime = datetimeInput.value
-      console.log(datetime)
-      let [date, time] = datetime.split('T')
-
-      formContainer.querySelector('.submit').remove()
+      const datetime = datetimeInput.value;
+      let [date, time] = datetime.split('T');
 
       window.voiceflow.chat.interact({
         type: 'complete',
         payload: { date: date, time: time },
-      })
-    })
-    element.appendChild(formContainer)
+      });
+    });
+
+    formContainer.querySelector('.cancel-date').addEventListener('click', function () {
+      window.voiceflow.chat.interact({
+        type: 'cancel',
+        payload: {}
+      });
+    });
+
+    formContainer.querySelector('.back-date').addEventListener('click', function () {
+      window.voiceflow.chat.interact({
+        type: 'back',
+        payload: {}
+      });
+    });
+
+    element.appendChild(formContainer);
   },
-}
+};
+
 
 
 export const FeedbackExtension = {
