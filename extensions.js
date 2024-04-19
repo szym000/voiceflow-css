@@ -53,8 +53,6 @@ export const patientDataForm = {
           padding: 10px;
           border-radius: 8px;
           font-size: 15px;
-          cursor: not-allowed;
-          opacity: 0.5;
         }
         .active {
           background-color: #64AFB4;
@@ -82,8 +80,10 @@ export const patientDataForm = {
 
       <input type="submit" class="submit" value="Weiter">
       <div style="display: flex; justify-content: space-around; align-items: center; width: 100%;">
-      <input type="button" class="cancel" value="Abbrechen">
-      <input type="button" class="back" value="Zurück">
+      
+      <input type="button" class="back" value="⇦ Zurück">
+      <input type="button" class="cancel" value="✕ Abbrechen">
+      
       </div>
     `;
 
@@ -147,6 +147,14 @@ export const patientDataForm = {
     formContainer.querySelector('.cancel').addEventListener('click', function () {
       window.voiceflow.chat.interact({
         type: 'cancel',
+        payload: {}
+      });
+    });
+    
+    // Handle cancel button click
+    formContainer.querySelector('.back').addEventListener('click', function () {
+      window.voiceflow.chat.interact({
+        type: 'back',
         payload: {}
       });
     });
