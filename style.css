@@ -33,6 +33,7 @@
 	width: unset;
 	color: #fff;
 	background-color: #64AFB4;
+	border: 2px solid #64AFB4;
 	transition: background-color .4s;
 }
 
