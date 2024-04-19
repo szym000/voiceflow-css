@@ -26,24 +26,19 @@ export const patientDataForm = {
           display: block;
         }
         input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="date"]:focus {
-          border: 1px solid #71c9ce;
+          border: 1px solid #71c9ce; 
         }
+        input:focus::placeholder {
+  color: transparent;
+}
         .invalid {
           border-color: red;
         }
         .submit {
-          background-color: grey;
-          color: white;
-          border: none;
-          padding: 10px;
-          border-radius: 5px;
+          width: 100% !important;
           cursor: not-allowed;
-          opacity: 0.5;
-        }
-        .submit.active {
-          background-color: #2e6ee1;
-          cursor: pointer;
-          opacity: 1;
+          background-color: #ccc;
+          /* Ensure original classes are retained for styling and functionality */
         }
       </style>
 
@@ -57,41 +52,22 @@ export const patientDataForm = {
       <input type="email" class="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ungültige E-Mail-Adresse">
 
       <label for="phone">Telefon</label>
-      <input type="tel" class="phone" name="phone" pattern="\+?\d{7,}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 10 Ziffern ein"><br>
+      <input type="tel" class="phone" name="phone" pattern="\+?\d{7,}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 7 Ziffern ein"><br>
 
       <input type="submit" class="c-dzcdPv vfrc-button c-jjMiVY vfrc-button--secondary c-kCDKCe submit" value="Submit" disabled>
     `;
 
-    // Function to check input validity
-    const checkInputs = () => {
-      const name = formContainer.querySelector('.name').value;
-      const birthday = formContainer.querySelector('.birthday').value;
-      const email = formContainer.querySelector('.email').value;
-      const phone = formContainer.querySelector('.phone').value;
+    const inputs = formContainer.querySelectorAll('input');
+    const submitButton = formContainer.querySelector('.submit');
 
-      const isEmailOrPhoneValid = email !== '' || phone !== '';
-      const isFormValid = name && birthday && isEmailOrPhoneValid;
-
-      const submitButton = formContainer.querySelector('.submit');
-      if (isFormValid) {
-        submitButton.disabled = false;
-        submitButton.classList.add('active');
-        submitButton.style.cursor = 'pointer';
-        submitButton.style.opacity = '1';
-        submitButton.style.backgroundColor = '#2e6ee1';
-      } else {
-        submitButton.disabled = true;
-        submitButton.classList.remove('active');
-        submitButton.style.cursor = 'not-allowed';
-        submitButton.style.opacity = '0.5';
-        submitButton.style.backgroundColor = 'grey';
-      }
+    const validateForm = () => {
+      const isValid = formContainer.checkValidity() && (formContainer.querySelector('.email').value || formContainer.querySelector('.phone').value);
+      submitButton.disabled = !isValid;
+      submitButton.style.cursor = isValid ? 'pointer' : 'not-allowed';
+      submitButton.style.backgroundColor = isValid ? '#71c9ce' : '#ccc';
     };
 
-    // Attach event listeners to inputs to validate in real-time
-    formContainer.querySelectorAll('input').forEach(input => {
-      input.addEventListener('input', checkInputs);
-    });
+    inputs.forEach(input => input.addEventListener('input', validateForm));
 
     formContainer.addEventListener('submit', function (event) {
       event.preventDefault();
@@ -128,6 +104,7 @@ export const patientDataForm = {
     element.appendChild(formContainer);
   },
 };
+
 
 export const FormExtension = {
   name: 'Forms',
