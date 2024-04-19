@@ -205,7 +205,7 @@ export const documentDetails = {
         textarea:focus {
           border: 1px solid #71c9ce;
         }
-        textarea::placeholder {
+        textarea:focus::placeholder {
           color: transparent;
         }
         .submit {
