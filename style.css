@@ -72,8 +72,7 @@
 }
 
 .vfrc-button--secondary:hover {
-	color: #71C9CE;
-	background-color: #fff;
+	background-color: #71C9CE;
 }
 
 @keyframes pulse {
