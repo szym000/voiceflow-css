@@ -71,12 +71,12 @@ export const patientDataForm = {
         }
         .button-wrapper {
             margin-top: 10px;
-    gap: 10px;
-    display: flex;
-    justify-content: space-around;
-    align-items: normal;
-    width: 100%;
-    }
+            gap: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: normal;
+            width: 100%;
+        }
       </style>
 
       <label for="name">Name</label>
@@ -192,10 +192,10 @@ export const documentDetails = {
           color: #888;
         }
         textarea {
+          display: block;
           width: 100%;
           height: 100px;
-          border: 1px solid #ccc;
-          border-radius: 6px;
+          border-radius: 8px;
           padding: 8px;
           font-size: 0.9em;
           resize: vertical;
@@ -204,10 +204,10 @@ export const documentDetails = {
           border: 1px solid #71c9ce;
         }
         textarea::placeholder {
-          color: #ccc;
+          color: transparent;
         }
-        .submit, .cancel, .back {
-          width: 49%;
+        .submit {
+          width: 100%;
           background-color: grey;
           color: white;
           border: none;
@@ -216,7 +216,20 @@ export const documentDetails = {
           font-size: 15px;
           cursor: not-allowed;
           opacity: 0.5;
-          margin-top: 10px;
+        }
+        .cancel, .back {
+          width: 100%;
+          background-color: #fff;
+          color: #64AFB4;
+          border: 1px solid #64AFB4;
+          padding: 10px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 15px;
+          transition: opacity .4s;
+        }
+        .cancel:hover, .back:hover {
+        opacity: 0.7;
         }
         .active {
           background-color: #64AFB4;
@@ -229,18 +242,23 @@ export const documentDetails = {
           background-color: #fff;
         }
         .button-wrapper {
-          display: flex;
-          justify-content: space-between;
-          width: 100%;
+          margin-top: 10px;
+            gap: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: normal;
+            width: 100%;
         }
       </style>
 
-      <label for="document">Document Details</label>
-      <textarea id="document" name="document" required placeholder="Enter document details here..."></textarea>
+      <label for="document">Weitere Informationen</label>
+      <textarea id="document" name="document" required placeholder="z.B. eine Kopie der Rechnung mit der Nummer 12345"></textarea>
+      
+      <input type="submit" class="submit" value="Weiter">
       
       <div class="button-wrapper">
-        <input type="submit" class="submit active" value="Submit">
-        <input type="button" class="cancel active" value="Cancel">
+      <input type="button" class="back" value="⇦ Zurück">
+      <input type="button" class="cancel" value="✕ Abbrechen">
       </div>
     `;
 
