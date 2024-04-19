@@ -56,7 +56,7 @@ export const patientDataForm = {
           font-size: 15px;
           transition: opacity .4s;
         }
-        .cancel, .back:hover {
+        .cancel:hover, .back:hover {
         opacity: 0.7;
         }
         .active {
@@ -168,6 +168,122 @@ export const patientDataForm = {
     formContainer.querySelector('.back').addEventListener('click', function () {
       window.voiceflow.chat.interact({
         type: 'back',
+        payload: {}
+      });
+    });
+
+    element.appendChild(formContainer);
+  },
+};
+
+
+export const documentDetails = {
+  name: 'documentDetails',
+  type: 'response',
+  match: ({ trace }) =>
+    trace.type === 'ext_documentDetails' || trace.payload.name === 'ext_documentDetails',
+  render: ({ trace, element }) => {
+    const formContainer = document.createElement('form');
+
+    formContainer.innerHTML = `
+      <style>
+        label {
+          font-size: 0.9em;
+          color: #888;
+        }
+        textarea {
+          width: 100%;
+          height: 100px;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          padding: 8px;
+          font-size: 0.9em;
+          resize: vertical;
+        }
+        textarea:focus {
+          border: 1px solid #71c9ce;
+        }
+        textarea::placeholder {
+          color: #ccc;
+        }
+        .submit, .cancel, .back {
+          width: 49%;
+          background-color: grey;
+          color: white;
+          border: none;
+          padding: 10px;
+          border-radius: 8px;
+          font-size: 15px;
+          cursor: not-allowed;
+          opacity: 0.5;
+          margin-top: 10px;
+        }
+        .active {
+          background-color: #64AFB4;
+          cursor: pointer;
+          opacity: 1;
+          transition: background-color .4s;
+        }
+        .active:hover {
+          color: #71C9CE;
+          background-color: #fff;
+        }
+        .button-wrapper {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+        }
+      </style>
+
+      <label for="document">Document Details</label>
+      <textarea id="document" name="document" required placeholder="Enter document details here..."></textarea>
+      
+      <div class="button-wrapper">
+        <input type="submit" class="submit active" value="Submit">
+        <input type="button" class="cancel active" value="Cancel">
+      </div>
+    `;
+
+    // Function to check input validity
+    const checkInput = () => {
+      const documentDetails = formContainer.querySelector('#document').value;
+
+      const submitButton = formContainer.querySelector('.submit');
+      if (documentDetails.trim() !== '') {
+        submitButton.disabled = false;
+        submitButton.classList.add('active');
+        submitButton.style.cursor = 'pointer';
+      } else {
+        submitButton.disabled = true;
+        submitButton.classList.remove('active');
+        submitButton.style.cursor = 'not-allowed';
+      }
+    };
+
+    // Attach event listeners to inputs to validate in real-time
+    formContainer.querySelector('#document').addEventListener('input', checkInput);
+
+    formContainer.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const documentDetails = formContainer.querySelector('#document');
+
+      if (!documentDetails.checkValidity()) {
+        documentDetails.classList.add('invalid');
+        return;
+      }
+
+      window.voiceflow.chat.interact({
+        type: 'complete',
+        payload: {
+          document: documentDetails.value
+        },
+      });
+    });
+
+    // Handle cancel button click
+    formContainer.querySelector('.cancel').addEventListener('click', function () {
+      window.voiceflow.chat.interact({
+        type: 'cancel',
         payload: {}
       });
     });
