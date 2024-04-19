@@ -180,11 +180,11 @@ export const patientDataForm = {
 };
 
 
-export const formTextarea = {
-  name: 'formTextarea',
+export const documentDetails = {
+  name: 'documentDetails',
   type: 'response',
   match: ({ trace }) =>
-    trace.type === 'ext_formTextarea' || trace.payload.name === 'ext_formTextarea',
+    trace.type === 'ext_documentDetails' || trace.payload.name === 'ext_documentDetails',
   render: ({ trace, element }) => {
     const formContainer = document.createElement('form');
 
@@ -259,8 +259,8 @@ export const formTextarea = {
         }
       </style>
 
-      <label for="formTextarea">Weitere Informationen</label>
-      <textarea id="formTextarea" name="formTextarea" required placeholder="z.B. eine Kopie der Rechnung mit der Nummer 12345"></textarea>
+      <label for="documentDetails">Weitere Informationen</label>
+      <textarea id="documentDetails" name="documentDetails" required placeholder="z.B. eine Kopie der Rechnung mit der Nummer 12345"></textarea>
       
       <input type="submit" class="submit-doc" value="Weiter">
       
@@ -272,10 +272,10 @@ export const formTextarea = {
 
     // Function to check input validity
     const checkInput = () => {
-      const formTextarea = formContainer.querySelector('#formTextarea').value;
+      const documentDetails = formContainer.querySelector('#documentDetails').value;
 
       const submitButton = formContainer.querySelector('.submit-doc');
-      if (formTextarea.trim() !== '') {
+      if (documentDetails.trim() !== '') {
         submitButton.disabled = false;
         submitButton.classList.add('active-doc');
         submitButton.style.cursor = 'pointer';
@@ -287,21 +287,21 @@ export const formTextarea = {
     };
 
     // Attach event listeners to inputs to validate in real-time
-    formContainer.querySelector('#formTextarea').addEventListener('input', checkInput);
+    formContainer.querySelector('#documentDetails').addEventListener('input', checkInput);
 
     formContainer.addEventListener('submit', function (event) {
       event.preventDefault();
-      const formTextarea = formContainer.querySelector('#formTextarea');
+      const documentDetails = formContainer.querySelector('#documentDetails');
 
-      if (!formTextarea.checkValidity()) {
-        formTextarea.classList.add('invalid');
+      if (!documentDetails.checkValidity()) {
+        documentDetails.classList.add('invalid');
         return;
       }
 
       window.voiceflow.chat.interact({
         type: 'complete',
         payload: {
-          formTextarea: formTextarea.value
+          documentDetails: documentDetails.value
         },
       });
     });
