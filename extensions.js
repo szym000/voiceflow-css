@@ -54,7 +54,7 @@ export const patientDataForm = {
           width: 100%;
           background-color: #64AFB4;
           color: #fff;
-          padding: 4px;
+          padding: 5px;
           border-radius: 8px;
           font-weight: 600;
           cursor: pointer;
@@ -232,7 +232,7 @@ export const documentDetails = {
           background-color: #64AFB4;
           color: #fff;
           font-weight: 600;
-          padding: 4px;
+          padding: 5px;
           border-radius: 8px;
           cursor: pointer;
           font-size: 15px;
@@ -379,7 +379,7 @@ export const newAppointmentDetails = {
           background-color: #64AFB4;
           color: #fff;
           font-weight: 600;
-          padding: 4px;
+          padding: 5px;
           border-radius: 8px;
           cursor: pointer;
           font-size: 15px;
@@ -602,7 +602,7 @@ export const DateExtension = {
           width: 100%;
           background-color: #64AFB4;
           color: #fff;
-          padding: 4px;
+          padding: 5px;
           border-radius: 8px;
           font-weight: 600;
           cursor: pointer;
