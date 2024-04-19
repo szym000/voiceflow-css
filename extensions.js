@@ -327,6 +327,153 @@ export const documentDetails = {
 };
 
 
+export const newAppointmentDetails = {
+  name: 'newAppointmentDetails',
+  type: 'response',
+  match: ({ trace }) =>
+    trace.type === 'ext_newAppointmentDetails' || trace.payload.name === 'ext_newAppointmentDetails',
+  render: ({ trace, element }) => {
+    const formContainer = document.createElement('form');
+
+    formContainer.innerHTML = `
+      <style>
+        label {
+          font-size: 0.9em;
+          color: #888;
+        }
+        textarea-app {
+          font-family: inherit;
+          display: block;
+          width: 255px;
+          height: 100px;
+          border-radius: 8px;
+          padding: 8px;
+          font-size: 0.9em;
+          resize: vertical;
+          border: 1px solid #ccc;
+          margin-bottom: 10px;
+        }
+        textarea-app:focus, textarea:focus-visible {
+          outline: 1px solid #71c9ce;
+        }
+        textarea-app::placeholder {
+        font-family: inherit; color: #ccc;
+        }
+        textarea-app:focus::placeholder {
+          color: transparent;
+        }
+        .submit-app {
+          width: 100%;
+          background-color: grey;
+          color: white;
+          border: none;
+          padding: 10px;
+          font-weight: 600;
+          border-radius: 8px;
+          font-size: 15px;
+          cursor: not-allowed;
+          opacity: 0.5;
+        }
+        .cancel-app, .back-app {
+          width: 100%;
+          background-color: #64AFB4;
+          color: #fff;
+          font-weight: 600;
+          padding: 4px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 15px;
+          transition: background-color .4s;
+          border: none;
+        }
+
+        .active-app {
+          background-color: #64AFB4;
+          cursor: pointer;
+          opacity: 1;
+          transition: background-color .4s;
+        }
+        .active-app:hover, .cancel-app:hover, .back-app:hover {
+          background-color: #71C9CE;
+        }
+        .button-wrapper {
+          margin-top: 10px;
+            gap: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: normal;
+            width: 100%;
+        }
+      </style>
+
+      <label for="newAppointmentDetails">Weitere Informationen</label>
+      <textarea id="newAppointmentDetails" name="newAppointmentDetails" required placeholder="z.B. immer Nachmittags, immer Montags, usw."></textarea>
+      
+      <input type="submit" class="submit-app" value="Weiter">
+      
+      <div class="button-wrapper">
+      <input type="button" class="back-app" value="⇦ Zurück">
+      <input type="button" class="cancel-app" value="✕ Abbrechen">
+      </div>
+    `;
+
+    // Function to check input validity
+    const checkInput = () => {
+      const newAppointmentDetails = formContainer.querySelector('#newAppointmentDetails').value;
+
+      const submitButton = formContainer.querySelector('.submit-app');
+      if (newAppointmentDetails.trim() !== '') {
+        submitButton.disabled = false;
+        submitButton.classList.add('active-app');
+        submitButton.style.cursor = 'pointer';
+      } else {
+        submitButton.disabled = true;
+        submitButton.classList.remove('active-app');
+        submitButton.style.cursor = 'not-allowed';
+      }
+    };
+
+    // Attach event listeners to inputs to validate in real-time
+    formContainer.querySelector('#newAppointmentDetails').addEventListener('input', checkInput);
+
+    formContainer.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const newAppointmentDetails = formContainer.querySelector('#newAppointmentDetails');
+
+      if (!newAppointmentDetails.checkValidity()) {
+        newAppointmentDetails.classList.add('invalid');
+        return;
+      }
+
+      window.voiceflow.chat.interact({
+        type: 'complete',
+        payload: {
+          newAppointmentDetails: newAppointmentDetails.value
+        },
+      });
+    });
+
+    // Handle cancel button click
+    formContainer.querySelector('.cancel-app').addEventListener('click', function () {
+      window.voiceflow.chat.interact({
+        type: 'cancel',
+        payload: {}
+      });
+    });
+
+    // Handle cancel button click
+    formContainer.querySelector('.back-app').addEventListener('click', function () {
+      window.voiceflow.chat.interact({
+        type: 'back',
+        payload: {}
+      });
+    });
+
+    element.appendChild(formContainer);
+  },
+};
+
+
 
 export const FileUploadExtension = {
   name: 'FileUpload',
