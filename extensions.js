@@ -49,10 +49,15 @@ export const patientDataForm = {
           width: 100%;
           background-color: #fff;
           color: #64AFB4;
-          border: none;
+          border: 1px solid #64AFB4;
           padding: 10px;
           border-radius: 8px;
+          cursor: pointer;
           font-size: 15px;
+          transition: opacity .4s;
+        }
+        .cancel, .back:hover {
+        opacity: 0.7;
         }
         .active {
           background-color: #64AFB4;
@@ -64,6 +69,14 @@ export const patientDataForm = {
           color: #71C9CE;
           background-color: #fff;
         }
+        .button-wrapper {
+            margin-top: 10px;
+    gap: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: normal;
+    width: 100%;
+    }
       </style>
 
       <label for="name">Name</label>
@@ -79,7 +92,7 @@ export const patientDataForm = {
       <input type="tel" class="phone" name="phone" placeholder="z.B. +491234567890" pattern="\+?\d{7,}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 10 Ziffern ein"><br>
 
       <input type="submit" class="submit" value="Weiter">
-      <div style="display: flex; justify-content: space-around; align-items: center; width: 100%;">
+      <div class="button-wrapper">
       
       <input type="button" class="back" value="⇦ Zurück">
       <input type="button" class="cancel" value="✕ Abbrechen">
