@@ -40,7 +40,6 @@ export const patientDataForm = {
         }
         .submit {
           width: 100%;
-          border: 2px solid grey;
           background-color: grey;
           color: white;
           border: none;
@@ -55,7 +54,6 @@ export const patientDataForm = {
           width: 100%;
           background-color: #64AFB4;
           color: #fff;
-          border: 2px solid #64AFB4;
           padding: 4px;
           border-radius: 8px;
           font-weight: 600;
@@ -219,7 +217,6 @@ export const documentDetails = {
         .submit-doc {
           width: 100%;
           background-color: grey;
-          border: 2px solid grey;
           color: white;
           border: none;
           padding: 10px;
@@ -233,7 +230,6 @@ export const documentDetails = {
           width: 100%;
           background-color: #64AFB4;
           color: #fff;
-          border: 2px solid #64AFB4;
           font-weight: 600;
           padding: 4px;
           border-radius: 8px;
@@ -244,7 +240,6 @@ export const documentDetails = {
 
         .active-doc {
           background-color: #64AFB4;
-          border: 2px solid #64AFB4;
           cursor: pointer;
           opacity: 1;
           transition: background-color .4s;
