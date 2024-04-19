@@ -238,7 +238,7 @@ export const documentDetails = {
           opacity: 1;
           transition: background-color .4s;
         }
-        .active:hover, .cancel:hover, .back:hover {
+        .active-doc:hover, .cancel-doc:hover, .back-doc:hover {
           background-color: #71C9CE;
         }
         .button-wrapper {
