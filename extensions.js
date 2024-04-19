@@ -202,7 +202,7 @@ export const documentDetails = {
           border: 1px solid #ccc;
           margin-bottom: 10px;
         }
-        textarea:focus {
+        textarea:focus, textarea:focus-visible {
           border: 1px solid #71c9ce;
         }
         textarea:focus::placeholder {
