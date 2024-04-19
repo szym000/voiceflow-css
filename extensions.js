@@ -29,45 +29,69 @@ export const patientDataForm = {
           border: 1px solid #71c9ce; 
         }
         input:focus::placeholder {
-  color: transparent;
-}
+        color: transparent;
+        }
         .invalid {
           border-color: red;
         }
         .submit {
           width: 100% !important;
+          background-color: grey;
+          color: white;
+          border: none;
+          padding: 10px;
+          border-radius: 5px;
           cursor: not-allowed;
-          background-color: #ccc;
-          /* Ensure original classes are retained for styling and functionality */
+          opacity: 0.5;
+        }
+        .submit.active {
+          background-color: #2e6ee1;
+          cursor: pointer;
+          opacity: 1;
         }
       </style>
 
       <label for="name">Name</label>
-      <input type="text" class="name" name="name" required>
+      <input type="text" class="name" name="name" required placeholder="z.B. Max Mustermann">
 
       <label for="birthday">Geburtstag</label>
       <input type="date" class="birthday" name="birthday" required>
 
       <label for="email">E-mail</label>
-      <input type="email" class="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ungültige E-Mail-Adresse">
+      <input type="email" class="email" name="email" placeholder="z.B. mustermann@beispiel.de" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ungültige E-Mail-Adresse">
 
       <label for="phone">Telefon</label>
-      <input type="tel" class="phone" name="phone" pattern="\+?\d{7,}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 7 Ziffern ein"><br>
+      <input type="tel" class="phone" name="phone" placeholder="z.B. +491234567890" pattern="\+?\d{7,}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 10 Ziffern ein"><br>
 
-      <input type="submit" class="c-dzcdPv vfrc-button c-jjMiVY vfrc-button--secondary c-kCDKCe submit" value="Submit" disabled>
+      <input type="submit" class="submit" value="Submit" disabled>
     `;
 
-    const inputs = formContainer.querySelectorAll('input');
-    const submitButton = formContainer.querySelector('.submit');
+    // Function to check input validity
+    const checkInputs = () => {
+      const name = formContainer.querySelector('.name').value;
+      const birthday = formContainer.querySelector('.birthday').value;
+      const email = formContainer.querySelector('.email').value;
+      const phone = formContainer.querySelector('.phone').value;
 
-    const validateForm = () => {
-      const isValid = formContainer.checkValidity() && (formContainer.querySelector('.email').value || formContainer.querySelector('.phone').value);
-      submitButton.disabled = !isValid;
-      submitButton.style.cursor = isValid ? 'pointer' : 'not-allowed';
-      submitButton.style.backgroundColor = isValid ? '#71c9ce' : '#ccc';
+      const isEmailOrPhoneValid = email !== '' || phone !== '';
+      const isFormValid = name && birthday && isEmailOrPhoneValid;
+
+      const submitButton = formContainer.querySelector('.submit');
+      if (isFormValid) {
+        submitButton.disabled = false;
+        submitButton.classList.add('active');
+        submitButton.style.cursor = 'pointer';
+      } else {
+        submitButton.disabled = true;
+        submitButton.classList.remove('active');
+        submitButton.style.cursor = 'not-allowed';
+      }
     };
 
-    inputs.forEach(input => input.addEventListener('input', validateForm));
+    // Attach event listeners to inputs to validate in real-time
+    formContainer.querySelectorAll('input').forEach(input => {
+      input.addEventListener('input', checkInputs);
+    });
 
     formContainer.addEventListener('submit', function (event) {
       event.preventDefault();
@@ -104,6 +128,7 @@ export const patientDataForm = {
     element.appendChild(formContainer);
   },
 };
+
 
 
 export const FormExtension = {
