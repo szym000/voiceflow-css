@@ -40,12 +40,19 @@ export const patientDataForm = {
           border-radius: 5px;
           cursor: not-allowed;
           opacity: 0.5;
+          transition: background-color .4s;
+}
         }
         .submit.active {
-          background-color: #2e6ee1;
+          color: #fff;
+	        background-color: #64AFB4;
           cursor: pointer;
           opacity: 1;
         }
+        .submit.active:hover {
+	color: #71C9CE;
+	background-color: #fff;
+}
       </style>
 
       <label for="name">Name</label>
