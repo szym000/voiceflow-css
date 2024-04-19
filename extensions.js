@@ -599,30 +599,33 @@ export const DateExtension = {
           opacity: 0.5;
         }
         .cancel-date, .back-date {
-          width: 49%;
+          width: 100%;
           background-color: #64AFB4;
           color: #fff;
-          font-weight: 600;
-          padding: 10px;
+          padding: 4px;
           border-radius: 8px;
+          font-weight: 600;
           cursor: pointer;
           font-size: 15px;
           transition: background-color .4s;
-          margin-top: 10px;
+          border: none;
         }
         .active-date {
           background-color: #64AFB4;
           cursor: pointer;
           opacity: 1;
+          transition: background-color .4s;
         }
         .active-date:hover, .cancel-date:hover, .back-date:hover {
           background-color: #71C9CE;
         }
         .button-wrapper {
-          gap: 10px;
-          display: flex;
-          justify-content: space-between;
-          margin-top: 10px;
+            margin-top: 10px;
+            gap: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: normal;
+            width: 100%;
         }
       </style>
 
