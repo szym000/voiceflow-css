@@ -80,6 +80,51 @@ export const patientDataForm = {
             align-items: normal;
             width: 100%;
         }
+
+        .checkbox-container {
+          display: flex;
+          align-items: center; /* Aligns the checkbox with the text vertically */
+          margin-bottom: 10px; /* Bottom margin */
+        }
+        
+        /* Styling for the checkbox input */
+        .checkbox-container input[type="checkbox"] {
+          width: 20px; /* Larger checkbox */
+          height: 20px; /* Larger checkbox */
+          cursor: pointer; /* Pointer cursor on hover */
+          -webkit-appearance: none; /* Removes default styling */
+          -moz-appearance: none; /* Removes default styling */
+          appearance: none; /* Removes default styling */
+          border: 2px solid #ddd; /* Custom border */
+          background-color: white; /* Background color */
+          transition: background-color 0.3s; /* Smooth transition for background color */
+        }
+        
+        /* Styling for the checkbox when checked */
+        .checkbox-container input[type="checkbox"]:checked {
+          background-color: #64AFB4; /* Custom background color */
+          border: 2px solid #64AFB4; /* Border color matches background */
+        }
+        
+        /* Styling for the checkmark */
+        .checkbox-container input[type="checkbox"]:checked:after {
+          content: "\\2714"; /* Unicode character for checkmark */
+          color: white; /* White checkmark */
+          position: absolute;
+          left: 4px; /* Positioning inside the checkbox */
+          top: -2px;
+          font-size: 16px; /* Size of the checkmark */
+        }
+        
+        /* Styling for the data protection link */
+        .data-link {
+          color: #0000EE; /* Standard link color */
+          text-decoration: none; /* No underline */
+        }
+        
+        .data-link:hover {
+          text-decoration: underline; /* Underline on hover */
+        }
       </style>
 
       <label for="name">Name</label>
@@ -94,8 +139,10 @@ export const patientDataForm = {
       <label for="phone">Telefon</label>
       <input type="tel" class="phone" name="phone" placeholder="z.B. +491234567890" pattern="\+?\d{7,}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 10 Ziffern ein"><br>
 
-      <label for="dataProtection">
-      <input type="checkbox" id="dataProtection" name="dataProtection" required>Ich akzeptiere die Datenschutzbestimmungen</label>
+      <label for="dataProtection" class="checkbox-container">
+      <input type="checkbox" id="dataProtection" name="dataProtection" required>
+      Ich akzeptiere die <a href="#" class="data-link">Datenschutzbestimmungen</a>
+      </label>
       
       <input type="submit" class="submit" value="Weiter">
       <div class="button-wrapper">
