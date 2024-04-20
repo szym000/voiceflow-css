@@ -153,7 +153,7 @@ export const patientDataForm = {
       <input type="submit" class="submit" value="Weiter">
       <div class="button-wrapper">
       
-      <input type="button" class="back" value="⇦ Zurück">
+      <input type="button" class="back" value="❮ Zurück">
       <input type="button" class="cancel" value="✕ Abbrechen">
       
       </div>
@@ -328,7 +328,7 @@ export const documentDetails = {
       <input type="submit" class="submit-doc" value="Weiter">
       
       <div class="button-wrapper">
-      <input type="button" class="back-doc" value="⇦ Zurück">
+      <input type="button" class="back-doc" value="❮ Zurück">
       <input type="button" class="cancel-doc" value="✕ Abbrechen">
       </div>
     `;
@@ -475,7 +475,7 @@ export const newAppointmentDetails = {
       <input type="submit" class="submit-app" value="Weiter">
       
       <div class="button-wrapper">
-      <input type="button" class="back-app" value="⇦ Zurück">
+      <input type="button" class="back-app" value="❮ Zurück">
       <input type="button" class="cancel-app" value="✕ Abbrechen">
       </div>
     `;
@@ -698,7 +698,7 @@ export const DateExtension = {
       <input type="submit" class="submit-date" value="Weiter" disabled>
       
       <div class="button-wrapper">
-        <input type="button" class="back-date active-date" value="⇦ Zurück">
+        <input type="button" class="back-date active-date" value="❮ Zurück">
         <input type="button" class="cancel-date active-date" value="✕ Abbrechen">
       </div>
     `;
