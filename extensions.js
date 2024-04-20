@@ -81,50 +81,55 @@ export const patientDataForm = {
             width: 100%;
         }
 
-        .checkbox-container {
-          display: flex;
-          align-items: center; /* Aligns the checkbox with the text vertically */
-          margin-bottom: 10px; /* Bottom margin */
-        }
-        
-        /* Styling for the checkbox input */
-        .checkbox-container input[type="checkbox"] {
-          width: 20px; /* Larger checkbox */
-          height: 20px; /* Larger checkbox */
-          cursor: pointer; /* Pointer cursor on hover */
-          -webkit-appearance: none; /* Removes default styling */
-          -moz-appearance: none; /* Removes default styling */
-          appearance: none; /* Removes default styling */
-          border: 2px solid #ddd; /* Custom border */
-          background-color: white; /* Background color */
-          transition: background-color 0.3s; /* Smooth transition for background color */
-        }
-        
-        /* Styling for the checkbox when checked */
-        .checkbox-container input[type="checkbox"]:checked {
-          background-color: #64AFB4; /* Custom background color */
-          border: 2px solid #64AFB4; /* Border color matches background */
-        }
-        
-        /* Styling for the checkmark */
-        .checkbox-container input[type="checkbox"]:checked:after {
-          content: "\\2714"; /* Unicode character for checkmark */
-          color: white; /* White checkmark */
-          position: absolute;
-          left: 4px; /* Positioning inside the checkbox */
-          top: -2px;
-          font-size: 16px; /* Size of the checkmark */
-        }
-        
-        /* Styling for the data protection link */
-        .data-link {
-          color: #0000EE; /* Standard link color */
-          text-decoration: none; /* No underline */
-        }
-        
-        .data-link:hover {
-          text-decoration: underline; /* Underline on hover */
-        }
+        /* Styling for the checkbox container */
+.checkbox-container {
+  display: flex;
+  align-items: center; /* Aligns the checkbox with the text vertically */
+  margin-bottom: 20px; /* Bottom margin */
+  margin-top: 20px;
+}
+
+/* Styling for the checkbox input */
+.checkbox-container input[type="checkbox"] {
+  width: 20px; /* Larger checkbox */
+  height: 20px; /* Larger checkbox */
+  cursor: pointer; /* Pointer cursor on hover */
+  -webkit-appearance: none; /* Removes default styling */
+  -moz-appearance: none; /* Removes default styling */
+  appearance: none; /* Removes default styling */
+  border: 1px solid #ddd; /* Custom border */
+  background-color: white; /* Background color */
+  position: relative; /* Needed for absolute positioning of the pseudo-element */
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for colors */
+}
+
+/* Styling for the checkbox when checked */
+.checkbox-container input[type="checkbox"]:checked {
+  background-color: #64AFB4; /* Custom background color */
+  border-color: #64AFB4; /* Border color matches background */
+}
+
+/* Styling for the checkmark */
+.checkbox-container input[type="checkbox"]:checked::after {
+  content: "\\2714"; /* Unicode character for checkmark */
+  color: white; /* White checkmark */
+  position: absolute;
+  left: 50%; /* Center the checkmark horizontally */
+  top: 50%; /* Center the checkmark vertically */
+  transform: translate(-50%, -50%); /* Adjust positioning to true center */
+  font-size: 16px; /* Size of the checkmark */
+  font-weight: bold; /* Makes the checkmark more visible */
+}
+
+/* Styling for the data protection link */
+.data-link {
+  color: #0000EE; /* Standard link color */
+  text-decoration: none; /* No underline */
+}
+
+.data-link:hover {
+  text-decoration: underline; /* Underline on hover */
+}
       </style>
 
       <label for="name">Name</label>
@@ -137,11 +142,11 @@ export const patientDataForm = {
       <input type="email" class="email" name="email" placeholder="z.B. mustermann@beispiel.de" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ungültige E-Mail-Adresse">
 
       <label for="phone">Telefon</label>
-      <input type="tel" class="phone" name="phone" placeholder="z.B. +491234567890" pattern="\+?\d{7,}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 10 Ziffern ein"><br>
+      <input type="tel" class="phone" name="phone" placeholder="z.B. +491234567890" pattern="\+?\d{7,}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 10 Ziffern ein">
 
       <label for="dataProtection" class="checkbox-container">
-      <input type="checkbox" id="dataProtection" name="dataProtection" required>
-      Ich akzeptiere die <a href="#" class="data-link">Datenschutzbestimmungen</a>
+      <input type="checkbox" class="accept-terms" id="dataProtection" name="dataProtection" required>
+       Ich akzeptiere die  <a href="#" class="data-link">Datenschutzbestimmungen</a>
       </label>
       
       <input type="submit" class="submit" value="Weiter">
@@ -158,10 +163,13 @@ export const patientDataForm = {
       const birthday = formContainer.querySelector('.birthday').value;
       const email = formContainer.querySelector('.email').value;
       const phone = formContainer.querySelector('.phone').value;
-
+    
+      // Additional: Check if the checkbox is checked
+      const isTermsAccepted = formContainer.querySelector('.accept-terms').checked;
+    
       const isEmailOrPhoneValid = email !== '' || phone !== '';
-      const isFormValid = name && birthday && isEmailOrPhoneValid;
-
+      const isFormValid = name && birthday && isEmailOrPhoneValid && isTermsAccepted;
+    
       const submitButton = formContainer.querySelector('.submit');
       if (isFormValid) {
         submitButton.disabled = false;
