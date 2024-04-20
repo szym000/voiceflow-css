@@ -635,7 +635,11 @@ export const DateExtension = {
           font-size: 0.9em;
           color: #888;
         }
+        #meeting-time {
+          margin-bottom: 10px;
+        }
         input[type="datetime-local"] {
+          margin-bottom: 10px;
           font-family: inherit;
           width: 230px;
           display: block;
