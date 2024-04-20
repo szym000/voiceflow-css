@@ -16,7 +16,7 @@ export const patientDataForm = {
         }
         input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
           font-family: inherit;
-          width: 255px;
+          width: 284px;
           border: 1px solid #ccc;
           background: #fff;
           margin: 5px 0 10px 0;
@@ -83,6 +83,7 @@ export const patientDataForm = {
 
         /* Styling for the checkbox container */
 .checkbox-container {
+  gap: 3px;
   display: flex;
   align-items: center; /* Aligns the checkbox with the text vertically */
   margin-bottom: 20px; /* Bottom margin */
@@ -259,7 +260,7 @@ export const documentDetails = {
         textarea {
           font-family: inherit;
           display: block;
-          width: 255px;
+          width: 284px;
           height: 100px;
           border-radius: 8px;
           padding: 8px;
@@ -406,7 +407,7 @@ export const newAppointmentDetails = {
         textarea {
           font-family: inherit;
           display: block;
-          width: 255px;
+          width: 284px;
           height: 100px;
           border-radius: 8px;
           padding: 8px;
