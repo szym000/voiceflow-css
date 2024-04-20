@@ -111,7 +111,7 @@ export const patientDataForm = {
 
 /* Styling for the checkmark */
 .checkbox-container input[type="checkbox"]:checked::after {
-  content: "\\2714"; /* Unicode character for checkmark */
+  content: "\\2713"; /* Unicode character for checkmark */
   color: white; /* White checkmark */
   position: absolute;
   left: 50%; /* Center the checkmark horizontally */
@@ -182,8 +182,12 @@ export const patientDataForm = {
       }
     };
 
-    formContainer.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="date"]').forEach(input => {
-      input.addEventListener('input', checkInputs);
+    formContainer.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="checkbox"]').forEach(input => {
+      if (input.type === "checkbox") {
+        input.addEventListener('change', checkInputs);
+      } else {
+        input.addEventListener('input', checkInputs);
+      }
     });
 
     formContainer.addEventListener('submit', function (event) {
