@@ -322,7 +322,7 @@ export const documentDetails = {
         }
       </style>
 
-      <label for="documentDetails">Weitere Informationen</label>
+      <label for="documentDetails">Ihre Informationen/Angaben</label>
       <textarea id="documentDetails" name="documentDetails" required placeholder="z.B. eine Kopie der Rechnung mit der Nummer 12345"></textarea>
       
       <input type="submit" class="submit-doc" value="Weiter">
@@ -469,7 +469,7 @@ export const newAppointmentDetails = {
         }
       </style>
 
-      <label for="newAppointmentDetails">Weitere Informationen</label>
+      <label for="newAppointmentDetails">Anfrage für neuen Termin</label>
       <textarea id="newAppointmentDetails" name="newAppointmentDetails" required placeholder="z.B. immer Nachmittags, immer Montags, usw."></textarea>
       
       <input type="submit" class="submit-app" value="Weiter">
@@ -696,7 +696,7 @@ export const DateExtension = {
         }
       </style>
 
-      <label for="meeting-time">Datum und Zeit auswählen:</label>
+      <label for="meeting-time">Datum und Zeit auswählen</label>
       <input type="datetime-local" id="meeting-time" name="meeting-time" min="${minDateString}" max="${maxDateString}" required>
       
       <input type="submit" class="submit-date" value="Weiter" disabled>
