@@ -102,10 +102,6 @@ export const patientDataForm = {
   
       formContainer.innerHTML = `
         <style>
-          label {
-            font-size: 0.9em;
-            color: #888;
-          }
           input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
             font-family: inherit;
             width: 284px;
@@ -130,48 +126,7 @@ export const patientDataForm = {
           .invalid {
             border-color: red;
           }
-          .submit {
-            width: 100%;
-            background-color: grey;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: not-allowed;
-            opacity: 0.5;
-          }
-          .cancel, .back {
-            width: 100%;
-            background-color: #64AFB4;
-            color: #fff;
-            padding: 7px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 15px;
-            transition: background-color .4s;
-            border: none;
-          }
-          
-          .active {
-            background-color: #64AFB4;
-            cursor: pointer;
-            opacity: 1;
-            transition: background-color .4s;
-          }
-          .active:hover, .cancel:hover, .back:hover {
-            background-color: #71C9CE;
-          }
-          .button-wrapper {
-              margin-top: 10px;
-              gap: 10px;
-              display: flex;
-              justify-content: space-around;
-              align-items: normal;
-              width: 100%;
-          }
+          Button
   
           /* Styling for the checkbox container */
   .checkbox-container {
@@ -242,11 +197,11 @@ export const patientDataForm = {
          Ich akzeptiere die  <a href="#" class="data-link">Datenschutzbestimmungen</a>
         </label>
         
-        <input type="submit" class="submit" value="Weiter">
+        <input type="submit" class="submitButton" value="Weiter">
         <div class="button-wrapper">
         
-        <input type="button" class="back" value="❮ Zurück">
-        <input type="button" class="cancel" value="✕ Abbrechen">
+        <input type="button" class="backButton" value="❮ Zurück">
+        <input type="button" class="cancelButton" value="✕ Abbrechen">
         
         </div>
       `;
@@ -263,14 +218,14 @@ export const patientDataForm = {
         const isEmailOrPhoneValid = email !== '' || phone !== '';
         const isFormValid = name && birthday && isEmailOrPhoneValid && isTermsAccepted;
       
-        const submitButton = formContainer.querySelector('.submit');
+        const submitButton = formContainer.querySelector('.submitButton');
         if (isFormValid) {
           submitButton.disabled = false;
-          submitButton.classList.add('active');
+          submitButton.classList.add('activeButton');
           submitButton.style.cursor = 'pointer';
         } else {
           submitButton.disabled = true;
-          submitButton.classList.remove('active');
+          submitButton.classList.remove('activeButton');
           submitButton.style.cursor = 'not-allowed';
         }
       };
@@ -302,6 +257,13 @@ export const patientDataForm = {
           phone.classList.add('invalid');
           return;
         }
+        const buttons = formContainer.querySelectorAll('.submitButton, .cancelButton, .backButton, .activeButton');
+            buttons.forEach(button => {
+                button.disabled = true;
+                button.classList.remove('activeButton');
+                button.style.opacity = '0.5';
+                button.style.cursor = 'not-allowed';
+            });
   
         window.VG_ADMIN.interact({
           type: 'complete',
@@ -315,7 +277,7 @@ export const patientDataForm = {
       });
   
       // Handle cancel button click
-      formContainer.querySelector('.cancel').addEventListener('click', function () {
+      formContainer.querySelector('.cancelButton').addEventListener('click', function () {
         window.VG_ADMIN.interact({
           type: 'cancel',
           payload: {}
@@ -323,7 +285,7 @@ export const patientDataForm = {
       });
       
       // Handle cancel button click
-      formContainer.querySelector('.back').addEventListener('click', function () {
+      formContainer.querySelector('.backButton').addEventListener('click', function () {
         window.VG_ADMIN.interact({
           type: 'back',
           payload: {}
