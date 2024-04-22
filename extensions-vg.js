@@ -8,6 +8,11 @@ export const documentDetails = {
         // Set the inner HTML of the form, simplifying it to only include input fields and a submit button
         formContainer.innerHTML = `
         <style>
+        form {
+             background-color: rgb(244, 244, 245) !important;
+             padding: 16px !important;
+             border-radius: 8px !important;
+        }
         label {
           font-size: 0.9em !important;
           color: #888 !important;
