@@ -1,8 +1,4 @@
-.vfrc-chat-input::after {
-    content: "\003Cp\003Elodo\003Ca href='#'\003Effrfrf\003C/a\003E\003C/p\003E";
-    display: block;
-    white-space: pre; /* Keeps formatting like spaces and new lines */
-}
+
 
 @media screen and (min-width: 768px) {
     .vfrc-widget--chat {
