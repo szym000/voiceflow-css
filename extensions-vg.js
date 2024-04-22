@@ -7,27 +7,138 @@ export const documentDetails = {
 
         // Set the inner HTML of the form, simplifying it to only include input fields and a submit button
         formContainer.innerHTML = `
-<label for="name">Name:</label>
-<input type="text" class="name" name="name"><br><br>
-<label for="email">Email:</label>
-<input type="email" class="email" name="email"><br><br>
-<label for="phone">Phone Number:</label>
-<input type="tel" class="phone" name="phone"><br><br>
-<input type="submit" class="submit" value="Submit">
+        <style>
+        label {
+          font-size: 0.9em;
+          color: #888;
+        }
+        textarea {
+          font-family: inherit;
+          display: block;
+          width: 284px;
+          height: 100px;
+          border-radius: 8px;
+          padding: 8px;
+          font-size: 0.9em;
+          resize: vertical;
+          border: 1px solid #ccc;
+          margin-bottom: 10px;
+        }
+        textarea:focus, textarea:focus-visible {
+          outline: 1px solid #71c9ce;
+        }
+        textarea::placeholder {
+        font-family: inherit; color: #ccc;
+        }
+        textarea:focus::placeholder {
+          color: transparent;
+        }
+        .submit-doc {
+          width: 100%;
+          background-color: grey;
+          color: white;
+          border: none;
+          padding: 10px;
+          font-weight: 600;
+          border-radius: 8px;
+          font-size: 15px;
+          cursor: not-allowed;
+          opacity: 0.5;
+        }
+        .cancel-doc, .back-doc {
+          width: 100%;
+          background-color: #64AFB4;
+          color: #fff;
+          font-weight: 600;
+          padding: 7px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-size: 15px;
+          transition: background-color .4s;
+          border: none;
+        }
+
+        .active-doc {
+          background-color: #64AFB4;
+          cursor: pointer;
+          opacity: 1;
+          transition: background-color .4s;
+        }
+        .active-doc:hover, .cancel-doc:hover, .back-doc:hover {
+          background-color: #71C9CE;
+        }
+        .button-wrapper {
+          margin-top: 10px;
+            gap: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: normal;
+            width: 100%;
+        }
+      </style>
+
+      <label for="documentDetails">Ihre Informationen/Angaben</label>
+      <textarea id="documentDetails" name="documentDetails" required placeholder="z.B. eine Kopie der Rechnung mit der Nummer 12345"></textarea>
+      
+      <input type="submit" class="submit-doc" value="Weiter">
+      
+      <div class="button-wrapper">
+      <input type="button" class="back-doc" value="❮ Zurück">
+      <input type="button" class="cancel-doc" value="✕ Abbrechen">
+      </div>
 `;
 
-        // Attach an event listener to the form for handling the submit event
-        formContainer.addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent default form submission behavior
-            // Extract values from the form fields
-            const name = formContainer.querySelector('.name').value;
-            const email = formContainer.querySelector('.email').value;
-            const phone = formContainer.querySelector('.phone').value;
-            // Simplify the logic: Remove the submit button after submission without validation checks
-            formContainer.querySelector('.submit').remove();
-            // Programmatically submit the form data
-            window.VG_ADMIN.interact({ type: 'complete', payload: { name, email, phone } });
-        });
+ // Function to check input validity
+ const checkInput = () => {
+    const documentDetails = formContainer.querySelector('#documentDetails').value;
+
+    const submitButton = formContainer.querySelector('.submit-doc');
+    if (documentDetails.trim() !== '') {
+      submitButton.disabled = false;
+      submitButton.classList.add('active-doc');
+      submitButton.style.cursor = 'pointer';
+    } else {
+      submitButton.disabled = true;
+      submitButton.classList.remove('active-doc');
+      submitButton.style.cursor = 'not-allowed';
+    }
+  };
+
+  // Attach event listeners to inputs to validate in real-time
+  formContainer.querySelector('#documentDetails').addEventListener('input', checkInput);
+
+  formContainer.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const documentDetails = formContainer.querySelector('#documentDetails');
+
+    if (!documentDetails.checkValidity()) {
+      documentDetails.classList.add('invalid');
+      return;
+    }
+
+   window.VG_ADMIN.interact({
+      type: 'complete',
+      payload: {
+        documentDetails: documentDetails.value
+      },
+    });
+  });
+
+  // Handle cancel button click
+  formContainer.querySelector('.cancel-doc').addEventListener('click', function () {
+   window.VG_ADMIN.interact({
+      type: 'cancel',
+      payload: {}
+    });
+  });
+
+  // Handle cancel button click
+  formContainer.querySelector('.back-doc').addEventListener('click', function () {
+   window.VG_ADMIN.interact({
+      type: 'back',
+      payload: {}
+    });
+  });
 
         element.appendChild(formContainer); // Append the form to the specified DOM element
     },
