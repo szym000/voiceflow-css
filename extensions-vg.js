@@ -67,8 +67,8 @@ export const documentDetails = {
 
         .active-doc {
           background-color: #64AFB4 !important;
-          cursor: pointer;
-          opacity: 1;
+          cursor: pointer !important;
+          opacity: 1 !important;
           transition: background-color .4s !important;
         }
         .active-doc:hover, .cancel-doc:hover, .back-doc:hover {
@@ -124,8 +124,7 @@ export const documentDetails = {
     }
     const buttons = formContainer.querySelectorAll('.submit-doc, .cancel-doc, .back-doc, .active-doc');
             buttons.forEach(button => {
-                button.style.opacity = '0.5';
-                button.style.cursor = 'not-allowed';
+                button.disabled = true;
             });
 
    window.VG_ADMIN.interact({
