@@ -9,9 +9,6 @@ export const documentDetails = {
 
         // Set the inner HTML of the form, simplifying it to only include input fields and a submit button
         formContainer.innerHTML = `
-        <style>
-        
-      </style>
 
       <label for="documentDetails">Ihre Informationen/Angaben</label>
       <textarea class="textareaField" id="documentDetails" name="documentDetails" required placeholder="z.B. eine Kopie der Rechnung mit der Nummer 12345"></textarea>
@@ -86,11 +83,6 @@ export const documentDetails = {
         element.appendChild(formContainer); // Append the form to the specified DOM element
     },
 };
-
-
-
-
-
 
 export const patientDataForm = {
     name: 'ext_patientDataForm',
@@ -280,6 +272,194 @@ export const patientDataForm = {
       });
       
       // Handle cancel button click
+      formContainer.querySelector('.backButton').addEventListener('click', function () {
+        window.VG_ADMIN.interact({
+          type: 'back',
+          payload: {}
+        });
+      });
+  
+      element.appendChild(formContainer);
+    },
+  };
+
+export const newAppointmentDetails = {
+    name: 'ext_newAppointmentDetails', // Extension name
+    render: ({ trace, element }) => {
+        // Function to render the form
+        console.log(`trace from extension: `, trace)
+        const formContainer = document.createElement('form'); // Create a form element dynamically
+        formContainer.classList.add('extensionsForm'); // Add a class to the form
+
+
+        // Set the inner HTML of the form, simplifying it to only include input fields and a submit button
+        formContainer.innerHTML = `
+        <style>
+        
+      </style>
+
+      <label for="newAppointmentDetails">Anfrage für neuen Termin</label>
+      <textarea class="textareaField" id="newAppointmentDetails" name="newAppointmentDetails" required placeholder="z.B. immer Nachmittags, immer Montags, usw."></textarea>
+      
+      <input type="submit" class="submitButton" value="Weiter">
+      
+      <div class="button-wrapper">
+      <input type="button" class="backButton" value="❮ Zurück">
+      <input type="button" class="cancelButton" value="✕ Abbrechen">
+      </div>
+`;
+
+ // Function to check input validity
+ const checkInput = () => {
+    const newAppointmentDetails = formContainer.querySelector('#newAppointmentDetails').value;
+
+    const submitButton = formContainer.querySelector('.submitButton');
+    if (newAppointmentDetails.trim() !== '') {
+      submitButton.disabled = false;
+      submitButton.classList.add('activeButton');
+      submitButton.style.cursor = 'pointer';
+    } else {
+      submitButton.disabled = true;
+      submitButton.classList.remove('activeButton');
+      submitButton.style.cursor = 'not-allowed';
+    }
+  };
+
+  // Attach event listeners to inputs to validate in real-time
+  formContainer.querySelector('#newAppointmentDetails').addEventListener('input', checkInput);
+
+  formContainer.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const newAppointmentDetails = formContainer.querySelector('#newAppointmentDetails');
+
+    if (!newAppointmentDetails.checkValidity()) {
+      newAppointmentDetails.classList.add('invalid');
+      return;
+    }
+    const buttons = formContainer.querySelectorAll('.submitButton, .cancelButton, .backButton, .activeButton');
+            buttons.forEach(button => {
+                button.disabled = true;
+                button.classList.remove('activeButton');
+                button.style.opacity = '0.5';
+                button.style.cursor = 'not-allowed';
+            });
+
+   window.VG_ADMIN.interact({
+      type: 'complete',
+      payload: {
+        newAppointmentDetails: newAppointmentDetails.value
+      },
+    });
+  });
+
+  // Handle cancel button click
+  formContainer.querySelector('.cancelButton').addEventListener('click', function () {
+   window.VG_ADMIN.interact({
+      type: 'cancel',
+      payload: {}
+    });
+  });
+
+  // Handle cancel button click
+  formContainer.querySelector('.backButton').addEventListener('click', function () {
+   window.VG_ADMIN.interact({
+      type: 'back',
+      payload: {}
+    });
+  });
+
+        element.appendChild(formContainer); // Append the form to the specified DOM element
+    },
+};
+
+export const DateExtension = {
+    name: 'Date',
+    type: 'response',
+    match: ({ trace }) =>
+      trace.type === 'ext_date' || trace.payload.name === 'ext_date',
+    render: ({ trace, element }) => {
+      const formContainer = document.createElement('form');
+      formContainer.classList.add('extensionsForm'); // Add a class to the form
+  
+      // Define date range constraints
+      let currentDate = new Date();
+      let minDate = new Date();
+      minDate.setMonth(currentDate.getMonth() - 1);
+      let maxDate = new Date();
+      maxDate.setMonth(currentDate.getMonth() + 2);
+  
+      // Format date constraints for input
+      let minDateString = minDate.toISOString().slice(0, 16);
+      let maxDateString = maxDate.toISOString().slice(0, 16);
+  
+      formContainer.innerHTML = `
+        <style>
+          #currentAppointment {
+            margin-bottom: 10px !important;
+          }
+          .inputDateTime {
+            margin-bottom: 10px !important;
+            font-family: inherit !important;
+            width: 230px !important;
+            display: block !important;
+            border: none !important;
+            background: #fff !important;
+            margin: 5px 0 !important;
+            outline: none !important;
+            padding: 16px !important;
+            border-radius: 6px !important;
+          }
+          .inputDateTime:focus {
+            border: 1px solid #71c9ce !important;
+          }
+          
+        </style>
+  
+        <label for="currentAppointment">Datum und Zeit auswählen</label>
+        <input type="datetime-local" class="inputDateTime" id="currentAppointment" name="currentAppointment" min="${minDateString}" max="${maxDateString}" required>
+        
+        <input type="submit" class="submitButton" value="Weiter" disabled>
+        
+        <div class="button-wrapper">
+          <input type="button" class="backButton activeButton" value="❮ Zurück">
+          <input type="button" class="cancelButton activeButton" value="✕ Abbrechen">
+        </div>
+      `;
+  
+      const datetimeInput = formContainer.querySelector('#currentAppointment');
+      const submitButton = formContainer.querySelector('.submitButton');
+  
+      // Enable the submit button only when a valid date is selected
+      datetimeInput.addEventListener('input', function () {
+        submitButton.disabled = !this.value;
+       if (this.value) {
+          submitButton.classList.add('activeButton');
+          submitButton.style.cursor = 'pointer';
+        } else {
+          submitButton.classList.remove('activeButton');
+          submitButton.style.cursor = 'not-allowed';
+        }
+      });
+  
+      formContainer.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const datetime = datetimeInput.value;
+        let [date, time] = datetime.split('T');
+  
+        window.VG_ADMIN.interact({
+          type: 'complete',
+          payload: { date: date, time: time },
+        });
+      });
+  
+      // Set up click handlers for cancel and back buttons
+      formContainer.querySelector('.cancelButton').addEventListener('click', function () {
+        window.VG_ADMIN.interact({
+          type: 'cancel',
+          payload: {}
+        });
+      });
+  
       formContainer.querySelector('.backButton').addEventListener('click', function () {
         window.VG_ADMIN.interact({
           type: 'back',
