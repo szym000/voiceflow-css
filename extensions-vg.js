@@ -9,71 +9,71 @@ export const documentDetails = {
         formContainer.innerHTML = `
         <style>
         label {
-          font-size: 0.9em;
-          color: #888;
+          font-size: 0.9em !important;
+          color: #888 !important;
         }
         textareaField {
-          font-family: inherit;
-          display: block;
-          width: 284px;
-          height: 100px;
-          border-radius: 8px;
-          padding: 8px;
-          font-size: 0.9em;
-          resize: vertical;
-          border: 1px solid #ccc;
-          margin-bottom: 10px;
+          font-family: inherit !important;
+          display: block !important;
+          width: 284px !important;
+          height: 100px !important;
+          border-radius: 8px !important;
+          padding: 8px !important;
+          font-size: 0.9em !important;
+          resize: vertical !important;
+          border: 1px solid #ccc !important;
+          margin-bottom: 10px !important;
         }
         textareaField:focus, textarea:focus-visible {
-          outline: 1px solid #71c9ce;
+          outline: 1px solid #71c9ce !important;
         }
         textareaField::placeholder {
-        font-family: inherit; color: #ccc;
+        font-family: inherit; color: #ccc !important;
         }
         textareaField:focus::placeholder {
-          color: transparent;
+          color: transparent !important;
         }
         .submit-doc {
-          width: 100%;
-          background-color: grey;
-          color: white;
-          border: none;
-          padding: 10px;
-          font-weight: 600;
-          border-radius: 8px;
-          font-size: 15px;
-          cursor: not-allowed;
-          opacity: 0.5;
+          width: 100% !important;
+          background-color: grey !important;
+          color: white !important;
+          border: none !important;
+          padding: 10px !important;
+          font-weight: 600 !important;
+          border-radius: 8px !important;
+          font-size: 15px !important;
+          cursor: not-allowed !important;
+          opacity: 0.5 !important;
         }
         .cancel-doc, .back-doc {
-          width: 100%;
-          background-color: #64AFB4;
-          color: #fff;
-          font-weight: 600;
-          padding: 7px;
-          border-radius: 8px;
-          cursor: pointer;
-          font-size: 15px;
-          transition: background-color .4s;
-          border: none;
+          width: 100% !important;
+          background-color: #64AFB4 !important;
+          color: #fff !important;
+          font-weight: 600 !important;
+          padding: 7px !important;
+          border-radius: 8px !important;
+          cursor: pointer !important;
+          font-size: 15px !important;
+          transition: background-color .4s !important;
+          border: none !important;
         }
 
         .active-doc {
-          background-color: #64AFB4;
-          cursor: pointer;
-          opacity: 1;
-          transition: background-color .4s;
+          background-color: #64AFB4 !important;
+          cursor: pointer !important;
+          opacity: 1 !important;
+          transition: background-color .4s !important;
         }
         .active-doc:hover, .cancel-doc:hover, .back-doc:hover {
-          background-color: #71C9CE;
+          background-color: #71C9CE !important;
         }
         .button-wrapper {
-          margin-top: 10px;
-            gap: 10px;
-            display: flex;
-            justify-content: space-around;
-            align-items: normal;
-            width: 100%;
+          margin-top: 10px !important;
+            gap: 10px !important;
+            display: flex !important;
+            justify-content: space-around !important;
+            align-items: normal !important;
+            width: 100% !important;
         }
       </style>
 
