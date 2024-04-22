@@ -445,6 +445,14 @@ export const DateExtension = {
         event.preventDefault();
         const datetime = datetimeInput.value;
         let [date, time] = datetime.split('T');
+
+        const buttons = formContainer.querySelectorAll('.submitButton, .cancelButton, .backButton, .activeButton');
+            buttons.forEach(button => {
+                button.disabled = true;
+                button.classList.remove('activeButton');
+                button.style.opacity = '0.5';
+                button.style.cursor = 'not-allowed';
+            });
   
         window.VG_ADMIN.interact({
           type: 'complete',
