@@ -373,7 +373,7 @@ export const newAppointmentDetails = {
 };
 
 export const DateExtension = {
-    name: 'Date',
+    name: 'ext_date',
     type: 'response',
     match: ({ trace }) =>
       trace.type === 'ext_date' || trace.payload.name === 'ext_date',
