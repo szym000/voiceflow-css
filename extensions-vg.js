@@ -12,7 +12,7 @@ export const documentDetails = {
           font-size: 0.9em !important;
           color: #888 !important;
         }
-        textareaField {
+        .textareaField {
           font-family: inherit !important;
           display: block !important;
           width: 284px !important;
@@ -24,13 +24,13 @@ export const documentDetails = {
           border: 1px solid #ccc !important;
           margin-bottom: 10px !important;
         }
-        textareaField:focus, textarea:focus-visible {
+        .textareaField:focus, textarea:focus-visible {
           outline: 1px solid #71c9ce !important;
         }
-        textareaField::placeholder {
+        .textareaField::placeholder {
         font-family: inherit; color: #ccc !important;
         }
-        textareaField:focus::placeholder {
+        .textareaField:focus::placeholder {
           color: transparent !important;
         }
         .submit-doc {
@@ -80,11 +80,11 @@ export const documentDetails = {
       <label for="documentDetails">Ihre Informationen/Angaben</label>
       <textarea class="textareaField" id="documentDetails" name="documentDetails" required placeholder="z.B. eine Kopie der Rechnung mit der Nummer 12345"></textarea>
       
-      <button type="submit" class="submit-doc" value="Weiter">
+      <input type="submit" class="submit-doc" value="Weiter">
       
       <div class="button-wrapper">
-      <button type="button" class="back-doc" value="❮ Zurück">
-      <button type="button" class="cancel-doc" value="✕ Abbrechen">
+      <input type="button" class="back-doc" value="❮ Zurück">
+      <input type="button" class="cancel-doc" value="✕ Abbrechen">
       </div>
 `;
 
