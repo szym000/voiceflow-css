@@ -59,7 +59,6 @@ export const documentDetails = {
           font-weight: 600 !important;
           padding: 7px !important;
           border-radius: 8px !important;
-          cursor: pointer !important;
           font-size: 15px !important;
           transition: background-color .4s !important;
           border: none !important;
