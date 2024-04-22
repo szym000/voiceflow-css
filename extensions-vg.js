@@ -400,13 +400,13 @@ export const DateExtension = {
           .inputDateTime {
             margin-bottom: 10px !important;
             font-family: inherit !important;
-            width: 230px !important;
+            width: 250px !important;
             display: block !important;
             border: none !important;
             background: #fff !important;
             margin: 5px 0 !important;
             outline: none !important;
-            padding: 16px !important;
+            padding: 10px !important;
             border-radius: 6px !important;
           }
           .inputDateTime:focus {
