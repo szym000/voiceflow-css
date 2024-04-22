@@ -103,81 +103,76 @@ export const patientDataForm = {
       formContainer.innerHTML = `
         <style>
           input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
-            font-family: inherit;
-            width: 284px;
-            border: 1px solid #ccc;
-            background: #fff;
-            margin: 5px 0 10px 0;
-            outline: none;
-            height: 20px;
-            padding: 8px;
-            border-radius: 6px;
-            display: block;
+            font-family: inherit !important;
+            width: 284px !important;
+            border: 1px solid #ccc !important;
+            background: #fff !important;
+            margin: 5px 0 10px 0 !important;
+            outline: none !important;
+            height: 20px !important;
+            padding: 8px !important;
+            border-radius: 6px !important;
+            display: block !important;
           }
           input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="date"]:focus {
-            border: 1px solid #71c9ce;
+            border: 1px solid #71c9ce !important;
           }
           input::placeholder {
-            font-family: inherit; color: #ccc;
+            font-family: inherit; color: #ccc !important;
           }
           input:focus::placeholder {
             color: transparent;
           }
           .invalid {
-            border-color: red;
+            border-color: red !important;
           }
-          Button
   
-          /* Styling for the checkbox container */
-  .checkbox-container {
-    gap: 3px;
-    display: flex;
-    align-items: center; /* Aligns the checkbox with the text vertically */
-    margin-bottom: 20px; /* Bottom margin */
-    margin-top: 20px;
-  }
-  
-  /* Styling for the checkbox input */
-  .checkbox-container input[type="checkbox"] {
-    width: 20px; /* Larger checkbox */
-    height: 20px; /* Larger checkbox */
-    cursor: pointer; /* Pointer cursor on hover */
-    -webkit-appearance: none; /* Removes default styling */
-    -moz-appearance: none; /* Removes default styling */
-    appearance: none; /* Removes default styling */
-    border: 1px solid #ddd; /* Custom border */
-    background-color: white; /* Background color */
-    position: relative; /* Needed for absolute positioning of the pseudo-element */
-    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for colors */
-  }
-  
-  /* Styling for the checkbox when checked */
-  .checkbox-container input[type="checkbox"]:checked {
-    background-color: #64AFB4; /* Custom background color */
-    border-color: #64AFB4; /* Border color matches background */
-  }
-  
-  /* Styling for the checkmark */
-  .checkbox-container input[type="checkbox"]:checked::after {
-    content: "\\2713"; /* Unicode character for checkmark */
-    color: white; /* White checkmark */
-    position: absolute;
-    left: 50%; /* Center the checkmark horizontally */
-    top: 50%; /* Center the checkmark vertically */
-    transform: translate(-50%, -50%); /* Adjust positioning to true center */
-    font-size: 16px; /* Size of the checkmark */
-    font-weight: bold; /* Makes the checkmark more visible */
-  }
-  
-  /* Styling for the data protection link */
-  .data-link {
-    color: #0000EE; /* Standard link color */
-    text-decoration: none; /* No underline */
-  }
-  
-  .data-link:hover {
-    text-decoration: underline; /* Underline on hover */
-  }
+          .checkbox-container {
+            gap: 3px !important;
+            display: flex !important;
+            align-items: center !important;
+            margin-bottom: 20px !important;
+            margin-top: 20px !important;
+          }
+          
+          .checkbox-container input[type="checkbox"] {
+            width: 20px !important;
+            height: 20px !important;
+            cursor: pointer !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            border: 1px solid #ddd !important;
+            background-color: white !important;
+            position: relative !important;
+            transition: background-color 0.3s !important, border-color 0.3s !important;
+          }
+          
+          .checkbox-container input[type="checkbox"]:checked {
+            background-color: #64AFB4 !important;
+            border-color: #64AFB4 !important;
+          }
+          
+          .checkbox-container input[type="checkbox"]:checked::after {
+            content: "\\2713" !important;
+            color: white !important;
+            position: absolute !important;
+            left: 50% !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            font-size: 16px !important;
+            font-weight: bold !important;
+          }
+          
+          .data-link {
+            color: #0000EE !important;
+            text-decoration: none !important;
+          }
+          
+          .data-link:hover {
+            text-decoration: underline !important;
+          }
+          
         </style>
   
         <label for="name">Name</label>
