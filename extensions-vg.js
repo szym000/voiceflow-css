@@ -4,11 +4,13 @@ export const documentDetails = {
         // Function to render the form
         console.log(`trace from extension: `, trace)
         const formContainer = document.createElement('form'); // Create a form element dynamically
+        formContainer.classList.add('extensionsForm'); // Add a class to the form
+
 
         // Set the inner HTML of the form, simplifying it to only include input fields and a submit button
         formContainer.innerHTML = `
         <style>
-        form {
+        .extensionsForm {
              background-color: rgb(244, 244, 245) !important;
              padding: 16px !important;
              border-radius: 8px !important;
@@ -123,7 +125,7 @@ export const documentDetails = {
     const buttons = formContainer.querySelectorAll('.submit-doc, .cancel-doc, .back-doc, .active-doc');
             buttons.forEach(button => {
                 button.style.opacity = '0.5';
-                button.style.cursor = 'default';
+                button.style.cursor = 'not-allowed';
             });
 
    window.VG_ADMIN.interact({
