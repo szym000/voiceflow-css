@@ -120,7 +120,7 @@ export const documentDetails = {
       documentDetails.classList.add('invalid');
       return;
     }
-    const buttons = formContainer.querySelectorAll('.submit-doc, .cancel-doc, .back-doc');
+    const buttons = formContainer.querySelectorAll('.submit-doc, .cancel-doc, .back-doc, .active-doc');
             buttons.forEach(button => {
                 button.style.opacity = '0.5';
                 button.style.cursor = 'default';
