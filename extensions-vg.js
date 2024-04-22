@@ -67,8 +67,8 @@ export const documentDetails = {
 
         .active-doc {
           background-color: #64AFB4 !important;
-          cursor: pointer !important;
-          opacity: 1 !important;
+          cursor: pointer;
+          opacity: 1;
           transition: background-color .4s !important;
         }
         .active-doc:hover, .cancel-doc:hover, .back-doc:hover {
