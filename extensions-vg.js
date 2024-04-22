@@ -125,6 +125,9 @@ export const documentDetails = {
     const buttons = formContainer.querySelectorAll('.submit-doc, .cancel-doc, .back-doc, .active-doc');
             buttons.forEach(button => {
                 button.disabled = true;
+                button.classList.remove('active-doc');
+                button.style.opacity = '0.5';
+                button.style.cursor = 'default';
             });
 
    window.VG_ADMIN.interact({
