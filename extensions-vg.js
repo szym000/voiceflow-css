@@ -1,4 +1,4 @@
-const ext_documentDetails = {
+const documentDetails = {
     name: 'ext_documentDetails', // Extension name
     render: ({ trace, element }) => {
         // Function to render the form
