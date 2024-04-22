@@ -102,7 +102,7 @@ export const patientDataForm = {
   
       formContainer.innerHTML = `
         <style>
-          input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
+          .inputText, .inputEmail, .inputPhone, .inputDate {
             font-family: inherit !important;
             width: 284px !important;
             border: 1px solid #ccc !important;
@@ -110,11 +110,11 @@ export const patientDataForm = {
             margin: 5px 0 10px 0 !important;
             outline: none !important;
             height: 20px !important;
-            padding: 8px !important;
+            padding: 16px !important;
             border-radius: 6px !important;
             display: block !important;
           }
-          input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="date"]:focus {
+          .inputText:focus, .inputEmail:focus, .inputPhone:focus, .inputDate:focus {
             border: 1px solid #71c9ce !important;
           }
           input::placeholder {
@@ -176,16 +176,16 @@ export const patientDataForm = {
         </style>
   
         <label for="name">Name</label>
-        <input type="text" class="name" name="name" required placeholder="z.B. Max Mustermann">
+        <input type="text" class="name inputText" name="name" required placeholder="z.B. Max Mustermann">
   
         <label for="birthday">Geburtstag</label>
-        <input type="date" class="birthday" name="birthday" required>
+        <input type="date" class="birthday inputDate" name="birthday" required>
   
         <label for="email">E-mail</label>
-        <input type="email" class="email" name="email" placeholder="z.B. mustermann@beispiel.de" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ungültige E-Mail-Adresse">
+        <input type="email" class="email inputEmail" name="email" placeholder="z.B. mustermann@beispiel.de" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ungültige E-Mail-Adresse">
   
         <label for="phone">Telefon</label>
-        <input type="tel" class="phone" name="phone" placeholder="z.B. +491234567890" pattern="\+?\d{7,}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 10 Ziffern ein">
+        <input type="tel" class="phone inputPhone" name="phone" placeholder="z.B. +491234567890" pattern="\+?\d{7,}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 10 Ziffern ein">
   
         <label for="dataProtection" class="checkbox-container">
         <input type="checkbox" class="accept-terms" id="dataProtection" name="dataProtection" required>
@@ -225,7 +225,7 @@ export const patientDataForm = {
         }
       };
   
-      formContainer.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="checkbox"]').forEach(input => {
+      formContainer.querySelectorAll('.inputText, .inputEmail, .inputPhone, .inputDate, input[type="checkbox"]').forEach(input => {
         if (input.type === "checkbox") {
           input.addEventListener('change', checkInputs);
         } else {
