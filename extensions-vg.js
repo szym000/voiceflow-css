@@ -165,7 +165,7 @@ export const patientDataForm = {
           }
           
           .data-link {
-            color: #0000EE !important;
+            color: #64AFB4 !important;
             text-decoration: none !important;
           }
           
