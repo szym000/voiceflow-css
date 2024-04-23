@@ -96,7 +96,7 @@ export const patientDataForm = {
         <style>
           .inputText, .inputEmail, .inputPhone, .inputDate {
             font-family: inherit !important;
-            width: 284px !important;
+            width: 300px !important;
             border: 1px solid #ccc !important;
             background: #fff !important;
             margin: 5px 0 10px 0 !important;
@@ -105,6 +105,7 @@ export const patientDataForm = {
             padding: 16px !important;
             border-radius: 6px !important;
             display: block !important;
+            font-size: 16px !important;
           }
           .inputText:focus, .inputEmail:focus, .inputPhone:focus, .inputDate:focus {
             border: 1px solid #71c9ce !important;
