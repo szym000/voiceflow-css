@@ -478,3 +478,359 @@ export const DateExtension = {
       element.appendChild(formContainer);
     },
   };
+
+export const uberweisungAnfordern = {
+    name: 'ext_uberweisungAnfordern', // Extension name
+    render: ({ trace, element }) => {
+        // Function to render the form
+        console.log(`trace from extension: `, trace)
+        const formContainer = document.createElement('form'); // Create a form element dynamically
+        formContainer.classList.add('extensionsForm'); // Add a class to the form
+
+
+        // Set the inner HTML of the form, simplifying it to only include input fields and a submit button
+        formContainer.innerHTML = `
+        <style>
+        
+      </style>
+
+      <label for="uberweisungAnfordern">Benötigte Überweisung</label>
+      <textarea class="textareaField" id="uberweisungAnfordern" name="uberweisungAnfordern" required placeholder="z.B. "Überweisung MRT linke Hand"></textarea>
+      
+      <input type="submit" class="submitButton" value="Weiter">
+      
+      <div class="button-wrapper">
+      <input type="button" class="backButton" value="❮ Zurück">
+      <input type="button" class="cancelButton" value="✕ Abbrechen">
+      </div>
+`;
+
+ // Function to check input validity
+ const checkInput = () => {
+    const uberweisungAnfordern = formContainer.querySelector('#uberweisungAnfordern').value;
+
+    const submitButton = formContainer.querySelector('.submitButton');
+    if (uberweisungAnfordern.trim() !== '') {
+      submitButton.disabled = false;
+      submitButton.classList.add('activeButton');
+      submitButton.style.cursor = 'pointer';
+    } else {
+      submitButton.disabled = true;
+      submitButton.classList.remove('activeButton');
+      submitButton.style.cursor = 'not-allowed';
+    }
+  };
+
+  // Attach event listeners to inputs to validate in real-time
+  formContainer.querySelector('#uberweisungAnfordern').addEventListener('input', checkInput);
+
+  formContainer.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const uberweisungAnfordern = formContainer.querySelector('#uberweisungAnfordern');
+
+    if (!uberweisungAnfordern.checkValidity()) {
+      uberweisungAnfordern.classList.add('invalid');
+      return;
+    }
+    const buttons = formContainer.querySelectorAll('.submitButton, .cancelButton, .backButton, .activeButton');
+            buttons.forEach(button => {
+                button.disabled = true;
+                button.classList.remove('activeButton');
+                button.style.opacity = '0.5';
+                button.style.cursor = 'not-allowed';
+            });
+
+   window.VG_ADMIN.interact({
+      type: 'complete',
+      payload: {
+        uberweisungAnfordern: uberweisungAnfordern.value
+      },
+    });
+  });
+
+  // Handle cancel button click
+  formContainer.querySelector('.cancelButton').addEventListener('click', function () {
+   window.VG_ADMIN.interact({
+      type: 'cancel',
+      payload: {}
+    });
+  });
+
+  // Handle cancel button click
+  formContainer.querySelector('.backButton').addEventListener('click', function () {
+   window.VG_ADMIN.interact({
+      type: 'back',
+      payload: {}
+    });
+  });
+
+        element.appendChild(formContainer); // Append the form to the specified DOM element
+    },
+};
+
+export const auAnfordern = {
+    name: 'ext_auAnfordern', // Extension name
+    render: ({ trace, element }) => {
+        // Function to render the form
+        console.log(`trace from extension: `, trace)
+        const formContainer = document.createElement('form'); // Create a form element dynamically
+        formContainer.classList.add('extensionsForm'); // Add a class to the form
+
+
+        // Set the inner HTML of the form, simplifying it to only include input fields and a submit button
+        formContainer.innerHTML = `
+        <style>
+        
+      </style>
+
+      <label for="auAnfordern">Benötigte AU</label>
+      <textarea class="textareaField" id="auAnfordern" name="auAnfordern" required placeholder="z.B. Gebrochene Hand 6 Wochen"></textarea>
+      
+      <input type="submit" class="submitButton" value="Weiter">
+      
+      <div class="button-wrapper">
+      <input type="button" class="backButton" value="❮ Zurück">
+      <input type="button" class="cancelButton" value="✕ Abbrechen">
+      </div>
+`;
+
+ // Function to check input validity
+ const checkInput = () => {
+    const auAnfordern = formContainer.querySelector('#auAnfordern').value;
+
+    const submitButton = formContainer.querySelector('.submitButton');
+    if (auAnfordern.trim() !== '') {
+      submitButton.disabled = false;
+      submitButton.classList.add('activeButton');
+      submitButton.style.cursor = 'pointer';
+    } else {
+      submitButton.disabled = true;
+      submitButton.classList.remove('activeButton');
+      submitButton.style.cursor = 'not-allowed';
+    }
+  };
+
+  // Attach event listeners to inputs to validate in real-time
+  formContainer.querySelector('#auAnfordern').addEventListener('input', checkInput);
+
+  formContainer.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const auAnfordern = formContainer.querySelector('#auAnfordern');
+
+    if (!auAnfordern.checkValidity()) {
+      auAnfordern.classList.add('invalid');
+      return;
+    }
+    const buttons = formContainer.querySelectorAll('.submitButton, .cancelButton, .backButton, .activeButton');
+            buttons.forEach(button => {
+                button.disabled = true;
+                button.classList.remove('activeButton');
+                button.style.opacity = '0.5';
+                button.style.cursor = 'not-allowed';
+            });
+
+   window.VG_ADMIN.interact({
+      type: 'complete',
+      payload: {
+        auAnfordern: auAnfordern.value
+      },
+    });
+  });
+
+  // Handle cancel button click
+  formContainer.querySelector('.cancelButton').addEventListener('click', function () {
+   window.VG_ADMIN.interact({
+      type: 'cancel',
+      payload: {}
+    });
+  });
+
+  // Handle cancel button click
+  formContainer.querySelector('.backButton').addEventListener('click', function () {
+   window.VG_ADMIN.interact({
+      type: 'back',
+      payload: {}
+    });
+  });
+
+        element.appendChild(formContainer); // Append the form to the specified DOM element
+    },
+}; 
+
+export const rezeptAnfordern = {
+    name: 'ext_rezeptAnfordern', // Extension name
+    render: ({ trace, element }) => {
+        // Function to render the form
+        console.log(`trace from extension: `, trace)
+        const formContainer = document.createElement('form'); // Create a form element dynamically
+        formContainer.classList.add('extensionsForm'); // Add a class to the form
+
+
+        // Set the inner HTML of the form, simplifying it to only include input fields and a submit button
+        formContainer.innerHTML = `
+        <style>
+        
+      </style>
+
+      <label for="rezeptAnfordern">Medikamente und Dosierung</label>
+      <textarea class="textareaField" id="rezeptAnfordern" name="rezeptAnfordern" required placeholder="z.B. Ibuprofen 600mg"></textarea>
+      
+      <input type="submit" class="submitButton" value="Weiter">
+      
+      <div class="button-wrapper">
+      <input type="button" class="backButton" value="❮ Zurück">
+      <input type="button" class="cancelButton" value="✕ Abbrechen">
+      </div>
+`;
+
+ // Function to check input validity
+ const checkInput = () => {
+    const rezeptAnfordern = formContainer.querySelector('#rezeptAnfordern').value;
+
+    const submitButton = formContainer.querySelector('.submitButton');
+    if (rezeptAnfordern.trim() !== '') {
+      submitButton.disabled = false;
+      submitButton.classList.add('activeButton');
+      submitButton.style.cursor = 'pointer';
+    } else {
+      submitButton.disabled = true;
+      submitButton.classList.remove('activeButton');
+      submitButton.style.cursor = 'not-allowed';
+    }
+  };
+
+  // Attach event listeners to inputs to validate in real-time
+  formContainer.querySelector('#rezeptAnfordern').addEventListener('input', checkInput);
+
+  formContainer.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const rezeptAnfordern = formContainer.querySelector('#rezeptAnfordern');
+
+    if (!rezeptAnfordern.checkValidity()) {
+      rezeptAnfordern.classList.add('invalid');
+      return;
+    }
+    const buttons = formContainer.querySelectorAll('.submitButton, .cancelButton, .backButton, .activeButton');
+            buttons.forEach(button => {
+                button.disabled = true;
+                button.classList.remove('activeButton');
+                button.style.opacity = '0.5';
+                button.style.cursor = 'not-allowed';
+            });
+
+   window.VG_ADMIN.interact({
+      type: 'complete',
+      payload: {
+        rezeptAnfordern: rezeptAnfordern.value
+      },
+    });
+  });
+
+  // Handle cancel button click
+  formContainer.querySelector('.cancelButton').addEventListener('click', function () {
+   window.VG_ADMIN.interact({
+      type: 'cancel',
+      payload: {}
+    });
+  });
+
+  // Handle cancel button click
+  formContainer.querySelector('.backButton').addEventListener('click', function () {
+   window.VG_ADMIN.interact({
+      type: 'back',
+      payload: {}
+    });
+  });
+
+        element.appendChild(formContainer); // Append the form to the specified DOM element
+    },
+}; 
+
+export const befundAnfordern = {
+    name: 'ext_befundAnfordern', // Extension name
+    render: ({ trace, element }) => {
+        // Function to render the form
+        console.log(`trace from extension: `, trace)
+        const formContainer = document.createElement('form'); // Create a form element dynamically
+        formContainer.classList.add('extensionsForm'); // Add a class to the form
+
+
+        // Set the inner HTML of the form, simplifying it to only include input fields and a submit button
+        formContainer.innerHTML = `
+        <style>
+        
+      </style>
+
+      <label for="befundAnfordern">Benötigte Befunde</label>
+      <textarea class="textareaField" id="befundAnfordern" name="befundAnfordern" required placeholder="z.B. Laborwerte letzte Blutuntersuchung"></textarea>
+      
+      <input type="submit" class="submitButton" value="Weiter">
+      
+      <div class="button-wrapper">
+      <input type="button" class="backButton" value="❮ Zurück">
+      <input type="button" class="cancelButton" value="✕ Abbrechen">
+      </div>
+`;
+
+ // Function to check input validity
+ const checkInput = () => {
+    const befundAnfordern = formContainer.querySelector('#befundAnfordern').value;
+
+    const submitButton = formContainer.querySelector('.submitButton');
+    if (befundAnfordern.trim() !== '') {
+      submitButton.disabled = false;
+      submitButton.classList.add('activeButton');
+      submitButton.style.cursor = 'pointer';
+    } else {
+      submitButton.disabled = true;
+      submitButton.classList.remove('activeButton');
+      submitButton.style.cursor = 'not-allowed';
+    }
+  };
+
+  // Attach event listeners to inputs to validate in real-time
+  formContainer.querySelector('#befundAnfordern').addEventListener('input', checkInput);
+
+  formContainer.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const befundAnfordern = formContainer.querySelector('#befundAnfordern');
+
+    if (!befundAnfordern.checkValidity()) {
+      befundAnfordern.classList.add('invalid');
+      return;
+    }
+    const buttons = formContainer.querySelectorAll('.submitButton, .cancelButton, .backButton, .activeButton');
+            buttons.forEach(button => {
+                button.disabled = true;
+                button.classList.remove('activeButton');
+                button.style.opacity = '0.5';
+                button.style.cursor = 'not-allowed';
+            });
+
+   window.VG_ADMIN.interact({
+      type: 'complete',
+      payload: {
+        befundAnfordern: befundAnfordern.value
+      },
+    });
+  });
+
+  // Handle cancel button click
+  formContainer.querySelector('.cancelButton').addEventListener('click', function () {
+   window.VG_ADMIN.interact({
+      type: 'cancel',
+      payload: {}
+    });
+  });
+
+  // Handle cancel button click
+  formContainer.querySelector('.backButton').addEventListener('click', function () {
+   window.VG_ADMIN.interact({
+      type: 'back',
+      payload: {}
+    });
+  });
+
+        element.appendChild(formContainer); // Append the form to the specified DOM element
+    },
+}; 
