@@ -109,7 +109,7 @@ export const patientDataForm = {
             min-height: 34px !important;
           }
           .inputText:focus, .inputEmail:focus, .inputPhone:focus, .inputDate:focus {
-            border: 1px solid #71c9ce !important;
+            border: 1px solid #ccc !important;
           }
           input::placeholder {
             font-family: inherit; color: #ccc !important;
@@ -143,8 +143,8 @@ export const patientDataForm = {
           }
           
           .checkbox-container input[type="checkbox"]:checked {
-            background-color: #64AFB4 !important;
-            border-color: #64AFB4 !important;
+            background-color: #ccc !important;
+            border-color: #ccc !important;
           }
           
           .checkbox-container input[type="checkbox"]:checked::after {
@@ -159,7 +159,7 @@ export const patientDataForm = {
           }
           
           .data-link {
-            color: #64AFB4 !important;
+            color: hsl(var(--nextui-primary) !important;
             text-decoration: none !important;
           }
           
