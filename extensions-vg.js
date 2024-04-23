@@ -106,6 +106,7 @@ export const patientDataForm = {
             border-radius: 6px !important;
             display: block !important;
             font-size: 16px !important;
+            min-height: 34px !important;
           }
           .inputText:focus, .inputEmail:focus, .inputPhone:focus, .inputDate:focus {
             border: 1px solid #71c9ce !important;
