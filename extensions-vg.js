@@ -495,7 +495,7 @@ export const uberweisungAnfordern = {
       </style>
 
       <label for="uberweisungAnfordern">Benötigte Überweisung</label>
-      <textarea class="textareaField" id="uberweisungAnfordern" name="uberweisungAnfordern" required placeholder="z.B. "Überweisung MRT linke Hand"></textarea>
+      <textarea class="textareaField" id="uberweisungAnfordern" name="uberweisungAnfordern" required placeholder="z.B. Überweisung MRT linke Hand"></textarea>
       
       <input type="submit" class="submitButton" value="Weiter">
       
