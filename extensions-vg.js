@@ -159,7 +159,7 @@ export const patientDataForm = {
           }
           
           .data-link {
-            color: hsl(var(--nextui-primary), 100%, 50%) !important;
+            color: hsl(var(--nextui-primary)/var(--nextui-primary-opacity,var(--tw-bg-opacity))) !important;
             text-decoration: none !important;
           }
           
