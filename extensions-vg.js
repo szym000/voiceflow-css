@@ -143,8 +143,8 @@ export const patientDataForm = {
           }
           
           .checkbox-container input[type="checkbox"]:checked {
-            background-color: #ccc !important;
-            border-color: #ccc !important;
+            background-color: grey !important;
+            border-color: grey !important;
           }
           
           .checkbox-container input[type="checkbox"]:checked::after {
@@ -159,7 +159,7 @@ export const patientDataForm = {
           }
           
           .data-link {
-            color: hsl(var(--nextui-primary) !important;
+            color: hsl(var(--nextui-primary), 100%, 50%) !important;
             text-decoration: none !important;
           }
           
