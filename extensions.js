@@ -868,6 +868,7 @@ export const PharmacySelectorExtension = {
           border-radius: 4px;
         }
         .pharmacy-list {
+          z-index: 9999;
           list-style-type: none;
           padding: 0;
         }
@@ -884,7 +885,7 @@ export const PharmacySelectorExtension = {
     `;
 
     const script = document.createElement('script');
-    script.src = 'https://maps.googleapis.com/maps/api/js?key=1234&libraries=places';
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAmEeWEzakKtekDfQtxz3iVuCg9-0mefec&libraries=places';
     document.head.appendChild(script);
 
     script.onload = () => {
