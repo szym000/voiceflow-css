@@ -585,8 +585,8 @@ export const auAnfordern = {
         
       </style>
 
-      <label for="auAnfordern">Benötigte AU</label>
-      <textarea class="textareaField" id="auAnfordern" name="auAnfordern" required placeholder="z.B. Gebrochene Hand 6 Wochen"></textarea>
+      <label for="auAnfordern">Benötigte Krankschreibung</label>
+      <textarea class="textareaFieldExtended" id="auAnfordern" name="auAnfordern" required placeholder="z.B. Ich leide seit zwei Tagen unter starken Kopfschmerzen und erhöhter Temperatur bis zu 38,5°C, die meine Konzentrationsfähigkeit stark beeinträchtigen. Diese Symptome hindern mich daran, meine beruflichen Aufgaben effektiv zu erfüllen. Ich bitte um eine Krankschreibung für die nächsten fünf Tage, um mich ausreichend erholen zu können."></textarea>
       
       <input type="submit" class="submitButton" value="Weiter">
       
@@ -835,4 +835,93 @@ export const befundAnfordern = {
 
         element.appendChild(formContainer); // Append the form to the specified DOM element
     },
+}; 
+
+export const apothekeAbholung = {
+  name: 'ext_apothekeAbholung', // Extension name
+  render: ({ trace, element }) => {
+      // Function to render the form
+      console.log(`trace from extension: `, trace)
+      const formContainer = document.createElement('form'); // Create a form element dynamically
+      formContainer.classList.add('extensionsForm'); // Add a class to the form
+
+
+      // Set the inner HTML of the form, simplifying it to only include input fields and a submit button
+      formContainer.innerHTML = `
+      <style>
+      
+    </style>
+
+    <label for="apothekeAbholung">Benötigte Befunde</label>
+    <textarea class="textareaField" id="apothekeAbholung" name="apothekeAbholung" required placeholder="z.B. Laborwerte letzte Blutuntersuchung"></textarea>
+    
+    <input type="submit" class="submitButton" value="Weiter">
+    
+    <div class="button-wrapper">
+    <input type="button" class="backButton" value="❮ Zurück">
+    <input type="button" class="cancelButton" value="✕ Abbrechen">
+    </div>
+`;
+
+// Function to check input validity
+const checkInput = () => {
+  const apothekeAbholung = formContainer.querySelector('#apothekeAbholung').value;
+
+  const submitButton = formContainer.querySelector('.submitButton');
+  if (apothekeAbholung.trim() !== '') {
+    submitButton.disabled = false;
+    submitButton.classList.add('activeButton');
+    submitButton.style.cursor = 'pointer';
+  } else {
+    submitButton.disabled = true;
+    submitButton.classList.remove('activeButton');
+    submitButton.style.cursor = 'not-allowed';
+  }
+};
+
+// Attach event listeners to inputs to validate in real-time
+formContainer.querySelector('#apothekeAbholung').addEventListener('input', checkInput);
+
+formContainer.addEventListener('submit', function (event) {
+  event.preventDefault();
+  const apothekeAbholung = formContainer.querySelector('#apothekeAbholung');
+
+  if (!apothekeAbholung.checkValidity()) {
+    apothekeAbholung.classList.add('invalid');
+    return;
+  }
+  const buttons = formContainer.querySelectorAll('.submitButton, .cancelButton, .backButton, .activeButton');
+          buttons.forEach(button => {
+              button.disabled = true;
+              button.classList.remove('activeButton');
+              button.style.opacity = '0.5';
+              button.style.cursor = 'not-allowed';
+          });
+
+ window.VG_ADMIN.interact({
+    type: 'complete',
+    payload: {
+      apothekeAbholung: apothekeAbholung.value
+    },
+  });
+});
+
+// Handle cancel button click
+formContainer.querySelector('.cancelButton').addEventListener('click', function () {
+ window.VG_ADMIN.interact({
+    type: 'cancel',
+    payload: {}
+  });
+});
+
+// Handle cancel button click
+formContainer.querySelector('.backButton').addEventListener('click', function () {
+ window.VG_ADMIN.interact({
+    type: 'back',
+    payload: {}
+  });
+});
+
+      element.appendChild(formContainer); // Append the form to the specified DOM element
+  },
 }; 
