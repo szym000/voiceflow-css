@@ -849,3 +849,87 @@ export const FeedbackExtension = {
     element.appendChild(feedbackContainer)
   },
 }
+
+export const PharmacySelectorExtension = {
+  name: 'PharmacySelector',
+  type: 'response',
+  match: ({ trace }) =>
+    trace.type === 'select_pharmacy' || trace.payload.name === 'select_pharmacy',
+  render: ({ trace, element }) => {
+    const container = document.createElement('div');
+    container.innerHTML = `
+      <style>
+        input[type="text"] {
+          width: 100%;
+          padding: 8px;
+          margin: 8px 0;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+        }
+        .pharmacy-list {
+          list-style-type: none;
+          padding: 0;
+        }
+        .pharmacy-list li {
+          padding: 8px;
+          background: #f9f9f9;
+          border-bottom: 1px solid #ddd;
+          cursor: pointer;
+        }
+      </style>
+
+      <input type="text" id="pharmacySearch" placeholder="Enter pharmacy name...">
+      <ul class="pharmacy-list" id="pharmacyList"></ul>
+    `;
+
+    const script = document.createElement('script');
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=12345&libraries=places';
+    document.head.appendChild(script);
+
+    script.onload = () => {
+      const searchInput = container.querySelector('#pharmacySearch');
+      const pharmacyList = container.querySelector('#pharmacyList');
+      let autocomplete;
+
+      function initializeAutocomplete() {
+        autocomplete = new google.maps.places.Autocomplete(searchInput, {
+          types: ['establishment'],
+          fields: ['place_id', 'name', 'formatted_address'],
+          componentRestrictions: {country: 'us'}
+        });
+
+        autocomplete.addListener('place_changed', () => {
+          const place = autocomplete.getPlace();
+          pharmacyList.innerHTML = '';
+          if (!place.place_id) {
+            console.log('Please select an option from the dropdown list.');
+            return;
+          }
+          displayPlace(place);
+        });
+      }
+
+      function displayPlace(place) {
+        const li = document.createElement('li');
+        li.textContent = `${place.name}, ${place.formatted_address}`;
+        li.addEventListener('click', () => {
+          console.log(`Selected: ${place.name}`);
+          window.voiceflow.chat.interact({
+            type: 'complete',
+            payload: { place_id: place.place_id, name: place.name },
+          });
+        });
+        pharmacyList.appendChild(li);
+      }
+
+      if (!window.google) {
+        console.error('Google Maps API failed to load.');
+      } else {
+        initializeAutocomplete();
+      }
+    };
+
+    element.appendChild(container);
+  },
+};
