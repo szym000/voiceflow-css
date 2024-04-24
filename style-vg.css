@@ -4,22 +4,28 @@
   color: white !important;
   font-size: 15px !important;
   background-color: #49a7c4 !important;
-font-weight: 500 !important;
-border-radius: 8px !important;
-padding: 7px 12px !important;
+  font-weight: 500 !important;
+  border-radius: 8px !important;
+  padding: 7px 12px !important;
 }
 
 #VG_OVERLAY_CONTAINER .vg-header-container {
   background-color: #1c7691;
-    opacity: 1;
-    border-radius: 0;
+  opacity: 1;
+  border-radius: 0;
+}
+
+/* Black font color */
+#VG_OVERLAY_CONTAINER .vg-message-text-human--inner p {
+  color: black;
 }
 
 #VG_OVERLAY_CONTAINER .vg-bg-danger {
   background-color: #1c7691;
 }
 
-.cancelButton, .backButton {
+.cancelButton,
+.backButton {
   width: 100% !important;
   background-color: #49a7c4 !important;
   color: #fff !important;
@@ -63,15 +69,15 @@ padding: 7px 12px !important;
 
 .vg-open-btn::after {
   content: "";
-  	position: absolute;
-	animation: pulse 1.5s ease infinite;
-  	background: #1c7691;
-	top: 2px;
-    left: 31px;
-    width: 159px;
-    height: 47px;
-    border-radius: 10px;
-    z-index: -1 !important;
+  position: absolute;
+  animation: pulse 1.5s ease infinite;
+  background: #1c7691;
+  top: 2px;
+  left: 31px;
+  width: 159px;
+  height: 47px;
+  border-radius: 10px;
+  z-index: -1 !important;
 }
 
 
