@@ -848,12 +848,9 @@ export const apothekeAbholung = {
 
       // Set the inner HTML of the form, simplifying it to only include input fields and a submit button
       formContainer.innerHTML = `
-      <style>
-      
-    </style>
 
-    <label for="apothekeAbholung">Benötigte Befunde</label>
-    <textarea class="textareaField" id="apothekeAbholung" name="apothekeAbholung" required placeholder="z.B. Laborwerte letzte Blutuntersuchung"></textarea>
+    <label for="apothekeAbholung">Apotheke</label>
+    <textarea class="textareaField" id="apothekeAbholung" name="apothekeAbholung" required placeholder="z.B. easyApotheke, Hauptstraße 1, 69224 Dortmund"></textarea>
     
     <input type="submit" class="submitButton" value="Weiter">
     
