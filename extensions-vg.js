@@ -262,10 +262,10 @@ export const patientDataForm = {
         <input type="date" class="birthday inputDate" name="birthday" placeholder="TT.MM.JJJJ" required>
   
         <label for="email">E-mail</label>
-        <input type="email" class="email inputEmail" name="email" placeholder="z.B. mustermann@beispiel.de" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ungültige E-Mail-Adresse">
-  
+        <input type="email" class="email inputEmail" name="email" placeholder="z.B. mustermann@beispiel.de" pattern="[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,}$" title="Ungültige E-Mail-Adresse">
+        
         <label for="phone">Telefon</label>
-        <input type="tel" class="phone inputPhone" name="phone" placeholder="z.B. +491234567890" pattern="\+?\d{7,}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 10 Ziffern ein">
+        <input type="tel" class="phone inputPhone" name="phone" placeholder="z.B. +491234567890" pattern="\+49\d{10,12}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 10 Ziffern ein">
   
         <label for="dataProtection" class="checkbox-container">
         <input type="checkbox" class="accept-terms" id="dataProtection" name="dataProtection" required>
