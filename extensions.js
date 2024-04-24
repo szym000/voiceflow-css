@@ -884,7 +884,7 @@ export const PharmacySelectorExtension = {
     `;
 
     const script = document.createElement('script');
-    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBRpD_BF4Gydx-aZLu6myRenwdlgjGIFLM&libraries=places';
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=1234&libraries=places';
     document.head.appendChild(script);
 
     script.onload = () => {
