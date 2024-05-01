@@ -465,105 +465,108 @@ export const DateExtension = {
     name: 'ext_date',
     type: 'response',
     match: ({ trace }) =>
-        trace.type === 'ext_date' || trace.payload.name === 'ext_date',
+      trace.type === 'ext_date' || trace.payload.name === 'ext_date',
     render: ({ trace, element }) => {
-        const formContainer = document.createElement('form');
-        formContainer.classList.add('extensionsForm');
-
-        let currentDate = new Date();
-        let minDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, currentDate.getDate());
-        let maxDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, currentDate.getDate());
-
-        let minDateString = minDate.toISOString().slice(0, 16);
-        let maxDateString = maxDate.toISOString().slice(0, 16);
-
-        formContainer.innerHTML = `
-            <style>
-                #currentAppointment {
-                    margin-bottom: 10px !important;
-                }
-                .inputDateTime {
-                    margin-bottom: 10px !important;
-                    font-family: inherit !important;
-                    width: 250px !important;
-                    display: block !important;
-                    border: none !important;
-                    background: #fff !important;
-                    margin: 5px 0 !important;
-                    outline: none !important;
-                    padding: 10px !important;
-                    border-radius: 6px !important;
-                }
-                .inputDateTime:focus {
-                    border: 1px solid #71c9ce !important;
-                }
-            </style>
+      const formContainer = document.createElement('form');
+      formContainer.classList.add('extensionsForm'); // Add a class to the form
   
-            <label for="currentAppointment">Datum und Zeit auswählen</label>
-            <input type="datetime-local" class="inputDateTime" id="currentAppointment" name="currentAppointment" min="${minDateString}" max="${maxDateString}" required>
-            
-            <input type="submit" class="submitButton" value="Weiter" disabled>
-            
-            <div class="button-wrapper">
-                <input type="button" class="backButton activeButton" value="❮ Zurück">
-                <input type="button" class="cancelButton activeButton" value="✕ Abbrechen">
-            </div>
-        `;
+      // Define date range constraints
+      let currentDate = new Date();
+      let minDate = new Date();
+      minDate.setMonth(currentDate.getMonth() - 1);
+      let maxDate = new Date();
+      maxDate.setMonth(currentDate.getMonth() + 2);
+  
+      // Format date constraints for input
+      let minDateString = minDate.toISOString().slice(0, 16);
+      let maxDateString = maxDate.toISOString().slice(0, 16);
+  
+      formContainer.innerHTML = `
+        <style>
+          #currentAppointment {
+            margin-bottom: 10px !important;
+          }
+          .inputDateTime {
+            margin-bottom: 10px !important;
+            font-family: inherit !important;
+            width: 250px !important;
+            display: block !important;
+            border: none !important;
+            background: #fff !important;
+            margin: 5px 0 !important;
+            outline: none !important;
+            padding: 10px !important;
+            border-radius: 6px !important;
+          }
+          .inputDateTime:focus {
+            border: 1px solid #71c9ce !important;
+          }
+          
+        </style>
+  
+        <label for="currentAppointment">Datum und Zeit auswählen</label>
+        <input type="datetime-local" class="inputDateTime" id="currentAppointment" name="currentAppointment" min="${minDateString}" max="${maxDateString}" required>
+        
+        <input type="submit" class="submitButton" value="Weiter" disabled>
+        
+        <div class="button-wrapper">
+          <input type="button" class="backButton activeButton" value="❮ Zurück">
+          <input type="button" class="cancelButton activeButton" value="✕ Abbrechen">
+        </div>
+      `;
+  
+      const datetimeInput = formContainer.querySelector('#currentAppointment');
+      const submitButton = formContainer.querySelector('.submitButton');
+  
+      // Enable the submit button only when a valid date is selected
+      datetimeInput.addEventListener('input', function () {
+        submitButton.disabled = !this.value;
+       if (this.value) {
+          submitButton.classList.add('activeButton');
+          submitButton.style.cursor = 'pointer';
+        } else {
+          submitButton.classList.remove('activeButton');
+          submitButton.style.cursor = 'not-allowed';
+        }
+      });
+  
+      formContainer.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const datetime = datetimeInput.value;
+        let [date, time] = datetime.split('T');
 
-        const datetimeInput = formContainer.querySelector('#currentAppointment');
-        const submitButton = formContainer.querySelector('.submitButton');
-
-        datetimeInput.addEventListener('input', function () {
-            submitButton.disabled = !this.value;
-            if (this.value) {
-                submitButton.classList.add('activeButton');
-                submitButton.style.cursor = 'pointer';
-            } else {
-                submitButton.classList.remove('activeButton');
-                submitButton.style.cursor = 'not-allowed';
-            }
-        });
-
-        formContainer.addEventListener('submit', function (event) {
-            event.preventDefault();
-            const datetime = datetimeInput.value;
-            let [date, time] = datetime.split('T');
-            let formattedDateTime = `${date} ${time}`; // Combine into "YYYY-MM-DD HH:MM"
-
-            const buttons = formContainer.querySelectorAll('.submitButton, .cancelButton, .backButton, .activeButton');
+        const buttons = formContainer.querySelectorAll('.submitButton, .cancelButton, .backButton, .activeButton');
             buttons.forEach(button => {
                 button.disabled = true;
                 button.classList.remove('activeButton');
                 button.style.opacity = '0.5';
                 button.style.cursor = 'not-allowed';
             });
-
-            console.log(formattedDateTime); // Optional: Output to verify the format
-            // Perform any further actions with formattedDateTime
-
-            window.VG_ADMIN.interact({
-                type: 'complete',
-                payload: { formattedDateTime: formattedDateTime }, // Pass formatted date and time
-            });
+  
+        window.VG_ADMIN.interact({
+          type: 'complete',
+          payload: { date: date, time: time },
         });
-
-        formContainer.querySelector('.cancelButton').addEventListener('click', function () {
-            window.VG_ADMIN.interact({
-                type: 'cancel',
-                payload: {}
-            });
+      });
+  
+      // Set up click handlers for cancel and back buttons
+      formContainer.querySelector('.cancelButton').addEventListener('click', function () {
+        window.VG_ADMIN.interact({
+          type: 'cancel',
+          payload: {}
         });
-
-        formContainer.querySelector('.backButton').addEventListener('click', function () {
-            window.VG_ADMIN.interact({
-                type: 'back',
-                payload: {}
-            });
+      });
+  
+      formContainer.querySelector('.backButton').addEventListener('click', function () {
+        window.VG_ADMIN.interact({
+          type: 'back',
+          payload: {}
         });
-
-        element.appendChild(formContainer);
+      });
+  
+      element.appendChild(formContainer);
     },
-};
+  };
 
 export const uberweisungAnfordern = {
     name: 'ext_uberweisungAnfordern', // Extension name
