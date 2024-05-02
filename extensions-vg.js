@@ -268,10 +268,10 @@ export const patientDataForm = {
         <input type="tel" class="phone inputPhone" name="phone" placeholder="z.B. +491234567890" pattern="\\+?\\d{7,}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 10 Ziffern ein">
 
   
-        <label for="dataProtection" class="checkbox-container">
+        <div class="checkbox-container">
         <input type="checkbox" class="accept-terms" id="dataProtection" name="dataProtection" required>
          Ich akzeptiere die  <a href="#" class="data-link">Datenschutzbestimmungen</a>
-        </label>
+        </div>
         
         <input type="submit" class="submitButton" value="Weiter">
         <div class="button-wrapper">
