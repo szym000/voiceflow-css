@@ -1006,6 +1006,10 @@ export const patientDataFormKid = {
         .data-link:hover {
           text-decoration: underline !important;
         }
+
+        .hr-custom {
+          margin: 25px 0 20px 0;
+        }
         
       </style>
 
@@ -1015,7 +1019,7 @@ export const patientDataFormKid = {
       <label for="birthday">Geburtstag Ihres Kindes</label>
       <input type="date" class="birthday inputDate" name="birthday" placeholder="TT.MM.JJJJ" required>
 
-      <hr>
+      <hr class="hr-custom">
       
       <label for="name">Ihre Name</label>
       <input type="text" class="name inputText" name="eltern" required placeholder="z.B. Max Mustermann">
