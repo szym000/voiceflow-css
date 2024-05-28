@@ -1022,7 +1022,7 @@ export const patientDataFormKid = {
       <hr class="hr-custom">
       
       <label for="name">Ihre Name</label>
-      <input type="text" class="name inputText" name="eltern" required placeholder="z.B. Max Mustermann">
+      <input type="text" class="eltern inputText" name="eltern" required placeholder="z.B. Max Mustermann">
       
       <label for="email">E-mail</label>
       <input type="email" class="email inputEmail" name="email" placeholder="z.B. mustermann@beispiel.de" pattern="[a-z0-9._%+\\-]+@[a-z0-9\\-]+\\.[a-z]{2,}$" title="Ungültige E-Mail-Adresse">
