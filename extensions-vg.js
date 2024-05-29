@@ -1161,9 +1161,11 @@ export const LinksListExtension = {
           text-decoration: underline;
         }
       </style>
+      <div class=" vg- vg-transition-all vg-duration-300 vg-ease-in-out  vg-opacity-100  vg- vg-group vg-relative vg-text-medium vg-h-auto vg-flex vg-gap-unit-2 vg- false vg-  vg-bg-content2 vg-p-unit-1  vg-max-w-[75%]  vg-rounded-tl-large vg-rounded-bl-[5px] vg-rounded-tr-large vg-rounded-br-large vg-max-w-[500px] vg-message-inner-container-bot vg- false false false vg- "><div class=" vg-p-unit-3 vg-break-words vg-overflow-hidden  vg- false vg- false vg-justify-self-end vg-message-text-bot  vg-message-text-bot vg-text-message-container "><div class=" vg-w-full vg-list-disc vg-line-break vg-message-text-bot--inner ">
       <a href="#" data-id="1" class="link-item">Es kommt nach dem Einsetzen der festen Zahnspange zu Beschwerden</a>
       <a href="#" data-id="2" class="link-item">Ein Separiergummi ist verloren gegangen</a>
       <a href="#" data-id="3" class="link-item">Der Bogen hat sich gelöst</a>
+      </div></div></div>
     `;
 
     // Event listener for link clicks
