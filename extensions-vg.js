@@ -1161,9 +1161,9 @@ export const LinksListExtension = {
           text-decoration: underline;
         }
       </style>
-      <a href="#" data-id="1" class="link-item">Google</a>
-      <a href="#" data-id="2" class="link-item">Voiceflow</a>
-      <a href="#" data-id="3" class="link-item">OpenAI</a>
+      <a href="#" data-id="1" class="link-item">Es kommt nach dem Einsetzen der festen Zahnspange zu Beschwerden</a>
+      <a href="#" data-id="2" class="link-item">Ein Separiergummi ist verloren gegangen</a>
+      <a href="#" data-id="3" class="link-item">Der Bogen hat sich gelöst</a>
     `;
 
     // Event listener for link clicks
