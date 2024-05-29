@@ -1139,3 +1139,38 @@ export const patientDataFormKid = {
     element.appendChild(formContainer);
   },
 };
+
+export const LinksListExtension = {
+  name: 'LinksList',
+  type: 'response',
+  match: ({ trace }) =>
+    trace.type === 'ext_links_list' || trace.payload.name === 'ext_links_list',
+  render: ({ trace, element }) => {
+    const linksContainer = document.createElement('div');
+
+    const links = trace.payload.links; // Expecting an array of { id: string, text: string, url: string } objects
+
+    links.forEach(link => {
+      const linkElement = document.createElement('a');
+      linkElement.href = link.url;
+      linkElement.innerText = link.text;
+      linkElement.dataset.id = link.id;
+      linkElement.style.display = 'block';
+      linkElement.style.margin = '10px 0';
+
+      linkElement.addEventListener('click', (event) => {
+        event.preventDefault();
+        console.log(`Link with ID ${link.id} clicked.`);
+        
+        window.voiceflow.chat.interact({
+          type: 'complete',
+          payload: { selectedLinkId: link.id },
+        });
+      });
+
+      linksContainer.appendChild(linkElement);
+    });
+
+    element.appendChild(linksContainer);
+  },
+};
