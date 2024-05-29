@@ -1148,7 +1148,7 @@ export const LinksListExtension = {
 
     // Add CSS styles to the container
     linksContainer.style.backgroundColor = 'rgb(244, 244, 245)';
-    linksContainer.style.padding = '6px 16px';
+    linksContainer.style.padding = '2px 16px';
     linksContainer.style.borderRadius = '8px';
     linksContainer.style.maxWidth = '82%';
 
@@ -1159,7 +1159,7 @@ export const LinksListExtension = {
     style.innerHTML = `
       .link-item {
         display: block;
-        margin: 10px 0;
+        margin: 14px 0;
         color: rgb(52, 147, 152);
         font-weight: 600;
         text-decoration: none;
