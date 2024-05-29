@@ -1160,9 +1160,9 @@ export const LinksListExtension = {
       .link-item {
         display: block;
         margin: 14px 0;
-        color: rgb(52, 147, 152);
+        color: rgb(52, 147, 152) !important;
         font-weight: 600;
-        text-decoration: none;
+        text-decoration: none !important;
         font-family: inherit;
       }
       .link-item:hover {
