@@ -1154,18 +1154,29 @@ export const LinksListExtension = {
 
     const links = trace.payload.links; // Expecting an array of { id: string, text: string, url: string } objects
 
+    // Adding styles including hover effect
+    const style = document.createElement('style');
+    style.innerHTML = `
+      .link-item {
+        display: block;
+        margin: 10px 0;
+        color: rgb(52, 147, 152);
+        font-weight: 600;
+        text-decoration: none;
+        font-family: inherit;
+      }
+      .link-item:hover {
+        text-decoration: underline !important;
+      }
+    `;
+    document.head.appendChild(style);
+
     links.forEach(link => {
       const linkElement = document.createElement('a');
       linkElement.href = link.url;
       linkElement.innerText = link.text;
       linkElement.dataset.id = link.id;
-
-      // Add CSS styles to the links
-      linkElement.style.color = 'rgb(52, 147, 152)';
-      linkElement.style.fontWeight = '600';
-      linkElement.style.display = 'block';
-      linkElement.style.margin = '10px 0';
-      linkElement.style.textDecoration = 'none';
+      linkElement.classList.add('link-item');
 
       linkElement.addEventListener('click', (event) => {
         event.preventDefault();
