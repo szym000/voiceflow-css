@@ -1173,7 +1173,7 @@ export const LinksListExtension = {
         const linkId = event.target.getAttribute('data-id');
         console.log(`Link clicked: ${linkId}`);
 
-        window.voiceflow.chat.interact({
+        window.VG_ADMIN.interact({
           type: 'complete',
           payload: { linkId },
         });
