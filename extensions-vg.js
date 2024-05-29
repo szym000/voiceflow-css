@@ -1143,8 +1143,6 @@ export const patientDataFormKid = {
 export const LinksListExtension = {
   name: 'LinksList',
   type: 'response',
-  match: ({ trace }) =>
-    trace.type === 'ext_links_list' || trace.payload.name === 'ext_links_list',
   render: ({ trace, element }) => {
     const linksContainer = document.createElement('div');
 
