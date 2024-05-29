@@ -1146,6 +1146,12 @@ export const LinksListExtension = {
   render: ({ trace, element }) => {
     const linksContainer = document.createElement('div');
 
+    // Add CSS styles to the container
+    linksContainer.style.backgroundColor = 'rgb(244, 244, 245)';
+    linksContainer.style.padding = '6px 16px';
+    linksContainer.style.borderRadius = '8px';
+    linksContainer.style.maxWidth = '82%';
+
     const links = trace.payload.links; // Expecting an array of { id: string, text: string, url: string } objects
 
     links.forEach(link => {
@@ -1153,8 +1159,13 @@ export const LinksListExtension = {
       linkElement.href = link.url;
       linkElement.innerText = link.text;
       linkElement.dataset.id = link.id;
+
+      // Add CSS styles to the links
+      linkElement.style.color = 'rgb(52, 147, 152)';
+      linkElement.style.fontWeight = '600';
       linkElement.style.display = 'block';
       linkElement.style.margin = '10px 0';
+      linkElement.style.textDecoration = 'none';
 
       linkElement.addEventListener('click', (event) => {
         event.preventDefault();
