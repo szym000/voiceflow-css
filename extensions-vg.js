@@ -1164,6 +1164,7 @@ export const LinksListExtension = {
         .linksContainer {
           max-width: 75%;
           background-color: rgb(244, 244, 245);
+          padding: 4px;
         }
       </style>
       <div class="linksContainer">
