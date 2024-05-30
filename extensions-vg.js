@@ -1148,7 +1148,7 @@ export const LinksListExtension = {
 
     // Add CSS styles to the container
     linksContainer.style.backgroundColor = 'rgb(244, 244, 245)';
-    linksContainer.style.padding = '2px 16px';
+    linksContainer.style.padding = '2px 16px 16px 16px';
     linksContainer.style.borderRadius = '8px';
     linksContainer.style.maxWidth = '82%';
     linksContainer.style.marginLeft = '8px';
@@ -1168,6 +1168,10 @@ export const LinksListExtension = {
       }
       .link-item:hover {
         text-decoration: underline !important;
+      }
+      .backButtonSos {
+        max-width: 50%;
+        margin-top: 1rem;
       }
     `;
     document.head.appendChild(style);
@@ -1196,7 +1200,7 @@ export const LinksListExtension = {
     const backButton = document.createElement('input');
     backButton.type = 'button';
     backButton.value = '❮ Zurück';
-    backButton.classList.add('backButton');
+    backButton.classList.add('backButton backButtonSos');
 
     backButton.addEventListener('click', () => {
       console.log('Back button clicked.');
