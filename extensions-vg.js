@@ -1171,7 +1171,7 @@ export const LinksListExtension = {
       }
       .backButtonSos {
         max-width: 50%;
-        margin-top: 1rem;
+        margin-top: 1rem !important;
       }
     `;
     document.head.appendChild(style);
