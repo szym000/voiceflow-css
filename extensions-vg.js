@@ -1192,6 +1192,22 @@ export const LinksListExtension = {
       linksContainer.appendChild(linkElement);
     });
 
+    // Add the back button
+    const backButton = document.createElement('input');
+    backButton.type = 'button';
+    backButton.value = '❮ Zurück';
+    backButton.classList.add('backButton');
+
+    backButton.addEventListener('click', () => {
+      console.log('Back button clicked.');
+      window.VG_ADMIN.interact({
+        type: 'back',
+        payload: {}
+      });
+    });
+
+    linksContainer.appendChild(backButton);
+
     element.appendChild(linksContainer);
   },
 };
