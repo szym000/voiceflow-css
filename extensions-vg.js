@@ -1200,7 +1200,7 @@ export const LinksListExtension = {
     const backButton = document.createElement('input');
     backButton.type = 'button';
     backButton.value = '❮ Zurück';
-    backButton.classList.add('backButton backButtonSos');
+    backButton.classList.add('backButton', 'backButtonSos');
 
     backButton.addEventListener('click', () => {
       console.log('Back button clicked.');
