@@ -1151,6 +1151,7 @@ export const LinksListExtension = {
     linksContainer.style.padding = '2px 16px';
     linksContainer.style.borderRadius = '8px';
     linksContainer.style.maxWidth = '82%';
+    linksContainer.style.marginLeft = '8px';
 
     const links = trace.payload.links; // Expecting an array of { id: string, text: string, url: string } objects
 
@@ -1160,8 +1161,8 @@ export const LinksListExtension = {
       .link-item {
         display: block;
         margin: 14px 0;
-        color: rgb(52, 147, 152) !important;
-        font-weight: 600;
+        color: inherit;
+        font-weight: 400;
         text-decoration: none !important;
         font-family: inherit;
       }
