@@ -1169,12 +1169,36 @@ export const LinksListExtension = {
       .link-item:hover {
         text-decoration: underline !important;
       }
+      .link-item.disabled {
+        pointer-events: none;
+        color: gray;
+      }
+      .backButton {
+        display: block;
+        margin: 10px 0;
+        padding: 10px;
+        background-color: #ccc;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: inherit;
+      }
+      .backButton:hover {
+        background-color: #bbb;
+      }
       .backButtonSos {
         max-width: 50%;
         margin-top: 1rem !important;
       }
     `;
     document.head.appendChild(style);
+
+    const disableLinks = () => {
+      const linkElements = linksContainer.querySelectorAll('.link-item');
+      linkElements.forEach(link => {
+        link.classList.add('disabled');
+      });
+    };
 
     links.forEach(link => {
       const linkElement = document.createElement('a');
@@ -1187,6 +1211,8 @@ export const LinksListExtension = {
         event.preventDefault();
         console.log(`Link with ID ${link.id} clicked.`);
         
+        disableLinks();
+
         window.VG_ADMIN.interact({
           type: 'complete',
           payload: { selectedLinkId: link.id },
@@ -1215,6 +1241,7 @@ export const LinksListExtension = {
     element.appendChild(linksContainer);
   },
 };
+
 
 export const notfallTermin = {
   name: 'ext_notfallTermin', // Extension name
