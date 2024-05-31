@@ -1013,10 +1013,10 @@ export const patientDataFormKid = {
         
       </style>
 
-      <label for="name">Name Ihres Kindes</label>
+      <label for="name">Name des Kindes</label>
       <input type="text" class="name inputText" name="name" required placeholder="z.B. Tom Mustermann">
       
-      <label for="birthday">Geburtstag Ihres Kindes</label>
+      <label for="birthday">Geburtstag des Kindes</label>
       <input type="date" class="birthday inputDate" name="birthday" placeholder="TT.MM.JJJJ" required>
 
       <hr class="hr-custom">
