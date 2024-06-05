@@ -1242,7 +1242,6 @@ export const LinksListExtension = {
   },
 };
 
-
 export const notfallTermin = {
   name: 'ext_notfallTermin', // Extension name
   render: ({ trace, element }) => {
@@ -1305,6 +1304,178 @@ formContainer.addEventListener('submit', function (event) {
     type: 'complete',
     payload: {
       notfallTermin: notfallTermin.value
+    },
+  });
+});
+
+// Handle cancel button click
+formContainer.querySelector('.cancelButton').addEventListener('click', function () {
+ window.VG_ADMIN.interact({
+    type: 'cancel',
+    payload: {}
+  });
+});
+
+// Handle cancel button click
+formContainer.querySelector('.backButton').addEventListener('click', function () {
+ window.VG_ADMIN.interact({
+    type: 'back',
+    payload: {}
+  });
+});
+
+      element.appendChild(formContainer); // Append the form to the specified DOM element
+  },
+};
+
+export const kostentDetails = {
+  name: 'ext_kostentDetails', // Extension name
+  render: ({ trace, element }) => {
+      // Function to render the form
+      console.log(`trace from extension: `, trace)
+      const formContainer = kostent.createElement('form'); // Create a form element dynamically
+      formContainer.classList.add('extensionsForm'); // Add a class to the form
+
+
+      // Set the inner HTML of the form, simplifying it to only include input fields and a submit button
+      formContainer.innerHTML = `
+
+    <label for="kostentDetails">Ihre Nachricht</label>
+    <textarea class="textareaField" id="kostentDetails" name="kostentDetails" required placeholder="z.B. Deckt meine Versicherung die gesamten Kosten für die kieferorthopädische Nachsorge nach der Behandlung, inklusive der Anpassung und Erneuerung von Retentionsgeräten?"></textarea>
+    
+    <input type="submit" class="submitButton" value="Weiter">
+    
+    <div class="button-wrapper">
+    <input type="button" class="backButton" value="❮ Zurück">
+    <input type="button" class="cancelButton" value="✕ Abbrechen">
+    </div>
+`;
+
+// Function to check input validity
+const checkInput = () => {
+  const kostentDetails = formContainer.querySelector('#kostentDetails').value;
+
+  const submitButton = formContainer.querySelector('.submitButton');
+  if (kostentDetails.trim() !== '') {
+    submitButton.disabled = false;
+    submitButton.classList.add('activeButton');
+    submitButton.style.cursor = 'pointer';
+  } else {
+    submitButton.disabled = true;
+    submitButton.classList.remove('activeButton');
+    submitButton.style.cursor = 'not-allowed';
+  }
+};
+
+// Attach event listeners to inputs to validate in real-time
+formContainer.querySelector('#kostentDetails').addEventListener('input', checkInput);
+
+formContainer.addEventListener('submit', function (event) {
+  event.preventDefault();
+  const kostentDetails = formContainer.querySelector('#kostentDetails');
+
+  if (!kostentDetails.checkValidity()) {
+    kostentDetails.classList.add('invalid');
+    return;
+  }
+  const buttons = formContainer.querySelectorAll('.submitButton, .cancelButton, .backButton, .activeButton');
+          buttons.forEach(button => {
+              button.disabled = true;
+              button.classList.remove('activeButton');
+              button.style.opacity = '0.5';
+              button.style.cursor = 'not-allowed';
+          });
+
+ window.VG_ADMIN.interact({
+    type: 'complete',
+    payload: {
+      kostentDetails: kostentDetails.value
+    },
+  });
+});
+
+// Handle cancel button click
+formContainer.querySelector('.cancelButton').addEventListener('click', function () {
+ window.VG_ADMIN.interact({
+    type: 'cancel',
+    payload: {}
+  });
+});
+
+// Handle cancel button click
+formContainer.querySelector('.backButton').addEventListener('click', function () {
+ window.VG_ADMIN.interact({
+    type: 'back',
+    payload: {}
+  });
+});
+
+      element.appendChild(formContainer); // Append the form to the specified DOM element
+  },
+};
+
+export const abrechnungDetails = {
+  name: 'ext_abrechnungDetails', // Extension name
+  render: ({ trace, element }) => {
+      // Function to render the form
+      console.log(`trace from extension: `, trace)
+      const formContainer = abrechnung.createElement('form'); // Create a form element dynamically
+      formContainer.classList.add('extensionsForm'); // Add a class to the form
+
+
+      // Set the inner HTML of the form, simplifying it to only include input fields and a submit button
+      formContainer.innerHTML = `
+
+    <label for="abrechnungDetails">Ihre Nachricht</label>
+    <textarea class="textareaField" id="abrechnungDetails" name="abrechnungDetails" required placeholder="z.B. Ich möchte gerne eine Übersicht über die bisherigen Zahlungen und die noch offenen Beträge für meine Zahnspangenbehandlung anfordern."></textarea>
+    
+    <input type="submit" class="submitButton" value="Weiter">
+    
+    <div class="button-wrapper">
+    <input type="button" class="backButton" value="❮ Zurück">
+    <input type="button" class="cancelButton" value="✕ Abbrechen">
+    </div>
+`;
+
+// Function to check input validity
+const checkInput = () => {
+  const abrechnungDetails = formContainer.querySelector('#abrechnungDetails').value;
+
+  const submitButton = formContainer.querySelector('.submitButton');
+  if (abrechnungDetails.trim() !== '') {
+    submitButton.disabled = false;
+    submitButton.classList.add('activeButton');
+    submitButton.style.cursor = 'pointer';
+  } else {
+    submitButton.disabled = true;
+    submitButton.classList.remove('activeButton');
+    submitButton.style.cursor = 'not-allowed';
+  }
+};
+
+// Attach event listeners to inputs to validate in real-time
+formContainer.querySelector('#abrechnungDetails').addEventListener('input', checkInput);
+
+formContainer.addEventListener('submit', function (event) {
+  event.preventDefault();
+  const abrechnungDetails = formContainer.querySelector('#abrechnungDetails');
+
+  if (!abrechnungDetails.checkValidity()) {
+    abrechnungDetails.classList.add('invalid');
+    return;
+  }
+  const buttons = formContainer.querySelectorAll('.submitButton, .cancelButton, .backButton, .activeButton');
+          buttons.forEach(button => {
+              button.disabled = true;
+              button.classList.remove('activeButton');
+              button.style.opacity = '0.5';
+              button.style.cursor = 'not-allowed';
+          });
+
+ window.VG_ADMIN.interact({
+    type: 'complete',
+    payload: {
+      abrechnungDetails: abrechnungDetails.value
     },
   });
 });
