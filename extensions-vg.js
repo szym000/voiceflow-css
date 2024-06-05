@@ -1150,8 +1150,7 @@ export const LinksListExtension = {
     linksContainer.style.backgroundColor = 'rgb(244, 244, 245)';
     linksContainer.style.padding = '2px 16px 16px 16px';
     linksContainer.style.borderRadius = '8px';
-    linksContainer.style.maxWidth = '82%';
-    linksContainer.style.marginLeft = '8px';
+    linksContainer.style.width = 'auto';
 
     const links = trace.payload.links; // Expecting an array of { id: string, text: string, url: string } objects
 
@@ -1190,14 +1189,23 @@ export const LinksListExtension = {
         max-width: 50%;
         margin-top: 1rem !important;
       }
+      .backButtonSos.disabled {
+        pointer-events: none;
+        background-color: gray;
+      }
     `;
     document.head.appendChild(style);
 
-    const disableLinks = () => {
+    const disableLinksAndButton = () => {
       const linkElements = linksContainer.querySelectorAll('.link-item');
       linkElements.forEach(link => {
         link.classList.add('disabled');
       });
+
+      const backButtonSos = linksContainer.querySelector('.backButtonSos');
+      if (backButtonSos) {
+        backButtonSos.classList.add('disabled');
+      }
     };
 
     links.forEach(link => {
@@ -1209,9 +1217,8 @@ export const LinksListExtension = {
 
       linkElement.addEventListener('click', (event) => {
         event.preventDefault();
-        console.log(`Link with ID ${link.id} clicked.`);
         
-        disableLinks();
+        disableLinksAndButton();
 
         window.VG_ADMIN.interact({
           type: 'complete',
@@ -1241,6 +1248,7 @@ export const LinksListExtension = {
     element.appendChild(linksContainer);
   },
 };
+
 
 export const notfallTermin = {
   name: 'ext_notfallTermin', // Extension name
