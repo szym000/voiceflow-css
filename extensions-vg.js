@@ -1328,20 +1328,20 @@ formContainer.querySelector('.backButton').addEventListener('click', function ()
   },
 };
 
-export const kostentDetails = {
-  name: 'ext_kostentDetails', // Extension name
+export const kostenDetails = {
+  name: 'ext_kostenDetails', // Extension name
   render: ({ trace, element }) => {
       // Function to render the form
       console.log(`trace from extension: `, trace)
-      const formContainer = kostent.createElement('form'); // Create a form element dynamically
+      const formContainer = kosten.createElement('form'); // Create a form element dynamically
       formContainer.classList.add('extensionsForm'); // Add a class to the form
 
 
       // Set the inner HTML of the form, simplifying it to only include input fields and a submit button
       formContainer.innerHTML = `
 
-    <label for="kostentDetails">Ihre Nachricht</label>
-    <textarea class="textareaField" id="kostentDetails" name="kostentDetails" required placeholder="z.B. Deckt meine Versicherung die gesamten Kosten für die kieferorthopädische Nachsorge nach der Behandlung, inklusive der Anpassung und Erneuerung von Retentionsgeräten?"></textarea>
+    <label for="kostenDetails">Ihre Nachricht</label>
+    <textarea class="textareaField" id="kostenDetails" name="kostenDetails" required placeholder="z.B. Deckt meine Versicherung die gesamten Kosten für die kieferorthopädische Nachsorge nach der Behandlung, inklusive der Anpassung und Erneuerung von Retentionsgeräten?"></textarea>
     
     <input type="submit" class="submitButton" value="Weiter">
     
@@ -1353,10 +1353,10 @@ export const kostentDetails = {
 
 // Function to check input validity
 const checkInput = () => {
-  const kostentDetails = formContainer.querySelector('#kostentDetails').value;
+  const kostenDetails = formContainer.querySelector('#kostenDetails').value;
 
   const submitButton = formContainer.querySelector('.submitButton');
-  if (kostentDetails.trim() !== '') {
+  if (kostenDetails.trim() !== '') {
     submitButton.disabled = false;
     submitButton.classList.add('activeButton');
     submitButton.style.cursor = 'pointer';
@@ -1368,14 +1368,14 @@ const checkInput = () => {
 };
 
 // Attach event listeners to inputs to validate in real-time
-formContainer.querySelector('#kostentDetails').addEventListener('input', checkInput);
+formContainer.querySelector('#kostenDetails').addEventListener('input', checkInput);
 
 formContainer.addEventListener('submit', function (event) {
   event.preventDefault();
-  const kostentDetails = formContainer.querySelector('#kostentDetails');
+  const kostenDetails = formContainer.querySelector('#kostenDetails');
 
-  if (!kostentDetails.checkValidity()) {
-    kostentDetails.classList.add('invalid');
+  if (!kostenDetails.checkValidity()) {
+    kostenDetails.classList.add('invalid');
     return;
   }
   const buttons = formContainer.querySelectorAll('.submitButton, .cancelButton, .backButton, .activeButton');
@@ -1389,7 +1389,7 @@ formContainer.addEventListener('submit', function (event) {
  window.VG_ADMIN.interact({
     type: 'complete',
     payload: {
-      kostentDetails: kostentDetails.value
+      kostenDetails: kostenDetails.value
     },
   });
 });
