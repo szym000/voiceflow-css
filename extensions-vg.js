@@ -1190,8 +1190,8 @@ export const LinksListExtension = {
         margin-top: 1rem !important;
       }
       .backButtonSos.disabled {
-        pointer-events: none;
-        background-color: gray;
+        cursor: not-allowed;
+        opacity: 0.5;
       }
     `;
     document.head.appendChild(style);
