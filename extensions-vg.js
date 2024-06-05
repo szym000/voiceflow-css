@@ -1333,7 +1333,7 @@ export const kostenDetails = {
   render: ({ trace, element }) => {
       // Function to render the form
       console.log(`trace from extension: `, trace)
-      const formContainer = kosten.createElement('form'); // Create a form element dynamically
+      const formContainer = document.createElement('form'); // Create a form element dynamically
       formContainer.classList.add('extensionsForm'); // Add a class to the form
 
 
@@ -1419,7 +1419,7 @@ export const abrechnungDetails = {
   render: ({ trace, element }) => {
       // Function to render the form
       console.log(`trace from extension: `, trace)
-      const formContainer = abrechnung.createElement('form'); // Create a form element dynamically
+      const formContainer = document.createElement('form'); // Create a form element dynamically
       formContainer.classList.add('extensionsForm'); // Add a class to the form
 
 
