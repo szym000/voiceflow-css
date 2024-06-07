@@ -173,6 +173,7 @@ export const apothekeAbholung = {
 export const patientDataForm = {
     name: 'ext_patientDataForm',
     render: ({ trace, element }) => {
+      setTimeout(() => {
         // Function to render the form
         console.log(`trace from extension: `, trace)
         const formContainer = document.createElement('form'); // Create a form element dynamically
@@ -369,7 +370,7 @@ export const patientDataForm = {
       });
   
       element.appendChild(formContainer);
-        }, 3000); // Delay in milliseconds
+        }, 750); // Delay in milliseconds
     },
 };
 
