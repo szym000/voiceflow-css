@@ -1,3 +1,89 @@
+export const documentDetails = {
+    name: 'ext_documentDetails', // Extension name
+    render: ({ trace, element }) => {
+        // Function to render the form
+        console.log(`trace from extension: `, trace)
+        const formContainer = document.createElement('form'); // Create a form element dynamically
+        formContainer.classList.add('extensionsForm'); // Add a class to the form
+
+
+        // Set the inner HTML of the form, simplifying it to only include input fields and a submit button
+        formContainer.innerHTML = `
+
+      <label for="documentDetails">Ihre Informationen/Angaben</label>
+      <textarea class="textareaField" id="documentDetails" name="documentDetails" required placeholder="Bitte senden Sie mir eine Kopie meiner Gehaltsabrechnungen für den Zeitraum Januar bis März 2024."></textarea>
+      
+      <input type="submit" class="submitButton" value="Weiter">
+      
+      <div class="button-wrapper">
+      <input type="button" class="backButton" value="❮ Zurück">
+      <input type="button" class="cancelButton" value="✕ Abbrechen">
+      </div>
+`;
+
+ // Function to check input validity
+ const checkInput = () => {
+    const documentDetails = formContainer.querySelector('#documentDetails').value;
+
+    const submitButton = formContainer.querySelector('.submitButton');
+    if (documentDetails.trim() !== '') {
+      submitButton.disabled = false;
+      submitButton.classList.add('activeButton');
+      submitButton.style.cursor = 'pointer';
+    } else {
+      submitButton.disabled = true;
+      submitButton.classList.remove('activeButton');
+      submitButton.style.cursor = 'not-allowed';
+    }
+  };
+
+  // Attach event listeners to inputs to validate in real-time
+  formContainer.querySelector('#documentDetails').addEventListener('input', checkInput);
+
+  formContainer.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const documentDetails = formContainer.querySelector('#documentDetails');
+
+    if (!documentDetails.checkValidity()) {
+      documentDetails.classList.add('invalid');
+      return;
+    }
+    const buttons = formContainer.querySelectorAll('.submitButton, .cancelButton, .backButton, .activeButton');
+            buttons.forEach(button => {
+                button.disabled = true;
+                button.classList.remove('activeButton');
+                button.style.opacity = '0.5';
+                button.style.cursor = 'not-allowed';
+            });
+
+   window.VG_ADMIN.interact({
+      type: 'complete',
+      payload: {
+        documentDetails: documentDetails.value
+      },
+    });
+  });
+
+  // Handle cancel button click
+  formContainer.querySelector('.cancelButton').addEventListener('click', function () {
+   window.VG_ADMIN.interact({
+      type: 'cancel',
+      payload: {}
+    });
+  });
+
+  // Handle cancel button click
+  formContainer.querySelector('.backButton').addEventListener('click', function () {
+   window.VG_ADMIN.interact({
+      type: 'back',
+      payload: {}
+    });
+  });
+
+        element.appendChild(formContainer); // Append the form to the specified DOM element
+    },
+};
+
 
 export const patientDataForm = {
     name: 'ext_patientDataForm',
