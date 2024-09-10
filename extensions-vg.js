@@ -585,7 +585,7 @@ export const uberweisungAnfordern = {
           display: flex;
           flex-direction: column;
           margin-bottom: 1rem !important;
-          margin-top: 0.5rem !important;
+      
 
       }
       
@@ -619,7 +619,7 @@ export const uberweisungAnfordern = {
       <label class="label-radio">Ist die Überweisung für einen Erwachsenen oder ein Kind?</label>
 <div class="radio-container">
 <div class="radio-option">
-    <input type="radio" id="adult" name="recipient" value="Erwachsene" required>
+    <input type="radio" id="adult" name="recipient" value="Erwachsene" required checked>
     <label for="adult">Erwachsene</label>
     </div>
     <div class="radio-option">
@@ -631,7 +631,7 @@ export const uberweisungAnfordern = {
 <label class="label-radio">Wie sind Sie versichert?</label>
 <div class="radio-container">
 <div class="radio-option">
-    <input type="radio" id="statutory" name="insurance" value="Gesetzlich" required>
+    <input type="radio" id="statutory" name="insurance" value="Gesetzlich" required checked>
     <label for="statutory">Gesetzlich</label>
     </div>
     <div class="radio-option">
@@ -647,7 +647,7 @@ export const uberweisungAnfordern = {
 <label class="label-radio">Welche Abholmethode bevorzugen Sie für die Überweisung?</label>
 <div class="radio-container">
 <div class="radio-option">
-    <input type="radio" id="onsite" name="pickup" value="vor Ort" required>
+    <input type="radio" id="onsite" name="pickup" value="vor Ort" required checked>
     <label for="onsite">vor Ort</label>
     </div>
     <div class="radio-option">
