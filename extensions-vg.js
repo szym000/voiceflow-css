@@ -584,7 +584,6 @@ export const uberweisungAnfordern = {
         .radio-container {
           display: flex;
           align-items: center;
-          gap: 10px;
           font-size: 16px;
           color: rgb(17, 24, 28);
       }
@@ -594,8 +593,9 @@ export const uberweisungAnfordern = {
       }
       
       .radio-container .label {
-          font-size: 16px;
-          color: rgb(17, 24, 28);
+          font-size: 16px !important;
+          color: rgb(17, 24, 28) !important;
+          margin-right: 12px !important;
       }
       </style>
       <label>Soll die Überweisung für einen Erwachsenen oder ein Kind ausgestellt werden?</label>
