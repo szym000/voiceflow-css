@@ -581,10 +581,49 @@ export const uberweisungAnfordern = {
         // Set the inner HTML of the form, simplifying it to only include input fields and a submit button
         formContainer.innerHTML = `
         <style>
-        
+        .radio-container {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 16px;
+          color: rgb(17, 24, 28);
+      }
+      
+      .radio-container input[type="radio"] {
+          margin-right: 5px;
+      }
+      
+      .radio-container .label {
+          font-size: 16px;
+          color: rgb(17, 24, 28);
+      }
       </style>
+      <label>Soll die Überweisung für einen Erwachsenen oder ein Kind ausgestellt werden?</label>
+<div class="radio-container">
+    <input type="radio" id="adult" name="recipient" value="Erwachsene" required>
+    <label for="adult">Erwachsene</label>
+    <input type="radio" id="child" name="recipient" value="Kind" required>
+    <label for="child">Kind</label>
+</div>
 
-      <label for="uberweisungAnfordern">Benötigte Überweisung</label>
+<label>Wie sind Sie versichert?</label>
+<div class="radio-container">
+    <input type="radio" id="statutory" name="insurance" value="Gesetzlich" required>
+    <label for="statutory">Gesetzlich</label>
+    <input type="radio" id="private" name="insurance" value="Privat" required>
+    <label for="private">Privat</label>
+    <input type="radio" id="self-payer" name="insurance" value="Selbstzahler" required>
+    <label for="self-payer">Selbstzahler</label>
+</div>
+
+<label>Welche Abholmethode bevorzugen Sie für die Überweisung?</label>
+<div class="radio-container">
+    <input type="radio" id="onsite" name="pickup" value="vor Ort" required>
+    <label for="onsite">vor Ort</label>
+    <input type="radio" id="mail" name="pickup" value="per Post" required>
+    <label for="mail">per Post</label>
+</div>
+      <label for="uberweisungAnfordern">Benötigte Überweisung*</label>
       <textarea class="textareaField" id="uberweisungAnfordern" name="uberweisungAnfordern" required placeholder="z.B. Überweisung MRT linke Hand"></textarea>
       
       <input type="submit" class="submitButton" value="Weiter">
