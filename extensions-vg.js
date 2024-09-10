@@ -583,18 +583,24 @@ export const uberweisungAnfordern = {
         <style>
         .radio-container {
           display: flex;
-          align-items: center;
+          flex-direction: column;
 
       }
       
       .radio-container input[type="radio"] {
           margin-right: 5px;
       }
+
+      .radio-option {
+        display: flex;
+        align-items: center; /* Keep the label and radio button on the same line */
+    }
       
       .radio-container label {
           font-size: 15px !important;
           color: rgb(17, 24, 28) !important;
           margin-right: 2rem !important;
+          font-weight: inherit !important;
       }
 
       .label-radio {
@@ -608,28 +614,42 @@ export const uberweisungAnfordern = {
       </style>
       <label class="label-radio">Ist die Überweisung für einen Erwachsenen oder ein Kind?</label>
 <div class="radio-container">
+<div class="radio-option">
     <input type="radio" id="adult" name="recipient" value="Erwachsene" required>
     <label for="adult">Erwachsene</label>
+    </div>
+    <div class="radio-option">
     <input type="radio" id="child" name="recipient" value="Kind" required>
     <label for="child">Kind</label>
+    </div>
 </div>
 
 <label class="label-radio">Wie sind Sie versichert?</label>
 <div class="radio-container">
+<div class="radio-option">
     <input type="radio" id="statutory" name="insurance" value="Gesetzlich" required>
     <label for="statutory">Gesetzlich</label>
+    </div>
+    <div class="radio-option">
     <input type="radio" id="private" name="insurance" value="Privat" required>
     <label for="private">Privat</label>
+    </div>
+    <div class="radio-option">
     <input type="radio" id="self-payer" name="insurance" value="Selbstzahler" required>
     <label for="self-payer">Selbstzahler</label>
+    </div>
 </div>
 
 <label class="label-radio">Welche Abholmethode bevorzugen Sie für die Überweisung?</label>
 <div class="radio-container">
+<div class="radio-option">
     <input type="radio" id="onsite" name="pickup" value="vor Ort" required>
     <label for="onsite">vor Ort</label>
+    </div>
+    <div class="radio-option">
     <input type="radio" id="mail" name="pickup" value="per Post" required>
     <label for="mail">per Post</label>
+    </div>
 </div>
       <label for="uberweisungAnfordern">Benötigte Überweisung*</label>
       <textarea class="textareaField" id="uberweisungAnfordern" name="uberweisungAnfordern" required placeholder="z.B. Überweisung MRT linke Hand"></textarea>
