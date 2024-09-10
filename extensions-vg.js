@@ -183,13 +183,13 @@ export const patientDataForm = {
       <style>
         .inputText, .inputEmail, .inputPhone, .inputDate {
           font-family: inherit !important;
-          width: 300px !important;
+          width: 100% !important;
           border: 1px solid #ccc !important;
           background: #fff !important;
           margin: 5px 0 20px 0 !important;
           outline: none !important;
           height: 20px !important;
-          padding: 16px !important;
+          padding: 18px !important;
           border-radius: 6px !important;
           display: block !important;
           font-size: 16px !important;
@@ -1009,13 +1009,13 @@ export const patientDataFormKid = {
       <style>
         .inputText, .inputEmail, .inputPhone, .inputDate {
           font-family: inherit !important;
-          width: 300px !important;
+          width: 100% !important;
           border: 1px solid #ccc !important;
           background: #fff !important;
           margin: 5px 0 20px 0 !important;
           outline: none !important;
           height: 20px !important;
-          padding: 16px !important;
+          padding: 18px !important;
           border-radius: 6px !important;
           display: block !important;
           font-size: 16px !important;
