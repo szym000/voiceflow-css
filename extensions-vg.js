@@ -584,7 +584,7 @@ export const uberweisungAnfordern = {
         .radio-container {
           display: flex;
           align-items: center;
-          font-size: 16px;
+          font-size: 15px;
           color: rgb(17, 24, 28);
       }
       
@@ -597,8 +597,18 @@ export const uberweisungAnfordern = {
           color: rgb(17, 24, 28) !important;
           margin-right: 12px !important;
       }
+
+      .label-radio {
+        margin-bottom: 1rem;
+      }
+      .radio-container input[type="radio"] {
+        margin-right: 5px;  /* Space between the radio button and the label */
+        width: 18px;  /* Optional: Set a specific width */
+        height: 18px; /* Optional: Set a specific height */
+    }
+    
       </style>
-      <label>Ist die Überweisung für einen Erwachsenen oder ein Kind?</label>
+      <label class="label-radio">Ist die Überweisung für einen Erwachsenen oder ein Kind?</label>
 <div class="radio-container">
     <input type="radio" id="adult" name="recipient" value="Erwachsene" required>
     <label for="adult">Erwachsene</label>
@@ -606,7 +616,7 @@ export const uberweisungAnfordern = {
     <label for="child">Kind</label>
 </div>
 
-<label>Wie sind Sie versichert?</label>
+<label class="label-radio">Wie sind Sie versichert?</label>
 <div class="radio-container">
     <input type="radio" id="statutory" name="insurance" value="Gesetzlich" required>
     <label for="statutory">Gesetzlich</label>
@@ -616,7 +626,7 @@ export const uberweisungAnfordern = {
     <label for="self-payer">Selbstzahler</label>
 </div>
 
-<label>Welche Abholmethode bevorzugen Sie für die Überweisung?</label>
+<label class="label-radio">Welche Abholmethode bevorzugen Sie für die Überweisung?</label>
 <div class="radio-container">
     <input type="radio" id="onsite" name="pickup" value="vor Ort" required>
     <label for="onsite">vor Ort</label>
