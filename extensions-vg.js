@@ -592,7 +592,7 @@ export const uberweisungAnfordern = {
           margin-right: 5px;
       }
       
-      .radio-container .label {
+      .radio-container label {
           font-size: 16px !important;
           color: rgb(17, 24, 28) !important;
           margin-right: 12px !important;
