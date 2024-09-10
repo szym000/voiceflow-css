@@ -645,7 +645,7 @@ export const uberweisungAnfordern = {
     </div>
 </div>
 
-<label class="label-radio">Welche Abholmethode bevorzugen Sie für die Überweisung?</label>
+<label class="label-radio">Bevorzügte Abholmethode:</label>
 <div class="radio-container">
 <div class="radio-option">
     <input type="radio" id="onsite" name="pickup" value="vor Ort" required checked>
