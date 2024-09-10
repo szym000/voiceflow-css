@@ -186,7 +186,7 @@ export const patientDataForm = {
           width: 300px !important;
           border: 1px solid #ccc !important;
           background: #fff !important;
-          margin: 5px 0 10px 0 !important;
+          margin: 5px 0 18px 0 !important;
           outline: none !important;
           height: 20px !important;
           padding: 16px !important;
@@ -591,6 +591,7 @@ export const uberweisungAnfordern = {
       
       .radio-container input[type="radio"] {
           margin-right: 5px;
+          accent-color: rgb(60, 117, 119) !important;
       }
 
       .radio-option {
