@@ -186,7 +186,7 @@ export const patientDataForm = {
           width: 300px !important;
           border: 1px solid #ccc !important;
           background: #fff !important;
-          margin: 5px 0 18px 0 !important;
+          margin: 5px 0 20px 0 !important;
           outline: none !important;
           height: 20px !important;
           padding: 16px !important;
@@ -271,7 +271,7 @@ export const patientDataForm = {
 
       <div class="checkbox-container">
       <input type="checkbox" class="accept-terms" id="dataProtection" name="dataProtection" required>
-       Ich akzeptiere die  <a href="#" class="data-link">Datenschutzbestimmungen</a>
+       Ich akzeptiere die  <a href="#" class="data-link">Datenschutzbestimmungen</a>*
       </div>
       
       <input type="submit" class="submitButton" value="Weiter">
@@ -1012,7 +1012,7 @@ export const patientDataFormKid = {
           width: 300px !important;
           border: 1px solid #ccc !important;
           background: #fff !important;
-          margin: 5px 0 18px 0 !important;
+          margin: 5px 0 20px 0 !important;
           outline: none !important;
           height: 20px !important;
           padding: 16px !important;
