@@ -584,8 +584,7 @@ export const uberweisungAnfordern = {
         .radio-container {
           display: flex;
           align-items: center;
-          font-size: 15px;
-          color: rgb(17, 24, 28);
+
       }
       
       .radio-container input[type="radio"] {
@@ -593,13 +592,12 @@ export const uberweisungAnfordern = {
       }
       
       .radio-container label {
-          font-size: 16px !important;
+          font-size: 15px !important;
           color: rgb(17, 24, 28) !important;
-          margin-right: 12px !important;
+          margin-right: 2rem !important;
       }
 
       .label-radio {
-        margin-bottom: 1rem;
       }
       .radio-container input[type="radio"] {
         margin-right: 5px;  /* Space between the radio button and the label */
