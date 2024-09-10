@@ -256,7 +256,7 @@ export const patientDataForm = {
           
         </style>
   
-        <label for="name">Name</label>
+        <label for="name">Name*</label>
         <input type="text" class="name inputText" name="name" required placeholder="z.B. Max Mustermann" required>
   
         <label for="birthday">Geburtstag</label>
