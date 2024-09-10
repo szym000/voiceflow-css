@@ -256,13 +256,13 @@ export const patientDataForm = {
           
         </style>
   
-        <label for="name">Name lol*</label>
+        <label for="name">Name*</label>
         <input type="text" class="name inputText" name="name" required placeholder="z.B. Max Mustermann" required>
   
-        <label for="birthday">Geburtstag</label>
+        <label for="birthday">Geburtstag*</label>
         <input type="date" class="birthday inputDate" name="birthday" placeholder="TT.MM.JJJJ" required>
   
-        <label for="email">E-mail</label>
+        <label for="email">E-mail*</label>
         <input type="email" class="email inputEmail" name="email" placeholder="z.B. mustermann@beispiel.de" pattern="[a-z0-9._%+\\-]+@[a-z0-9\\-]+\\.[a-z]{2,}$" title="Ungültige E-Mail-Adresse" required>
 
         <label for="phone">Telefon</label>
