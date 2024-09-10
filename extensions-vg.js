@@ -598,7 +598,7 @@ export const uberweisungAnfordern = {
           margin-right: 12px !important;
       }
       </style>
-      <label>Soll die Überweisung für einen Erwachsenen oder ein Kind ausgestellt werden?</label>
+      <label>Ist die Überweisung für einen Erwachsenen oder ein Kind?</label>
 <div class="radio-container">
     <input type="radio" id="adult" name="recipient" value="Erwachsene" required>
     <label for="adult">Erwachsene</label>
