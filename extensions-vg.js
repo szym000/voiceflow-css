@@ -257,13 +257,13 @@ export const patientDataForm = {
         </style>
   
         <label for="name">Name</label>
-        <input type="text" class="name inputText" name="name" required placeholder="z.B. Max Mustermann">
+        <input type="text" class="name inputText" name="name" required placeholder="z.B. Max Mustermann" required>
   
         <label for="birthday">Geburtstag</label>
         <input type="date" class="birthday inputDate" name="birthday" placeholder="TT.MM.JJJJ" required>
   
         <label for="email">E-mail</label>
-        <input type="email" class="email inputEmail" name="email" placeholder="z.B. mustermann@beispiel.de" pattern="[a-z0-9._%+\\-]+@[a-z0-9\\-]+\\.[a-z]{2,}$" title="Ungültige E-Mail-Adresse">
+        <input type="email" class="email inputEmail" name="email" placeholder="z.B. mustermann@beispiel.de" pattern="[a-z0-9._%+\\-]+@[a-z0-9\\-]+\\.[a-z]{2,}$" title="Ungültige E-Mail-Adresse" required>
 
         <label for="phone">Telefon</label>
         <input type="tel" class="phone inputPhone" name="phone" placeholder="z.B. +491234567890" pattern="\\+?\\d{7,}" title="Ungültige Telefonnummer, bitte geben Sie mindestens 10 Ziffern ein">
@@ -292,8 +292,7 @@ export const patientDataForm = {
         // Additional: Check if the checkbox is checked
         const isTermsAccepted = formContainer.querySelector('.accept-terms').checked;
       
-        const isEmailOrPhoneValid = email !== '' || phone !== '';
-        const isFormValid = name && birthday && isEmailOrPhoneValid && isTermsAccepted;
+        const isFormValid = name && birthday && email && isTermsAccepted;
       
         const submitButton = formContainer.querySelector('.submitButton');
         if (isFormValid) {
