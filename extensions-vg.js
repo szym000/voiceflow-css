@@ -584,6 +584,8 @@ export const uberweisungAnfordern = {
         .radio-container {
           display: flex;
           flex-direction: column;
+          margin-bottom: 1rem;
+          margin-top: 0.5rem;
 
       }
       
@@ -592,6 +594,7 @@ export const uberweisungAnfordern = {
       }
 
       .radio-option {
+        margin-bottom: 0.25rem;
         display: flex;
         align-items: center; /* Keep the label and radio button on the same line */
     }
@@ -601,6 +604,7 @@ export const uberweisungAnfordern = {
           color: rgb(17, 24, 28) !important;
           margin-right: 2rem !important;
           font-weight: inherit !important;
+          margin: 0 !important;
       }
 
       .label-radio {
