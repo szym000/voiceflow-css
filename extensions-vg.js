@@ -706,6 +706,9 @@ export const uberweisungAnfordern = {
       type: 'complete',
       payload: {
         uberweisungAnfordern: uberweisungAnfordern.value
+        pickup: pickup.value
+        insurance: insurance.value
+        recipient: recipient.value
       },
     });
   });
