@@ -710,7 +710,7 @@ export const uberweisungAnfordern = {
    window.VG_ADMIN.interact({
       type: 'complete',
       payload: {
-        uberweisungAnfordern: recipient.value,
+        uberweisungAnfordern: uberweisungAnfordern.value,
         pickup: pickup.value,
         insurance: insurance.value,
         recipient: recipient.value
