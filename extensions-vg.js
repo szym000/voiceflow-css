@@ -705,12 +705,12 @@ export const uberweisungAnfordern = {
    window.VG_ADMIN.interact({
       type: 'complete',
       payload: {
-        uberweisungAnfordern: uberweisungAnfordern.value
-        pickup: pickup.value
-        insurance: insurance.value
+        uberweisungAnfordern: uberweisungAnfordern.value,
+        pickup: pickup.value,
+        insurance: insurance.value,
         recipient: recipient.value
       },
-    });
+    }); 
   });
 
   // Handle cancel button click
