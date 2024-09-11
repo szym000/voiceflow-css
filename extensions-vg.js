@@ -692,6 +692,7 @@ export const uberweisungAnfordern = {
     const pickup = formContainer.querySelector('input[name="pickup"]:checked').value;
     const insurance = formContainer.querySelector('input[name="insurance"]:checked').value;
     const recipient = formContainer.querySelector('input[name="recipient"]:checked').value;
+    console.log(pickup);
 
 
     if (!uberweisungAnfordern.checkValidity()) {
