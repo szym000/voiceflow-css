@@ -689,9 +689,9 @@ export const uberweisungAnfordern = {
   formContainer.addEventListener('submit', function (event) {
     event.preventDefault();
     const uberweisungAnfordern = formContainer.querySelector('#uberweisungAnfordern');
-    const pickup = formContainer.querySelector('input[name="pickup"]:checked').value;
-    const insurance = formContainer.querySelector('input[name="insurance"]:checked').value;
-    const recipient = formContainer.querySelector('input[name="recipient"]:checked').value;
+    const pickup = formContainer.querySelector('input[name="pickup"]:checked');
+    const insurance = formContainer.querySelector('input[name="insurance"]:checked');
+    const recipient = formContainer.querySelector('input[name="recipient"]:checked');
     console.log(pickup);
 
 
