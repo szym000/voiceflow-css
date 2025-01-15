@@ -934,3 +934,96 @@ export const PharmacySelectorExtension = {
     element.appendChild(container);
   },
 };
+
+export const ext_selectEvent = {
+  name: 'EventSelector',
+  type: 'response',
+  match: ({ trace }) =>
+    trace.type === 'select_event' || trace.payload.name === 'select_event',
+  render: async ({ trace, element }) => {
+    const container = document.createElement('div');
+    container.innerHTML = `
+      <style>
+        input[type="text"] {
+          width: 100%;
+          padding: 8px;
+          margin: 8px 0;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+        }
+        .event-list {
+          z-index: 9999;
+          list-style-type: none;
+          padding: 0;
+          max-height: 200px;
+          overflow-y: auto;
+        }
+        .event-list li {
+          padding: 8px;
+          background: #f9f9f9;
+          border-bottom: 1px solid #ddd;
+          cursor: pointer;
+        }
+        .event-list li:hover {
+          background: #eee;
+        }
+      </style>
+
+      <input type="text" id="eventSearch" placeholder="Enter event title...">
+      <ul class="event-list" id="eventList"></ul>
+    `;
+
+    const eventSearchInput = container.querySelector('#eventSearch');
+    const eventListElement = container.querySelector('#eventList');
+
+    // Fetch events from the WordPress API
+    async function fetchEvents() {
+      try {
+        const response = await fetch('https://www.embl.org/about/info/course-and-conference-office/wp-json/wp/v2/vf_events?per_page=100');
+        if (!response.ok) throw new Error('Failed to fetch events');
+        return await response.json();
+      } catch (error) {
+        console.error('Error fetching events:', error);
+        return [];
+      }
+    }
+
+    // Render event list based on the fetched events and user input
+    function renderEventList(events, filter = '') {
+      eventListElement.innerHTML = '';
+      const filteredEvents = events.filter(event =>
+        event.title.rendered.toLowerCase().includes(filter.toLowerCase())
+      );
+
+      filteredEvents.forEach(event => {
+        const li = document.createElement('li');
+        li.textContent = event.title.rendered;
+        li.addEventListener('click', () => {
+          console.log(`Selected: ${event.title.rendered}`);
+          window.voiceflow.chat.interact({
+            type: 'complete',
+            payload: { event_id: event.id, event_title: event.title.rendered },
+          });
+        });
+        eventListElement.appendChild(li);
+      });
+    }
+
+    // Initialize the event search functionality
+    async function initializeEventSearch() {
+      const events = await fetchEvents();
+
+      renderEventList(events);
+
+      eventSearchInput.addEventListener('input', (e) => {
+        renderEventList(events, e.target.value);
+      });
+    }
+
+    await initializeEventSearch();
+
+    element.appendChild(container);
+  },
+};
+
