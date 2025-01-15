@@ -1002,8 +1002,8 @@ export const ext_selectEvent = {
 
       <input type="text" id="eventSearch" placeholder="Search by event title">
       <div id="loading" class="loading">
+      Loading...
         <div class="spinner"></div>
-        Loading events...
       </div>
       <ul class="event-list" id="eventList" style="display: none;"></ul>
     `;
