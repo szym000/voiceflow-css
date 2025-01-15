@@ -1000,9 +1000,9 @@ export const ext_selectEvent = {
         }
       </style>
 
-      <input type="text" id="eventSearch" placeholder="Search by event title">
+      <input type="text" id="eventSearch" placeholder="Search by event title" required>
       <div id="loading" class="loading">
-      Loading...
+        Loading...
         <div class="spinner"></div>
       </div>
       <ul class="event-list" id="eventList" style="display: none;"></ul>
@@ -1040,6 +1040,11 @@ export const ext_selectEvent = {
           li.textContent = event.title;
           li.addEventListener('click', () => {
             console.log(`Selected: ${event.title}`);
+
+            // Disable the input and hide the list
+            eventSearchInput.disabled = true;
+            eventListElement.style.display = 'none';
+
             window.voiceflow.chat.interact({
               type: 'complete',
               payload: { event_id: event.id, event_title: event.title },
@@ -1066,3 +1071,4 @@ export const ext_selectEvent = {
     initializeEventSearch();
   },
 };
+
