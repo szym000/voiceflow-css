@@ -8,6 +8,9 @@
     .vfrc-system-response--list .vfrc-message--chat {
         max-width: 375px !important;
     }
+    .vfrc-message--extension-EventSelector {
+        width: 375px !important;
+    }
 }
 
 .c-kIbiaN-eyfkxi-size-large {

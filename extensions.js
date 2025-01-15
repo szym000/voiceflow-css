@@ -972,7 +972,7 @@ export const ext_selectEvent = {
         }
         .event-list li {
           padding: 8px;
-          background: #f9f9f9;
+          background: #fff;
           border-bottom: 1px solid #ddd;
           cursor: pointer;
         }
