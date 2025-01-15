@@ -42,15 +42,19 @@
 	color: #64AFB4;
 }
 
-.vfrc-launcher {
+.vfrc-message  {
+	background-color: #707372;
+}
+
+/* .vfrc-launcher {
 	border-radius: 10px;
 	height: auto;
     	width: 100%;
 	border: 2px solid var(--colors-shadow4);
 	position: relative;
-}
+} */
 
-.vfrc-widget--launcher {
+/* .vfrc-widget--launcher {
   position: relative; 
 	}
 
@@ -71,7 +75,7 @@
         height: 47px;
         border-radius: 10px;
 
-}
+} */
 
 .vfrc-button--secondary:hover {
 	background-color: #71C9CE;
