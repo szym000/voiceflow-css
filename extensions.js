@@ -934,8 +934,7 @@ export const PharmacySelectorExtension = {
     element.appendChild(container);
   },
 };
-
-export const ext_selectEvent = {
+export const EventSelectorExtension = {
   name: 'EventSelector',
   type: 'response',
   match: ({ trace }) =>
@@ -968,14 +967,21 @@ export const ext_selectEvent = {
         .event-list li:hover {
           background: #eee;
         }
+        .loading {
+          text-align: center;
+          color: #666;
+        }
       </style>
 
       <input type="text" id="eventSearch" placeholder="Enter event title...">
-      <ul class="event-list" id="eventList"></ul>
+      <div id="loading" class="loading">Loading events...</div>
+      <ul class="event-list" id="eventList" style="display: none;"></ul>
     `;
 
     const eventSearchInput = container.querySelector('#eventSearch');
     const eventListElement = container.querySelector('#eventList');
+    const loadingElement = container.querySelector('#loading');
+    let events = [];
 
     // Fetch events from the WordPress API
     async function fetchEvents() {
@@ -990,40 +996,45 @@ export const ext_selectEvent = {
     }
 
     // Render event list based on the fetched events and user input
-    function renderEventList(events, filter = '') {
+    function renderEventList(filter = '') {
       eventListElement.innerHTML = '';
       const filteredEvents = events.filter(event =>
         event.title.rendered.toLowerCase().includes(filter.toLowerCase())
       );
 
-      filteredEvents.forEach(event => {
-        const li = document.createElement('li');
-        li.textContent = event.title.rendered;
-        li.addEventListener('click', () => {
-          console.log(`Selected: ${event.title.rendered}`);
-          window.voiceflow.chat.interact({
-            type: 'complete',
-            payload: { event_id: event.id, event_title: event.title.rendered },
+      if (filteredEvents.length === 0) {
+        eventListElement.innerHTML = '<li>No events found</li>';
+      } else {
+        filteredEvents.forEach(event => {
+          const li = document.createElement('li');
+          li.textContent = event.title.rendered;
+          li.addEventListener('click', () => {
+            console.log(`Selected: ${event.title.rendered}`);
+            window.voiceflow.chat.interact({
+              type: 'complete',
+              payload: { event_id: event.id, event_title: event.title.rendered },
+            });
           });
+          eventListElement.appendChild(li);
         });
-        eventListElement.appendChild(li);
-      });
+      }
     }
 
     // Initialize the event search functionality
     async function initializeEventSearch() {
-      const events = await fetchEvents();
+      events = await fetchEvents();
+      loadingElement.style.display = 'none';
+      eventListElement.style.display = 'block';
 
-      renderEventList(events);
+      renderEventList();
 
       eventSearchInput.addEventListener('input', (e) => {
-        renderEventList(events, e.target.value);
+        renderEventList(e.target.value);
       });
     }
 
-    await initializeEventSearch();
+    initializeEventSearch();
 
     element.appendChild(container);
   },
 };
-
