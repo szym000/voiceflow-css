@@ -935,7 +935,7 @@ export const PharmacySelectorExtension = {
   },
 };
 
-import { createRoot } from 'react-dom/client';
+
 
 export const ext_selectEvent = {
   name: 'EventSelector',
@@ -945,113 +945,106 @@ export const ext_selectEvent = {
   render: async ({ trace, element }) => {
     const containerId = 'event-selector-container';
 
-    // Check if a root already exists
-    let root = element.querySelector(`#${containerId}`);
-    if (!root) {
-      root = document.createElement('div');
-      root.id = containerId;
-      element.appendChild(root);
+    // Check if the container already exists
+    let container = element.querySelector(`#${containerId}`);
+    if (!container) {
+      container = document.createElement('div');
+      container.id = containerId;
+      element.appendChild(container);
     }
 
-    // Ensure the container is initialized only once
-    const reactRoot = root._reactRootContainer
-      ? root._reactRootContainer
-      : createRoot(root);
+    container.innerHTML = `
+      <style>
+        input[type="text"] {
+          width: 100%;
+          padding: 8px;
+          margin: 8px 0;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+        }
+        .event-list {
+          z-index: 9999;
+          list-style-type: none;
+          padding: 0;
+          max-height: 200px;
+          overflow-y: auto;
+        }
+        .event-list li {
+          padding: 8px;
+          background: #f9f9f9;
+          border-bottom: 1px solid #ddd;
+          cursor: pointer;
+        }
+        .event-list li:hover {
+          background: #eee;
+        }
+        .loading {
+          text-align: center;
+          color: #666;
+        }
+      </style>
 
-    reactRoot.render(<EventSelector />);
-  },
-};
+      <input type="text" id="eventSearch" placeholder="Enter event title...">
+      <div id="loading" class="loading">Loading events...</div>
+      <ul class="event-list" id="eventList" style="display: none;"></ul>
+    `;
 
-function EventSelector() {
-  const [events, setEvents] = React.useState([]);
-  const [filter, setFilter] = React.useState('');
-  const [loading, setLoading] = React.useState(true);
+    const eventSearchInput = container.querySelector('#eventSearch');
+    const eventListElement = container.querySelector('#eventList');
+    const loadingElement = container.querySelector('#loading');
+    let events = [];
 
-  React.useEffect(() => {
+    // Fetch events from the WordPress API
     async function fetchEvents() {
       try {
-        const response = await fetch('https://www.embl.org/about/info/course-and-conference-office/wp-json/wp/v2/vf_events?per_page=10');
+        const response = await fetch('https://www.embl.org/about/info/course-and-conference-office/wp-json/wp/v2/vf_events?per_page=100');
         if (!response.ok) throw new Error('Failed to fetch events');
-        const data = await response.json();
-        setEvents(data);
+        return await response.json();
       } catch (error) {
         console.error('Error fetching events:', error);
-        setEvents([]);
-      } finally {
-        setLoading(false);
+        return [];
       }
     }
 
-    fetchEvents();
-  }, []);
+    // Render event list based on the fetched events and user input
+    function renderEventList(filter = '') {
+      eventListElement.innerHTML = '';
+      const filteredEvents = events.filter(event =>
+        event.title.rendered.toLowerCase().includes(filter.toLowerCase())
+      );
 
-  const filteredEvents = events.filter(event =>
-    event.title.rendered.toLowerCase().includes(filter.toLowerCase())
-  );
+      if (filteredEvents.length === 0) {
+        eventListElement.innerHTML = '<li>No events found</li>';
+      } else {
+        filteredEvents.forEach(event => {
+          const li = document.createElement('li');
+          li.textContent = event.title.rendered;
+          li.addEventListener('click', () => {
+            console.log(`Selected: ${event.title.rendered}`);
+            window.voiceflow.chat.interact({
+              type: 'complete',
+              payload: { event_id: event.id, event_title: event.title.rendered },
+            });
+          });
+          eventListElement.appendChild(li);
+        });
+      }
+    }
 
-  return (
-    <div>
-      <style>
-        {`
-          input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            margin: 8px 0;
-            box-sizing: border-box;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-          }
-          .event-list {
-            z-index: 9999;
-            list-style-type: none;
-            padding: 0;
-            max-height: 200px;
-            overflow-y: auto;
-          }
-          .event-list li {
-            padding: 8px;
-            background: #f9f9f9;
-            border-bottom: 1px solid #ddd;
-            cursor: pointer;
-          }
-          .event-list li:hover {
-            background: #eee;
-          }
-          .loading {
-            text-align: center;
-            color: #666;
-          }
-        `}
-      </style>
-      <input
-        type="text"
-        placeholder="Enter event title..."
-        value={filter}
-        onChange={e => setFilter(e.target.value)}
-      />
-      {loading ? (
-        <div className="loading">Loading events...</div>
-      ) : (
-        <ul className="event-list">
-          {filteredEvents.length > 0 ? (
-            filteredEvents.map(event => (
-              <li
-                key={event.id}
-                onClick={() =>
-                  window.voiceflow.chat.interact({
-                    type: 'complete',
-                    payload: { event_id: event.id, event_title: event.title.rendered },
-                  })
-                }
-              >
-                {event.title.rendered}
-              </li>
-            ))
-          ) : (
-            <li>No events found</li>
-          )}
-        </ul>
-      )}
-    </div>
-  );
-}
+    // Initialize the event search functionality
+    async function initializeEventSearch() {
+      events = await fetchEvents();
+      loadingElement.style.display = 'none';
+      eventListElement.style.display = 'block';
+
+      renderEventList();
+
+      eventSearchInput.addEventListener('input', (e) => {
+        renderEventList(e.target.value);
+      });
+    }
+
+    initializeEventSearch();
+  },
+};
