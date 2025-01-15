@@ -998,7 +998,7 @@ export const ext_selectEvent = {
     // Fetch events from the WordPress API
     async function fetchEvents() {
       try {
-        const response = await fetch('https://www.embl.org/about/info/course-and-conference-office/wp-json/wp/v2/vf_events?per_page=5');
+        const response = await fetch('https://wwwdev.embl.org/about/info/course-and-conference-office/wp-json/custom/v1/events?per_page=100');
         if (!response.ok) throw new Error('Failed to fetch events');
         return await response.json();
       } catch (error) {
