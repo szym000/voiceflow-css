@@ -934,7 +934,9 @@ export const PharmacySelectorExtension = {
     element.appendChild(container);
   },
 };
-export const EventSelectorExtension = {
+
+
+export const ext_selectEvent = {
   name: 'EventSelector',
   type: 'response',
   match: ({ trace }) =>
