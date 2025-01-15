@@ -980,13 +980,31 @@ export const ext_selectEvent = {
           background: #eee;
         }
         .loading {
-          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           color: #666;
+        }
+        .spinner {
+          border: 4px solid #f3f3f3;
+          border-top: 4px solid #666;
+          border-radius: 50%;
+          width: 16px;
+          height: 16px;
+          animation: spin 1s linear infinite;
+          margin-right: 8px;
+        }
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
         }
       </style>
 
-      <input type="text" id="eventSearch" placeholder="Enter event title...">
-      <div id="loading" class="loading">Loading events...</div>
+      <input type="text" id="eventSearch" placeholder="Search by event title">
+      <div id="loading" class="loading">
+        <div class="spinner"></div>
+        Loading events...
+      </div>
       <ul class="event-list" id="eventList" style="display: none;"></ul>
     `;
 
@@ -1011,7 +1029,7 @@ export const ext_selectEvent = {
     function renderEventList(filter = '') {
       eventListElement.innerHTML = '';
       const filteredEvents = events.filter(event =>
-        event.title.rendered.toLowerCase().includes(filter.toLowerCase())
+        event.title.toLowerCase().includes(filter.toLowerCase())
       );
 
       if (filteredEvents.length === 0) {
@@ -1019,12 +1037,12 @@ export const ext_selectEvent = {
       } else {
         filteredEvents.forEach(event => {
           const li = document.createElement('li');
-          li.textContent = event.title.rendered;
+          li.textContent = event.title;
           li.addEventListener('click', () => {
-            console.log(`Selected: ${event.title.rendered}`);
+            console.log(`Selected: ${event.title}`);
             window.voiceflow.chat.interact({
               type: 'complete',
-              payload: { event_id: event.id, event_title: event.title.rendered },
+              payload: { event_id: event.id, event_title: event.title },
             });
           });
           eventListElement.appendChild(li);
