@@ -1,0 +1,90 @@
+
+
+@media screen and (min-width: 768px) {
+    .vfrc-widget--chat {
+        width: 520px !important;
+    }
+
+    .vfrc-system-response--list .vfrc-message--chat {
+        max-width: 375px !important;
+    }
+}
+
+.c-kIbiaN-eyfkxi-size-large {
+	background-image: url(https://uploads-ssl.webflow.com/65ad5ed15a2fa617298f294e/6604170e9f07a2161c21890a_dentalVisions_logo-nobg.png) !important;
+   	background-color: transparent;
+        width: 60%;
+	height: 3rem;
+	box-shadow: none;
+	border-radius: 0px;
+}
+
+.vfrc-avatar {
+	background-image: url(https://uploads-ssl.webflow.com/65ad73efba34f230a2b83aed/66055d8d22eb7814bbcd4fb4_logo%20square%20icon.png); 
+}
+
+.vfrc-system-response--actions {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	max-width: unset;
+}
+.vfrc-button--secondary {
+	justify-content: center;
+	text-align: center;
+	width: unset;
+	color: #fff;
+	background-color: #64AFB4;
+	transition: background-color .4s;
+}
+
+.vfrc-message a {
+	color: #64AFB4;
+}
+
+.vfrc-launcher {
+	border-radius: 10px;
+	height: auto;
+    	width: 100%;
+	border: 2px solid var(--colors-shadow4);
+	position: relative;
+}
+
+.vfrc-widget--launcher {
+  position: relative; 
+	}
+
+.vfrc-launcher img {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+}
+
+.vfrc-widget--launcher::before {
+	content: "";
+  	position: absolute;
+	animation: pulse 1.5s ease infinite;
+  	background: #71C9CE;
+	top: 3px;
+        left: 33px;
+        width: 159px;
+        height: 47px;
+        border-radius: 10px;
+
+}
+
+.vfrc-button--secondary:hover {
+	background-color: #71C9CE;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
