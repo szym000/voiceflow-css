@@ -69,7 +69,7 @@ export const ext_selectEvent = {
           console.log(`Selected: ${event.title.rendered}`);
           window.voiceflow.chat.interact({
             type: 'complete',
-            payload: { event_id: event.id, selectedEvent: event.title.rendered },
+            payload: { event_id: event.id, event_title: event.title.rendered },
           });
         });
         eventListElement.appendChild(li);
