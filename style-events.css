@@ -37,12 +37,12 @@
 	text-align: center;
 	width: unset;
 	color: #fff;
-	background-color: #64AFB4;
+	background-color: #18974c;
 	transition: background-color .4s;
 }
 
 .vfrc-message a {
-	color: #64AFB4;
+	color: #2A57A3;
 }
 
 .c-PJLV-gJqBfM-from-user {
@@ -81,7 +81,7 @@
 } */
 
 .vfrc-button--secondary:hover {
-	background-color: #71C9CE;
+	background-color: #007B53;
 }
 
 @keyframes pulse {
