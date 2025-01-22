@@ -41,9 +41,16 @@
 	transition: background-color .4s;
 }
 
-.vfrc-carousel--btton {
-	color: #fff !important;
+.vc-fHxDoY {
 	background-color: #18974c !important;
+}
+.vc-fHxDoY:hover {
+	background-color: #007B53 !important;
+}
+.vc-fHxDoY .c-dhzjXW,
+.vc-fHxDoY .c-dhzjXW:hover
+ {
+	color: #fff !important;
 }
 
 .vfrc-message a {
