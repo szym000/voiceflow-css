@@ -41,6 +41,11 @@
 	transition: background-color .4s;
 }
 
+.vfrc-carousel--btton {
+	color: #fff !important;
+	background-color: #18974c !important;
+}
+
 .vfrc-message a {
 	color: #2A57A3;
 }
