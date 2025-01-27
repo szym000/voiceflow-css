@@ -1,22 +1,23 @@
 export const SavePageTitleExtension = {
-  name: 'SavePageTitle',
+  name: 'ext_page_title',
   type: 'effect',
-  match: ({ trace }) =>
-    trace.type === 'save_page_title' || trace.payload.name === 'save_page_title',
+  
+  match: ({ trace }) => trace.type === 'ext_page_title' || trace.payload.name === 'ext_page_title',
+
   effect: async ({ trace }) => {
-    console.log('SavePageTitleExtension triggered');
+    console.log('PageTitleExtension triggered');
 
     try {
       const pageTitle = document.title;
-      console.log('Captured Page Title:', pageTitle);
+      console.log('Captured page title:', pageTitle);
 
-      // Send the page title to Voiceflow's chat as a variable
+      // Send page title back to the Voiceflow assistant
       window.voiceflow.chat.interact({
         type: 'complete',
-        payload: { page_title: pageTitle },
+        payload: { pageTitle: document.title },
       });
 
-      console.log('Page title saved successfully in Voiceflow variable');
+      console.log('Page title sent to Voiceflow');
     } catch (error) {
       console.error('Error capturing page title:', error);
     }
