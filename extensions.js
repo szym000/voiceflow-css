@@ -12,7 +12,7 @@ export const SavePageTitleExtension = {
 
       // Send the page title to Voiceflow's chat as a variable
       window.voiceflow.chat.interact({
-        type: 'variable',
+        type: 'complete',
         payload: { page_title: pageTitle },
       });
 
