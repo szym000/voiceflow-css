@@ -61,6 +61,7 @@ export const ext_selectEvent = {
           overflow-y: auto;
         }
         .event-list li {
+          font-size: 14px;
           padding: 8px;
           background: #fff;
           border-bottom: 1px solid #ddd;
