@@ -107,7 +107,8 @@
 
 } */
 
-.vfrc-input-container:focus-visible {
+.vfrc-input-container:focus-visible,
+.vfrc-input-container:focus-within {
 	outline-color: #007B53 !important;
 }
 
@@ -115,6 +116,7 @@
 	background-color: #007B53;
 }
 #vfrc-send-message {
+	color:#fff;
 	background-color: #007B53 !important;
 }
 #vfrc-send-message:hover {
