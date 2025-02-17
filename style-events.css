@@ -42,7 +42,7 @@
 }
 
 .vfrc-system-response--actions {
-	display: grid;
+	display: flex;
 	grid-template-columns: 1fr 1fr;
 	max-width: unset;
 }
