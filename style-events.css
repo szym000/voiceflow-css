@@ -107,8 +107,7 @@
 
 } */
 
-.vfrc-input-container:focus-visible,
-.vfrc-input-container:focus-within {
+._1kk1h6j4:focus {
 	outline-color: #007B53 !important;
 }
 
@@ -116,11 +115,11 @@
 	background-color: #007B53;
 }
 #vfrc-send-message {
-	color:#fff;
-	background-color: #007B53 !important;
+	color:#fff !important;
+	background-color: #707372 !important;
 }
 #vfrc-send-message:hover {
-	background-color: #18974c !important;
+	background-color: #54585A !important;
 }
 
 @keyframes pulse {
