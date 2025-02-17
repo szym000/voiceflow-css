@@ -107,19 +107,22 @@
 
 } */
 
-._1kk1h6j4:focus {
-	outline-color: #007B53 !important;
+._1kk1h6j4:focus-within {
+	box-shadow: inset 0 0 0 2px #54585A !important;
 }
 
 .vfrc-button--secondary:hover {
 	background-color: #007B53;
 }
 #vfrc-send-message {
-	color:#fff !important;
 	background-color: #707372 !important;
 }
 #vfrc-send-message:hover {
 	background-color: #54585A !important;
+}
+
+.kbc55z4 {
+	color:#fff !important;
 }
 
 @keyframes pulse {
