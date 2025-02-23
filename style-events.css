@@ -13,7 +13,7 @@
     }
 }
 
-._1q5q0m12 {
+.vfrc-header {
 	background-color: #18974c !important;
 }
 
@@ -54,7 +54,7 @@
 	grid-template-columns: 1fr 1fr;
 	max-width: unset;
 }
-.vfrc-button--secondary {
+.vfrc-button {
 	justify-content: center;
 	text-align: center;
 	width: unset;
@@ -119,7 +119,7 @@
 	box-shadow: inset 0 0 0 2px #54585A !important;
 }
 
-.vfrc-button--secondary:hover {
+.vfrc-button:hover {
 	background-color: #007B53;
 }
 #vfrc-send-message {
