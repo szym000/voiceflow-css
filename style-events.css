@@ -17,7 +17,7 @@
 	background-color: #18974c !important;
 }
 
-._1ytjivy1 {
+.vfrc-user-response {
 	background-color: #007B53 !important;
 	color: #fff !important;
 }
@@ -54,10 +54,10 @@
 	grid-template-columns: 1fr 1fr;
 	max-width: unset;
 }
-.vfrc-button1 {
-	justify-content: center;
+.vfrc-button {
+	/* justify-content: center;
 	text-align: center;
-	width: unset;
+	width: unset; */
 	color: #fff;
 	background-color: #18974c;
 	transition: background-color .4s;
@@ -121,6 +121,7 @@
 
 .vfrc-button:hover {
 	background-color: #007B53;
+	color:#fff !important;
 }
 #vfrc-send-message {
 	background-color: #007B53 !important;
