@@ -2,7 +2,7 @@ export const SavePageTitleExtension = {
   name: 'ext_page_title',
   type: 'effect',
   
-  match: ({ trace }) => trace.type === 'ext_page_title' || trace.payload.name === 'ext_page_title',
+  match: ({ trace }) => trace.type === 'ext_page_title' || trace.payload?.name === 'ext_page_title',
 
   effect: async ({ trace }) => {
     console.log('PageTitleExtension triggered');
@@ -31,7 +31,7 @@ export const ext_selectEvent = {
   name: 'EventSelector',
   type: 'response',
   match: ({ trace }) =>
-    trace.type === 'select_event' || trace.payload.name === 'select_event',
+    trace.type === 'select_event' || trace.payload?.name === 'select_event',
   render: async ({ trace, element }) => {
     const containerId = 'event-selector-container';
 
